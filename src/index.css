@@ -43,72 +43,8 @@ body {
   display: none;
 }
 
-/* ---- mobile Book bar ---- */
-.demo-book {
-  position: fixed;
-  left: 12px;
-  right: 12px;
-  bottom: calc(12px + env(safe-area-inset-bottom, 0px));
-  z-index: 6;
-  display: flex;
-  gap: 8px;
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(140%);
-  transition: opacity .3s ease, transform .45s cubic-bezier(.2, .8, .2, 1);
-}
-
-.demo-book.show {
-  opacity: 1;
-  pointer-events: auto;
-  transform: none;
-}
-
-.demo-book a {
-  height: 48px;
-  border-radius: 999px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  box-shadow: 0 8px 22px rgba(30, 16, 14, .28), 0 2px 6px rgba(30, 16, 14, .18);
-  -webkit-tap-highlight-color: transparent;
-}
-
-.demo-book .go {
-  flex: 1;
-  gap: 8px;
-  background: #7B1E2B;
-  color: #FFF4F0;
-  border: 1px solid rgba(214, 180, 120, .55);
-  font: 600 .95rem/1 'Manrope', ui-sans-serif, system-ui, sans-serif;
-  letter-spacing: .01em;
-}
-
-.demo-book .go b {
-  font-weight: 600;
-  opacity: .82;
-}
-
-.demo-book .wa {
-  flex: none;
-  width: 48px;
-  background: #1f7654;
-  color: #fffaf0;
-  border: 1px solid rgba(210, 181, 118, .9);
-}
-
-.demo-book .wa svg {
-  width: 25px;
-  height: 25px;
-}
-
 /* ---- desktop: card inside the iPhone mockup ---- */
 @media (min-width: 760px) {
-  .demo-book {
-    display: none;
-  }
-
   body {
     overflow: auto;
   }
@@ -131,11 +67,9 @@ body {
     height: min(90vh, 860px);
     aspect-ratio: 612 / 1258;
     filter: drop-shadow(0 50px 90px rgba(0, 0, 0, .6));
-    border-radius: 54px;
-    background: #1c1a21;
-    box-shadow: 0 0 0 10px #24222a, 0 0 0 12px #393542, inset 0 0 0 2px rgba(255, 255, 255, 0.15);
   }
 
+  /* The iPhone mockup image sits over the screen */
   .demo-frame {
     display: block;
     position: absolute;
@@ -143,17 +77,18 @@ body {
     width: 100%;
     height: 100%;
     pointer-events: none;
-    z-index: 3;
-    border-radius: 54px;
+    z-index: 10;
+    object-fit: fill;
   }
 
+  /* Sized and rounded to align seamlessly inside the iPhone bezel */
   .demo-screen {
     position: absolute;
     left: 7.03%;
     top: 2.70%;
     width: 86.11%;
     height: 94.59%;
-    border-radius: 38px;
+    border-radius: 40px;
     overflow: hidden;
     background: #1A1012;
     z-index: 1;
@@ -161,7 +96,7 @@ body {
     flex-direction: column;
   }
 
-  /* the card only gets what is left between the two bars — as on a real phone */
+  /* The card gets what is left between the status bar and Safari bar */
   .demo-viewport {
     position: relative;
     flex: 1 1 0%;
@@ -172,42 +107,73 @@ body {
     width: 100%;
   }
 
-  /* ---------- iOS status bar ---------- */
+  /* ---------- iOS Top Status Bar ---------- */
   .ios-status {
     display: flex;
     position: relative;
-    height: 48px;
-    min-height: 48px;
-    z-index: 2;
+    height: 52px;
+    min-height: 52px;
+    z-index: 5;
     align-items: center;
     justify-content: space-between;
-    padding: 12px 24px 0;
+    padding: 12px 22px 0;
     background: #1A1012;
     color: #FFFFFF;
     font-family: -apple-system, 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 13.5px;
+    font-size: 14.5px;
     font-weight: 600;
     letter-spacing: .01em;
     flex-shrink: 0;
   }
 
+  .ios-status .sbTime {
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: .02em;
+    width: 44px;
+    text-align: left;
+  }
+
+  /* Dynamic Island Pill */
+  .ios-status .dynamic-island {
+    width: 108px;
+    height: 29px;
+    background: #000000;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 10px;
+    box-shadow: 0 0 1px rgba(255, 255, 255, 0.08);
+  }
+
+  .ios-status .dynamic-island .camera {
+    width: 9.5px;
+    height: 9.5px;
+    border-radius: 50%;
+    background: #0d0d1a;
+    box-shadow: inset 0 0 2px rgba(255, 255, 255, 0.3);
+  }
+
   .ios-status .sbIcons {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 7px;
+    width: 58px;
+    justify-content: flex-end;
   }
 
   .ios-status svg {
     display: block;
   }
 
-  /* ---------- iOS Safari bar ---------- */
+  /* ---------- iOS Safari Bottom Bar ---------- */
   .ios-safari {
     display: flex;
     position: relative;
-    height: 74px;
-    min-height: 74px;
-    z-index: 2;
+    height: 76px;
+    min-height: 76px;
+    z-index: 5;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -217,42 +183,47 @@ body {
     color: #FFFFFF;
     font-family: -apple-system, 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     flex-shrink: 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
   }
 
   .ios-safari .row {
     display: flex;
     width: 100%;
     align-items: center;
-    gap: 8px;
+    justify-content: center;
+    padding: 0 4px;
   }
 
+  /* URL pill centered without the buy button */
   .ios-safari .urlbar {
-    flex: 1;
-    height: 34px;
-    border-radius: 10px;
-    background: rgba(255, 255, 255, .14);
+    width: 100%;
+    max-width: 100%;
+    height: 38px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(10px);
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 6px;
+    gap: 7px;
     color: #fff;
     text-decoration: none;
-    font-size: 12px;
+    font-size: 13.5px;
     font-weight: 400;
     letter-spacing: .01em;
+    box-shadow: inset 0 0 0 0.5px rgba(255, 255, 255, 0.1);
   }
 
   .ios-safari .urlbar .aA {
-    font-size: 10px;
+    font-size: 11px;
     opacity: .7;
     margin-right: 2px;
   }
 
   .ios-safari .urlbar .lock {
-    width: 9px;
-    height: 11px;
-    opacity: .8;
+    width: 10px;
+    height: 12px;
+    opacity: .85;
   }
 
   .ios-safari .urlbar .host {
@@ -260,25 +231,10 @@ body {
     opacity: .95;
   }
 
-  .ios-safari .buy {
-    height: 34px;
-    padding: 0 14px;
-    border-radius: 10px;
-    background: #7B1E2B;
-    border: 1px solid rgba(214, 180, 120, .55);
-    color: #FFF4F0;
-    font-weight: 600;
-    font-size: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-  }
-
   .ios-safari .homebar {
     width: 134px;
     height: 4.5px;
-    border-radius: 3px;
+    border-radius: 999px;
     background: #fff;
     opacity: .6;
   }
