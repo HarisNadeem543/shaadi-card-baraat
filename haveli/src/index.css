@@ -1,0 +1,297 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background: #2B3444;
+  font-family: 'Manrope', ui-sans-serif, system-ui, sans-serif;
+  overflow: hidden;
+}
+
+/* ---- mobile (default): card fills the screen, no frame, no fake chrome ---- */
+.demo-device {
+  position: fixed;
+  inset: 0;
+}
+
+.demo-screen {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #1A1012;
+}
+
+.demo-viewport {
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: #1A1012;
+  -webkit-overflow-scrolling: touch;
+}
+
+.demo-frame,
+.demo-hint,
+.ios-status,
+.ios-safari {
+  display: none;
+}
+
+/* ---- mobile Book bar ---- */
+.demo-book {
+  position: fixed;
+  left: 12px;
+  right: 12px;
+  bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+  z-index: 6;
+  display: flex;
+  gap: 8px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(140%);
+  transition: opacity .3s ease, transform .45s cubic-bezier(.2, .8, .2, 1);
+}
+
+.demo-book.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: none;
+}
+
+.demo-book a {
+  height: 48px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 8px 22px rgba(30, 16, 14, .28), 0 2px 6px rgba(30, 16, 14, .18);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.demo-book .go {
+  flex: 1;
+  gap: 8px;
+  background: #7B1E2B;
+  color: #FFF4F0;
+  border: 1px solid rgba(214, 180, 120, .55);
+  font: 600 .95rem/1 'Manrope', ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: .01em;
+}
+
+.demo-book .go b {
+  font-weight: 600;
+  opacity: .82;
+}
+
+.demo-book .wa {
+  flex: none;
+  width: 48px;
+  background: #1f7654;
+  color: #fffaf0;
+  border: 1px solid rgba(210, 181, 118, .9);
+}
+
+.demo-book .wa svg {
+  width: 25px;
+  height: 25px;
+}
+
+/* ---- desktop: card inside the iPhone mockup ---- */
+@media (min-width: 760px) {
+  .demo-book {
+    display: none;
+  }
+
+  body {
+    overflow: auto;
+  }
+
+  .demo-stage {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 26px 20px;
+    background:
+      radial-gradient(120% 90% at 50% -10%, #41506A 0%, #2B344400 55%),
+      radial-gradient(100% 100% at 50% 50%, #333F53 0%, #2B3444 100%);
+  }
+
+  .demo-device {
+    position: relative;
+    height: min(90vh, 860px);
+    aspect-ratio: 612 / 1258;
+    filter: drop-shadow(0 50px 90px rgba(0, 0, 0, .6));
+    border-radius: 54px;
+    background: #1c1a21;
+    box-shadow: 0 0 0 10px #24222a, 0 0 0 12px #393542, inset 0 0 0 2px rgba(255, 255, 255, 0.15);
+  }
+
+  .demo-frame {
+    display: block;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 3;
+    border-radius: 54px;
+  }
+
+  .demo-screen {
+    position: absolute;
+    left: 7.03%;
+    top: 2.70%;
+    width: 86.11%;
+    height: 94.59%;
+    border-radius: 38px;
+    overflow: hidden;
+    background: #1A1012;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* the card only gets what is left between the two bars — as on a real phone */
+  .demo-viewport {
+    position: relative;
+    flex: 1 1 0%;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: #1A1012;
+    width: 100%;
+  }
+
+  /* ---------- iOS status bar ---------- */
+  .ios-status {
+    display: flex;
+    position: relative;
+    height: 48px;
+    min-height: 48px;
+    z-index: 2;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 24px 0;
+    background: #1A1012;
+    color: #FFFFFF;
+    font-family: -apple-system, 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 13.5px;
+    font-weight: 600;
+    letter-spacing: .01em;
+    flex-shrink: 0;
+  }
+
+  .ios-status .sbIcons {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .ios-status svg {
+    display: block;
+  }
+
+  /* ---------- iOS Safari bar ---------- */
+  .ios-safari {
+    display: flex;
+    position: relative;
+    height: 74px;
+    min-height: 74px;
+    z-index: 2;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 8px 16px 12px;
+    background: #1A1012;
+    color: #FFFFFF;
+    font-family: -apple-system, 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    flex-shrink: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .ios-safari .row {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .ios-safari .urlbar {
+    flex: 1;
+    height: 34px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, .14);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: .01em;
+  }
+
+  .ios-safari .urlbar .aA {
+    font-size: 10px;
+    opacity: .7;
+    margin-right: 2px;
+  }
+
+  .ios-safari .urlbar .lock {
+    width: 9px;
+    height: 11px;
+    opacity: .8;
+  }
+
+  .ios-safari .urlbar .host {
+    font-weight: 500;
+    opacity: .95;
+  }
+
+  .ios-safari .buy {
+    height: 34px;
+    padding: 0 14px;
+    border-radius: 10px;
+    background: #7B1E2B;
+    border: 1px solid rgba(214, 180, 120, .55);
+    color: #FFF4F0;
+    font-weight: 600;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+  }
+
+  .ios-safari .homebar {
+    width: 134px;
+    height: 4.5px;
+    border-radius: 3px;
+    background: #fff;
+    opacity: .6;
+  }
+
+  .demo-hint {
+    display: block;
+    color: rgba(255, 255, 255, .5);
+    font-size: .78rem;
+    letter-spacing: .02em;
+  }
+
+  .demo-hint b {
+    color: #fff;
+    font-weight: 600;
+  }
+}
