@@ -50,14 +50,20 @@ export default function FloatingControls({
         onClick={onLangToggle}
         aria-label={`Current language: ${lang === 'en' ? 'English (Click for Urdu)' : 'Urdu (Click for English)'}`}
         title={`Current: ${lang === 'en' ? 'English' : 'Urdu'} · Click to switch`}
-        className="lang-btn"
-        style={{
-          fontFamily: lang === 'ur' ? "'Noto Nastaliq Urdu', serif" : "'Manrope', sans-serif",
-          fontSize: lang === 'ur' ? '0.82rem' : '0.75rem',
-          paddingTop: lang === 'ur' ? '2px' : '0px',
-        }}
+        className={`lang-btn ${lang === 'ur' ? 'lang-ur' : ''}`}
       >
-        {lang === 'en' ? 'EN' : 'اردو'}
+        <span
+          className="lang-text"
+          style={{
+            fontFamily: lang === 'ur' ? "'Noto Nastaliq Urdu', serif" : "'Manrope', sans-serif",
+            fontSize: lang === 'ur' ? '0.92rem' : '0.78rem',
+            transform: lang === 'ur' ? 'translateY(-3.5px)' : 'none',
+            display: 'inline-block',
+            lineHeight: 1,
+          }}
+        >
+          {lang === 'en' ? 'EN' : 'اردو'}
+        </span>
       </button>
     </div>
   );

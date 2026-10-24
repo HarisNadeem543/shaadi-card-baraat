@@ -1036,10 +1036,27 @@ body {
 }
 
 .floating-controls .lang-btn {
-  padding: 0 14px;
+  min-width: 62px;
+  padding: 0 20px;
   font-weight: 600;
   letter-spacing: 0.05em;
   color: var(--gold-light);
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.floating-controls .lang-btn.lang-ur {
+  min-width: 72px;
+  padding: 0 22px;
+  letter-spacing: 0;
+}
+
+.floating-controls .lang-text {
+  display: inline-block;
+  line-height: 1;
 }
 
 /* ============================================================
