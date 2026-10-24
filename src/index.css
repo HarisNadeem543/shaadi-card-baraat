@@ -484,13 +484,17 @@ body {
   position: relative;
   width: 100%;
   line-height: 0;
-  overflow: hidden;
   display: block;
+  margin-top: -2px;
+  margin-bottom: -2px;
+  z-index: 2;
+  pointer-events: none;
 }
 
 .torn-divider-wrapper svg {
   display: block;
   width: 100%;
+  vertical-align: bottom;
 }
 
 
