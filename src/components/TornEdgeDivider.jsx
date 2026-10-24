@@ -1,30 +1,31 @@
 import React from 'react';
 
 /**
- * TornEdgeDivider — Organic jagged torn-paper divider between card sections.
- * Scales responsively without distortion across mobile and desktop.
+ * TornEdgeDivider — Subtle, organic jagged torn-paper divider between card sections.
+ * Non-recursive, natural torn paper contour with low-amplitude edge variations.
  *
  * @param {string} [topColor] - Background color of the preceding section.
  * @param {string} [bottomColor] - Background color of the following section.
- * @param {boolean} [reverse] - Flips horizontally/vertically for organic visual variety.
- * @param {number|string} [height=36] - Height of the torn divider in pixels.
+ * @param {boolean} [reverse] - Flips horizontally for organic visual variety.
+ * @param {'A'|'B'} [variant='A'] - Alternate contour variant.
+ * @param {number} [height=14] - Subtle height of the torn divider (in pixels).
  */
 
-// Carefully traced jagged coordinates mimicking natural torn parchment
-const JAGGED_PATH_A =
-  'M0,60 L0,32 L22,18 L36,28 L50,14 L68,36 L86,22 L108,30 L126,16 L148,34 L170,26 L194,40 L220,22 L244,32 L268,14 L294,30 L316,20 L338,36 L360,24 L382,32 L406,16 L430,26 L452,12 L476,34 L498,22 L522,36 L548,20 L572,32 L592,16 L618,30 L644,22 L670,36 L694,16 L718,26 L744,12 L768,34 L792,20 L818,32 L844,16 L868,28 L892,18 L918,36 L944,22 L970,34 L996,16 L1022,28 L1048,18 L1074,34 L1100,22 L1124,30 L1150,16 L1174,28 L1200,20 L1200,60 Z';
+// Irregular, low-amplitude torn paper path (amplitude ~4-5px max, non-repeating)
+const TORN_PATH_A =
+  'M0,24 L0,13 L35,10 L70,13 L95,15 L135,11 L185,13 L225,9 L270,14 L320,11 L365,15 L415,12 L475,13 L525,16 L575,10 L635,12 L685,14 L745,11 L795,15 L855,10 L905,14 L965,11 L1025,14 L1085,10 L1145,13 L1200,11 L1200,24 Z';
 
-const JAGGED_PATH_B =
-  'M0,60 L0,26 L26,38 L48,20 L72,34 L96,16 L120,28 L142,14 L168,36 L192,22 L216,34 L240,18 L264,30 L288,20 L314,38 L338,24 L362,36 L388,18 L412,30 L436,20 L460,34 L484,16 L508,28 L532,18 L556,36 L580,22 L606,34 L630,16 L654,28 L678,18 L702,34 L726,20 L750,32 L774,16 L798,28 L822,18 L846,36 L870,22 L894,34 L920,18 L944,30 L968,20 L992,36 L1016,22 L1040,34 L1064,18 L1088,28 L1112,18 L1136,34 L1162,20 L1182,30 L1200,22 L1200,60 Z';
+const TORN_PATH_B =
+  'M0,24 L0,11 L45,14 L90,10 L145,13 L195,15 L245,11 L295,13 L350,9 L405,14 L460,11 L515,15 L570,12 L620,10 L675,14 L730,12 L785,15 L840,10 L895,13 L950,11 L1005,15 L1060,10 L1115,13 L1170,11 L1200,13 L1200,24 Z';
 
 export default function TornEdgeDivider({
   topColor = 'var(--band-deep)',
   bottomColor = 'var(--parchment)',
   reverse = false,
   variant = 'A',
-  height = 36,
+  height = 14,
 }) {
-  const path = variant === 'B' ? JAGGED_PATH_B : JAGGED_PATH_A;
+  const path = variant === 'B' ? TORN_PATH_B : TORN_PATH_A;
 
   return (
     <div
@@ -39,7 +40,7 @@ export default function TornEdgeDivider({
       aria-hidden="true"
     >
       <svg
-        viewBox="0 0 1200 60"
+        viewBox="0 0 1200 24"
         preserveAspectRatio="none"
         xmlns="http://www.w3.org/2000/svg"
         style={{
