@@ -1,7 +1,8 @@
 import React from 'react';
 
 /**
- * FloatingControls — Music player toggle (track.mp3) and Language switcher (EN / اردو).
+ * FloatingControls — Music player toggle (track.mp3 with smooth volume fades)
+ * and Language indicator/switcher (EN / اردو).
  * Positioned in the top corners of the invitation device viewport.
  */
 export default function FloatingControls({
@@ -15,8 +16,8 @@ export default function FloatingControls({
       {/* Audio Play/Pause Button */}
       <button
         onClick={onToggleAudio}
-        aria-label={isPlaying ? 'Pause music' : 'Play music'}
-        title={isPlaying ? 'Pause music' : 'Play music'}
+        aria-label={isPlaying ? 'Mute music (fade out)' : 'Play music (fade in)'}
+        title={isPlaying ? 'Mute music' : 'Play music'}
         className={`audio-btn ${isPlaying ? 'playing' : ''}`}
       >
         {isPlaying ? (
@@ -44,19 +45,19 @@ export default function FloatingControls({
         )}
       </button>
 
-      {/* Language Toggle Button */}
+      {/* Language Toggle Button: Displays the current language badge (EN or اردو) */}
       <button
         onClick={onLangToggle}
-        aria-label={`Switch language to ${lang === 'en' ? 'Urdu' : 'English'}`}
-        title={`Switch language to ${lang === 'en' ? 'Urdu' : 'English'}`}
+        aria-label={`Current language: ${lang === 'en' ? 'English (Click for Urdu)' : 'Urdu (Click for English)'}`}
+        title={`Current: ${lang === 'en' ? 'English' : 'Urdu'} · Click to switch`}
         className="lang-btn"
         style={{
-          fontFamily: lang === 'en' ? "'Noto Nastaliq Urdu', serif" : "'Manrope', sans-serif",
-          fontSize: lang === 'en' ? '0.82rem' : '0.75rem',
-          paddingTop: lang === 'en' ? '2px' : '0px',
+          fontFamily: lang === 'ur' ? "'Noto Nastaliq Urdu', serif" : "'Manrope', sans-serif",
+          fontSize: lang === 'ur' ? '0.82rem' : '0.75rem',
+          paddingTop: lang === 'ur' ? '2px' : '0px',
         }}
       >
-        {lang === 'en' ? 'اردو' : 'EN'}
+        {lang === 'en' ? 'EN' : 'اردو'}
       </button>
     </div>
   );

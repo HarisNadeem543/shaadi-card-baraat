@@ -12,30 +12,139 @@ import { TRANSLATIONS } from './data/translations';
 
 export default function App() {
   const [lang, setLang] = useState('en');
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
   const audioRef = useRef(null);
   const viewportRef = useRef(null);
+  const fadeFrameRef = useRef(null);
 
   // Active translation dictionary
   const t = TRANSLATIONS[lang] || TRANSLATIONS.en;
 
-  // Audio Play / Pause handler
+  /**
+   * Smooth volume fade helper using requestAnimationFrame with cosine easing
+   * @param {number} targetVolume - Final volume between 0 and 1
+   * @param {number} duration - Transition duration in ms
+   * @param {Function} [onComplete] - Callback executed on finish
+   */
+  const fadeAudio = (targetVolume, duration = 1000, onComplete) => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    if (fadeFrameRef.current) {
+      cancelAnimationFrame(fadeFrameRef.current);
+      fadeFrameRef.current = null;
+    }
+
+    const startVolume = audio.volume;
+    const startTime = performance.now();
+
+    const step = (now) => {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      // Smooth cosine easing
+      const eased = 0.5 - 0.5 * Math.cos(progress * Math.PI);
+      const newVol = startVolume + (targetVolume - startVolume) * eased;
+      audio.volume = Math.max(0, Math.min(1, newVol));
+
+      if (progress < 1) {
+        fadeFrameRef.current = requestAnimationFrame(step);
+      } else {
+        audio.volume = targetVolume;
+        fadeFrameRef.current = null;
+        if (onComplete) onComplete();
+      }
+    };
+
+    fadeFrameRef.current = requestAnimationFrame(step);
+  };
+
+  /**
+   * Audio Play / Pause toggle with smooth volume transitions
+   */
   const toggleAudio = () => {
-    if (!audioRef.current) return;
+    const audio = audioRef.current;
+    if (!audio) return;
+
     if (isPlaying) {
-      audioRef.current.pause();
+      // Smooth fade-out from 100% to 0%, then pause
       setIsPlaying(false);
+      fadeAudio(0, 800, () => {
+        audio.pause();
+      });
     } else {
-      audioRef.current
-        .play()
-        .then(() => {
-          setIsPlaying(true);
-        })
-        .catch((err) => {
-          console.warn('Audio play prevented by browser:', err);
-        });
+      // Start from 0, play and smoothly swell to 100%
+      setIsPlaying(true);
+      if (audio.paused) {
+        audio.volume = 0;
+        audio
+          .play()
+          .then(() => {
+            fadeAudio(1, 1200);
+          })
+          .catch((err) => {
+            console.warn('Audio play prevented:', err);
+          });
+      } else {
+        fadeAudio(1, 1000);
+      }
     }
   };
+
+  /**
+   * Default Audio ON: Auto-starts on mount with smooth fade-in.
+   * If browser autoplay policy blocks unmuted audio before user gesture,
+   * seamlessly starts on the first interaction (tap, click, scroll).
+   */
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    audio.volume = 0;
+
+    let hasStarted = false;
+
+    const startAndFade = () => {
+      if (hasStarted) return;
+      audio
+        .play()
+        .then(() => {
+          hasStarted = true;
+          setIsPlaying(true);
+          fadeAudio(1, 1800);
+          cleanupGestureListeners();
+        })
+        .catch(() => {
+          // Waiting for first user gesture
+        });
+    };
+
+    const cleanupGestureListeners = () => {
+      window.removeEventListener('click', startAndFade);
+      window.removeEventListener('touchstart', startAndFade);
+      window.removeEventListener('keydown', startAndFade);
+      if (viewportRef.current) {
+        viewportRef.current.removeEventListener('scroll', startAndFade);
+      }
+    };
+
+    // Attempt direct autoplay
+    startAndFade();
+
+    // Attach listeners in case browser requires a gesture
+    window.addEventListener('click', startAndFade, { passive: true });
+    window.addEventListener('touchstart', startAndFade, { passive: true });
+    window.addEventListener('keydown', startAndFade, { passive: true });
+    if (viewportRef.current) {
+      viewportRef.current.addEventListener('scroll', startAndFade, { passive: true });
+    }
+
+    return () => {
+      cleanupGestureListeners();
+      if (fadeFrameRef.current) {
+        cancelAnimationFrame(fadeFrameRef.current);
+      }
+    };
+  }, []);
 
   // Language switcher handler
   const toggleLang = () => {
