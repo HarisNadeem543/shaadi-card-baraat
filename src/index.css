@@ -97,6 +97,10 @@ body {
 
 /* ---- desktop: card inside the iPhone mockup ---- */
 @media (min-width: 760px) {
+  html {
+    font-size: 14.5px; /* Proportionally scales down all rem-based typography and paddings */
+  }
+
   body {
     overflow: auto;
   }
@@ -107,8 +111,8 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 20px;
-    padding: 26px 20px;
+    gap: 16px;
+    padding: 20px 16px;
     background:
       radial-gradient(120% 90% at 50% -10%, #41506A 0%, #2B344400 55%),
       radial-gradient(100% 100% at 50% 50%, #333F53 0%, #2B3444 100%);
@@ -116,9 +120,9 @@ body {
 
   .demo-device {
     position: relative;
-    height: min(90vh, 860px);
+    height: min(84vh, 730px);
     aspect-ratio: 612 / 1258;
-    filter: drop-shadow(0 50px 90px rgba(0, 0, 0, .6));
+    filter: drop-shadow(0 40px 75px rgba(0, 0, 0, .58));
   }
 
   /* The iPhone mockup image sits over the screen */
@@ -144,6 +148,7 @@ body {
     overflow: hidden;
     background: var(--dark);
     z-index: 1;
+    container-type: inline-size;
   }
 
   /* The card gets the full screen area of the device */
@@ -159,7 +164,7 @@ body {
 
   .demo-hint {
     display: block;
-    font-size: .72rem;
+    font-size: .68rem;
     letter-spacing: .24em;
     text-transform: uppercase;
     color: rgba(200, 212, 228, .55);
@@ -169,6 +174,79 @@ body {
     font-weight: 600;
     color: rgba(214, 224, 238, .8);
     letter-spacing: .2em;
+  }
+
+  /* Compact section scaling on larger screens */
+  .hero-section {
+    min-height: 100%;
+    height: 100%;
+  }
+
+  .dear-family-section {
+    padding: 38px 22px 42px;
+  }
+
+  .save-date-section {
+    padding: 38px 20px 42px;
+  }
+
+  .countdown-unit {
+    min-width: 52px;
+    padding: 7px 5px;
+  }
+
+  .countdown-value {
+    font-size: 1.6rem;
+  }
+
+  .three-evenings-section {
+    padding: 38px 18px 42px;
+  }
+
+  .event-card {
+    padding: 12px 14px;
+    margin-bottom: 11px;
+    gap: 13px;
+  }
+
+  .event-card .medallion {
+    width: 56px;
+    height: 56px;
+  }
+
+  .venue-section {
+    padding: 36px 18px 42px;
+  }
+
+  .venue-section .arch-frame {
+    max-width: 230px;
+  }
+
+  .gallery-section {
+    padding: 36px 0 42px;
+  }
+
+  .gallery-item {
+    width: 215px;
+    height: 295px;
+  }
+
+  .signoff-section {
+    padding: 46px 20px 32px;
+  }
+
+  .signoff-section .garland {
+    max-width: 190px;
+  }
+
+  .scratch-card-container {
+    width: min(285px, 86%);
+    min-height: 200px;
+    margin: 22px auto 4px auto;
+  }
+
+  .scratch-day-number {
+    font-size: 3.1rem;
   }
 }
 
@@ -261,7 +339,7 @@ body {
 .hero-name {
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: clamp(2.6rem, 12vw, 3.6rem);
+  font-size: clamp(2.3rem, 11cqw, 3.2rem);
   line-height: 1.1;
   color: #FFF8F0;
   text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
@@ -270,7 +348,7 @@ body {
 .hero-ampersand {
   font-family: var(--font-display);
   font-style: italic;
-  font-size: clamp(1.4rem, 6vw, 1.8rem);
+  font-size: clamp(1.2rem, 5.5cqw, 1.6rem);
   color: var(--gold);
   line-height: 1.2;
   margin: -2px 0;
@@ -300,7 +378,7 @@ body {
 /* Scroll indicator */
 .scroll-indicator {
   position: absolute;
-  bottom: 28px;
+  bottom: 24px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 3;
@@ -322,7 +400,7 @@ body {
 
 .scroll-indicator .scroll-line {
   width: 1px;
-  height: 24px;
+  height: 22px;
   background: var(--gold-light);
   opacity: 0.4;
   animation: scrollPulse 2s ease-in-out infinite;
@@ -331,44 +409,6 @@ body {
 @keyframes scrollPulse {
   0%, 100% { opacity: 0.15; transform: scaleY(0.6); }
   50% { opacity: 0.5; transform: scaleY(1); }
-}
-
-/* Floating controls (Mute + Language) */
-.floating-controls {
-  position: fixed;
-  top: 12px;
-  right: 12px;
-  z-index: 20;
-  display: flex;
-  gap: 6px;
-}
-
-.floating-controls button {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  border: 1px solid rgba(228, 206, 158, 0.25);
-  background: rgba(26, 16, 18, 0.55);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  color: var(--gold-light);
-  font-size: 0.7rem;
-  font-weight: 500;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s ease, border-color 0.2s ease;
-}
-
-.floating-controls button:hover {
-  background: rgba(26, 16, 18, 0.75);
-  border-color: rgba(228, 206, 158, 0.4);
-}
-
-.floating-controls button svg {
-  width: 16px;
-  height: 16px;
 }
 
 
