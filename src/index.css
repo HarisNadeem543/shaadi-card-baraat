@@ -103,6 +103,25 @@ body {
 
   body {
     overflow: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(184, 146, 90, 0.3) #232B38;
+  }
+
+  body::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  body::-webkit-scrollbar-track {
+    background: #232B38;
+  }
+
+  body::-webkit-scrollbar-thumb {
+    background: rgba(184, 146, 90, 0.35);
+    border-radius: 9999px;
+  }
+
+  body::-webkit-scrollbar-thumb:hover {
+    background: rgba(228, 206, 158, 0.7);
   }
 
   .demo-stage {
@@ -153,7 +172,7 @@ body {
     container-type: inline-size;
   }
 
-  /* The card gets the full screen area of the device */
+  /* The card gets the full screen area of the device with a sleek reduced scrollbar */
   .demo-viewport {
     position: absolute;
     inset: 0;
@@ -162,6 +181,27 @@ body {
     background: var(--dark);
     width: 100%;
     height: 100%;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(184, 146, 90, 0.35) transparent;
+  }
+
+  /* Reduced micro scrollbar inside mockup for larger screens */
+  .demo-viewport::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .demo-viewport::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .demo-viewport::-webkit-scrollbar-thumb {
+    background: rgba(184, 146, 90, 0.35);
+    border-radius: 9999px;
+    transition: background 0.2s ease;
+  }
+
+  .demo-viewport::-webkit-scrollbar-thumb:hover {
+    background: rgba(228, 206, 158, 0.75);
   }
 
   .demo-hint {
