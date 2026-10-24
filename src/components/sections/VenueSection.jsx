@@ -1,26 +1,23 @@
 import React, { useState } from 'react';
 
 /**
- * VenueSection — Tabbed venue switcher inside the Haveli Arch frame.
- * Shows venue name, event time, address, and a Google Maps link.
+ * VenueSection — Replicates authentic Haveli design matching the reference image:
+ * 1. Title at top ("Where to come")
+ * 2. Rose garland divider
+ * 3. Venue switcher tabs (separate pill buttons: MEHNDI, BARAAT & NIKAH, WALIMA)
+ * 4. Ornate Haveli Arch frame with venue details (event time, venue name, address,
+ *    and "OPEN IN MAPS" button) centered INSIDE the arch opening window.
  * Supports bilingual English and Urdu text.
  */
 export default function VenueSection({ t, lang }) {
-  const [activeIdx, setActiveIdx] = useState(0);
+  // Default to index 1 (BARAAT & NIKAH) to match the reference image
+  const [activeIdx, setActiveIdx] = useState(1);
   const venues = t.venues;
   const venue = venues[activeIdx] || venues[0];
 
   return (
     <section className={`venue-section ${lang === 'ur' ? 'ur-mode' : ''}`}>
-      {/* Haveli Arch Frame */}
-      <div className="arch-frame fade-in-up">
-        <img
-          src="/assets/haveli-arch.webp"
-          alt="Haveli arch frame"
-          loading="lazy"
-        />
-      </div>
-
+      {/* 1. Header: Title and Rose Garland Divider */}
       <h2 className="section-title fade-in-up">{t.title}</h2>
 
       <img
@@ -30,12 +27,12 @@ export default function VenueSection({ t, lang }) {
         aria-hidden="true"
       />
 
-      {/* Venue tabs */}
+      {/* 2. Venue Switcher Tabs (Separate Pill Buttons) */}
       <div className="venue-tabs fade-in-up fade-delay-2">
         {venues.map((v, i) => (
           <button
             key={v.tab}
-            className={`venue-tab${i === activeIdx ? ' active' : ''}`}
+            className={`venue-tab-pill${i === activeIdx ? ' active' : ''}`}
             onClick={() => setActiveIdx(i)}
           >
             {v.tab}
@@ -43,23 +40,40 @@ export default function VenueSection({ t, lang }) {
         ))}
       </div>
 
-      {/* Venue detail */}
-      <div className="venue-detail fade-in-up fade-delay-3" dir={lang === 'ur' ? 'rtl' : 'ltr'}>
-        <div className="venue-name">{venue.name}</div>
-        <div className="venue-time">{venue.event}</div>
-        <div className="venue-addr">{venue.addr}</div>
-        <a
-          className="map-link"
-          href={venue.mapUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M8 1.5a4.5 4.5 0 0 1 4.5 4.5c0 3.5-4.5 8.5-4.5 8.5S3.5 9.5 3.5 6A4.5 4.5 0 0 1 8 1.5Z" />
-            <circle cx="8" cy="6" r="1.5" />
-          </svg>
-          {t.mapBtn}
-        </a>
+      {/* 3. Arch Frame with Venue Details Positioned INSIDE the Arch Window Opening */}
+      <div className="arch-frame-container fade-in-up fade-delay-3">
+        <img
+          src="/assets/haveli-arch.webp"
+          alt="Haveli Arch"
+          className="arch-bg-img"
+          loading="lazy"
+        />
+
+        <div className="arch-inner-content" dir={lang === 'ur' ? 'rtl' : 'ltr'}>
+          <div className="venue-event-time">{venue.event}</div>
+          <h3 className="venue-event-name">{venue.name}</h3>
+          <p className="venue-event-addr">{venue.addr}</p>
+          <a
+            className="venue-map-btn"
+            href={venue.mapUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <svg
+              className="map-pin-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+            <span>{t.mapBtn}</span>
+          </a>
+        </div>
       </div>
     </section>
   );

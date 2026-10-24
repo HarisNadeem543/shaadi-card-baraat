@@ -1,35 +1,69 @@
 import React from 'react';
 
 /**
- * ThreeEveningsSection — Mehndi, Baraat & Nikah, Walima timeline cards
- * with medallion images and event details.
- * Supports bilingual English and Urdu text.
+ * ThreeEveningsSection — Authentic replicated timeline layout matching the original design:
+ * - Hanging ornamental lanterns on left and right corners
+ * - "The three evenings" heading with rose garland divider
+ * - Continuous central vertical gold connecting line
+ * - 3-column timeline: Time & Date (left), Medallion (center), Event & Venue (right)
+ * - NO "Add to Calendar" buttons per user instruction
+ * - Bilingual English and Urdu support
  */
 export default function ThreeEveningsSection({ t, lang }) {
   return (
     <section className={`three-evenings-section ${lang === 'ur' ? 'ur-mode' : ''}`}>
-      <h2 className="section-title fade-in-up">{t.title}</h2>
+      {/* Hanging ornamental lanterns in top corners */}
+      <div className="evenings-hanging-ornaments" aria-hidden="true">
+        <img
+          src="/assets/haveli-hanging.webp"
+          alt=""
+          className="evenings-hanging-left"
+        />
+        <img
+          src="/assets/haveli-hanging.webp"
+          alt=""
+          className="evenings-hanging-right"
+        />
+      </div>
 
-      <img
-        className="divider fade-in-up fade-delay-1"
-        src="/assets/haveli-divider.webp"
-        alt=""
-        aria-hidden="true"
-      />
+      {/* Header: Title and Rose Garland Divider */}
+      <div className="evenings-header fade-in-up">
+        <h2 className="evenings-title">{t.title}</h2>
+        <img
+          className="evenings-divider"
+          src="/assets/haveli-divider.webp"
+          alt=""
+          aria-hidden="true"
+        />
+      </div>
 
-      <div className="fade-in-up fade-delay-2">
-        {t.events.map((event) => (
-          <div className="event-card" key={event.name}>
-            <img
-              className="medallion"
-              src={event.medallion}
-              alt={event.name}
-              loading="lazy"
-            />
-            <div className="event-info" dir={lang === 'ur' ? 'rtl' : 'ltr'}>
-              <div className="event-name">{event.name}</div>
-              <div className="event-detail">{event.date}</div>
-              <div className="event-venue">{event.venue}</div>
+      {/* Vertical Timeline */}
+      <div className="evenings-timeline fade-in-up fade-delay-1">
+        {/* Continuous vertical connecting line passing through all medallions */}
+        <div className="timeline-spine" aria-hidden="true" />
+
+        {t.events.map((event, idx) => (
+          <div className="timeline-row" key={idx}>
+            {/* Left Column: Time & Date */}
+            <div className="timeline-col-time">
+              <span className="timeline-time">{event.time}</span>
+              <span className="timeline-date">{event.date}</span>
+            </div>
+
+            {/* Center Column: Circular Medallion */}
+            <div className="timeline-col-medallion">
+              <img
+                className="timeline-medallion-img"
+                src={event.medallion}
+                alt={event.name.replace('\n', ' ')}
+                loading="lazy"
+              />
+            </div>
+
+            {/* Right Column: Event Name & Venue */}
+            <div className="timeline-col-details" dir={lang === 'ur' ? 'rtl' : 'ltr'}>
+              <h3 className="timeline-event-name">{event.name}</h3>
+              <p className="timeline-venue">{event.venue}</p>
             </div>
           </div>
         ))}
