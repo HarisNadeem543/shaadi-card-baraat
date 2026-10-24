@@ -215,7 +215,7 @@ export default function App() {
         {/* Torn paper transition: brown → parchment */}
         <TornEdgeDivider
           topColor="var(--band-deep)"
-          bottomColor="var(--parchment)"
+          bottomColor="var(--parchment-2)"
           variant="A"
           height={22}
         />
@@ -225,7 +225,7 @@ export default function App() {
 
         {/* Torn paper transition: parchment → brown */}
         <TornEdgeDivider
-          topColor="var(--parchment)"
+          topColor="var(--parchment-2)"
           bottomColor="var(--band-deep)"
           variant="B"
           reverse={true}

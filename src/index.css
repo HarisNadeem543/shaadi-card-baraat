@@ -337,112 +337,109 @@ body {
     margin-bottom: 10px;
   }
 
-  /* Save the Date container fitting fix — fits cleanly within device width */
+  /* Save the Date calendar section fitting inside desktop mockup */
   .save-date-section {
-    padding: 20px 10px 24px;
+    padding: 22px 12px 24px;
     width: 100%;
     max-width: 100%;
     overflow: hidden;
     box-sizing: border-box;
   }
 
-  .countdown {
-    gap: 5px;
-    max-width: 100%;
+  .save-date-section .section-title {
+    font-size: 1.25rem !important;
+    margin-bottom: 2px;
   }
 
-  .countdown-unit {
-    min-width: 38px;
-    padding: 4px 2px;
+  .save-date-section .divider {
+    width: 95px !important;
+    margin: 4px auto 14px !important;
   }
 
-  .countdown-value {
-    font-size: 1.2rem;
+  .calendar-card {
+    max-width: 236px;
+    padding: 14px 12px 10px;
+    border-radius: 11px;
+    box-shadow: 0 6px 18px rgba(107, 64, 38, 0.06);
   }
 
-  .countdown-label {
-    font-size: 0.48rem;
+  .calendar-header {
+    gap: 8px;
+    margin-bottom: 8px;
   }
 
-  .countdown-separator {
-    font-size: 1rem;
-    padding-top: 2px;
+  .cal-header-line {
+    max-width: 28px;
   }
 
-  .scratch-card-container {
-    width: 86%;
-    max-width: 230px;
-    min-height: 155px;
-    margin: 12px auto 4px auto;
-    box-sizing: border-box;
-    border-radius: 14px;
-  }
-
-  .scratch-revealed-card {
-    min-height: 155px;
-    padding: 8px 6px;
-    box-sizing: border-box;
-  }
-
-  .scratch-inner-border {
-    padding: 8px 6px;
-    border-radius: 10px;
-    box-sizing: border-box;
-  }
-
-  .scratch-day-number {
-    font-size: 2.1rem;
-  }
-
-  .scratch-day-of-week {
-    font-size: 0.56rem;
+  .cal-header-title {
+    font-size: 0.54rem;
     letter-spacing: 0.18em;
   }
 
-  .scratch-month-year {
-    font-size: 0.6rem;
-    letter-spacing: 0.16em;
+  .calendar-weekdays {
+    padding-bottom: 4px;
+    margin-bottom: 4px;
   }
 
-  .scratch-city {
-    font-size: 0.54rem;
+  .cal-weekday {
+    font-size: 0.48rem;
   }
 
-  .scratch-card-divider {
-    width: 36px;
-    margin: 6px auto;
+  .calendar-grid {
+    row-gap: 2px;
+    margin-bottom: 8px;
   }
 
-  .scratch-tagline {
-    font-size: 0.65rem;
+  .cal-day {
+    height: 24px;
+    font-size: 0.84rem;
   }
 
-  .scratch-actions {
-    margin-top: 6px;
-    gap: 4px;
+  .cal-day-dot {
+    bottom: -2px;
+    font-size: 9px;
   }
 
-  .revealed-badge {
-    padding: 2px 6px;
-    font-size: 0.54rem;
+  .cal-day.day-wedding {
+    width: 24px;
+    height: 24px;
+    border-width: 1.2px;
   }
 
-  .calendar-btn {
-    padding: 4px 10px;
-    font-size: 0.64rem;
-    gap: 5px;
+  .calendar-footer {
+    font-size: 0.5rem;
+    letter-spacing: 0.14em;
+    padding-top: 2px;
   }
 
-  .calendar-btn svg {
-    width: 11px;
-    height: 11px;
+  .mark-calendars-text {
+    font-size: 0.5rem;
+    letter-spacing: 0.18em;
+    margin-top: 14px;
+    margin-bottom: 10px;
   }
 
-  .scratch-progress-pill {
-    bottom: 6px;
-    right: 8px;
-    font-size: 0.54rem;
-    padding: 1px 6px;
+  .countdown-tiles {
+    gap: 6px;
+    max-width: 236px;
+  }
+
+  .countdown-tile {
+    padding: 6px 4px 5px;
+    min-width: 40px;
+    max-width: 52px;
+    border-radius: 5px;
+  }
+
+  .tile-number {
+    font-size: 1.35rem;
+  }
+
+  .tile-label {
+    font-size: 0.42rem;
+    letter-spacing: 0.1em;
+    margin-top: 4px;
   }
 
   .three-evenings-section {
@@ -842,8 +839,8 @@ body {
 .save-date-section {
   position: relative;
   width: 100%;
-  background: var(--parchment);
-  padding: 32px 28px 48px;
+  background: var(--parchment-2);
+  padding: 38px 20px 44px;
   text-align: center;
 }
 
@@ -851,58 +848,200 @@ body {
   font-family: var(--font-display);
   font-style: italic;
   font-size: clamp(2.35rem, 9.8vw, 2.9rem);
-  font-weight: 500;
-  color: var(--band-deep);
+  font-weight: 400;
+  color: #5A331E;
   line-height: 1.2;
   margin-bottom: 6px;
 }
 
 .save-date-section .divider {
-  width: 90px;
-  margin: 8px auto 24px;
-  opacity: 0.5;
+  width: 130px;
+  margin: 6px auto 22px;
+  display: block;
+  opacity: 0.85;
 }
 
-/* Countdown */
-.countdown {
+/* Calendar Card */
+.calendar-card {
+  background: #F7EFE1;
+  border: 1px solid rgba(184, 146, 90, 0.3);
+  border-radius: 14px;
+  box-shadow: 0 10px 28px rgba(107, 64, 38, 0.08), 0 2px 6px rgba(107, 64, 38, 0.04);
+  padding: 22px 20px 16px;
+  width: 100%;
+  max-width: 280px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.calendar-header {
   display: flex;
+  align-items: center;
   justify-content: center;
   gap: 12px;
-  margin: 0 auto;
+  margin-bottom: 14px;
 }
 
-.countdown-unit {
+.cal-header-line {
+  flex: 1;
+  height: 1px;
+  background: rgba(184, 146, 90, 0.4);
+  max-width: 38px;
+}
+
+.cal-header-title {
+  font-family: var(--font-manrope);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #8D5E2A;
+}
+
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid rgba(184, 146, 90, 0.22);
+}
+
+.cal-weekday {
+  font-family: var(--font-manrope);
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #9E8879;
+  text-align: center;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  row-gap: 5px;
+  margin-bottom: 14px;
+}
+
+.cal-day {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 52px;
+  justify-content: center;
+  height: 30px;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: #59443B;
+  text-align: center;
+  user-select: none;
 }
 
-.countdown-value {
-  font-family: var(--font-display);
-  font-size: 2.2rem;
-  font-weight: 500;
-  color: var(--band-deep);
+.cal-day.empty {
+  pointer-events: none;
+}
+
+.cal-day-num {
   line-height: 1;
 }
 
-.countdown-label {
-  font-family: var(--font-body);
-  font-size: 0.58rem;
-  font-weight: 400;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  margin-top: 4px;
+.cal-day.day-mehndi,
+.cal-day.day-walima {
+  color: #A95125;
+  font-weight: 600;
 }
 
-.countdown-separator {
-  font-family: var(--font-display);
-  font-size: 1.8rem;
-  color: var(--gold);
-  opacity: 0.5;
-  align-self: flex-start;
+.cal-day-dot {
+  position: absolute;
+  bottom: -1px;
+  font-size: 11px;
+  line-height: 1;
+  color: #A95125;
+}
+
+.cal-day.day-wedding {
+  color: #3A1F18;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1.5px solid #A95125;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+
+.cal-day.day-wedding:hover {
+  background: rgba(169, 81, 37, 0.1);
+  transform: scale(1.08);
+}
+
+.calendar-footer {
+  font-family: var(--font-manrope);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #947864;
+  text-align: center;
   padding-top: 4px;
+}
+
+/* Subtitle */
+.mark-calendars-text {
+  font-family: var(--font-manrope);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #8C7262;
+  text-align: center;
+  margin-top: 26px;
+  margin-bottom: 16px;
+}
+
+/* Boxed Countdown Tiles */
+.countdown-tiles {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 0 auto;
+  max-width: 280px;
+}
+
+.countdown-tile {
+  background: #F0E7DD;
+  border: 1px solid rgba(107, 64, 38, 0.18);
+  border-radius: 7px;
+  padding: 8px 6px 7px;
+  flex: 1;
+  min-width: 48px;
+  max-width: 62px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(89, 60, 47, 0.04);
+}
+
+.tile-number {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.7rem;
+  line-height: 1;
+  color: #6B4026;
+  font-weight: 500;
+}
+
+.tile-label {
+  font-family: var(--font-manrope);
+  font-size: 0.48rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #8C7769;
+  margin-top: 6px;
 }
 
 
@@ -1479,10 +1618,51 @@ body {
   letter-spacing: 0;
 }
 
-.card.lang-ur .countdown-label {
+.card.lang-ur .cal-header-title {
+  font-family: var(--font-urdu);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.card.lang-ur .cal-weekday {
   font-family: var(--font-urdu);
   font-size: 0.65rem;
   font-weight: 500;
+  letter-spacing: 0;
+}
+
+.card.lang-ur .cal-day {
+  font-family: var(--font-urdu);
+  font-size: 0.95rem;
+}
+
+.card.lang-ur .calendar-footer {
+  font-family: var(--font-urdu);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.card.lang-ur .mark-calendars-text {
+  font-family: var(--font-urdu);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.card.lang-ur .tile-number {
+  font-family: var(--font-urdu);
+  font-style: normal;
+  font-size: 1.45rem;
+  font-weight: 600;
+}
+
+.card.lang-ur .tile-label {
+  font-family: var(--font-urdu);
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0;
 }
 
 .card.lang-ur .event-name {
