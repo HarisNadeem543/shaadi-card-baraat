@@ -8,6 +8,7 @@ import ThreeEveningsSection from './components/sections/ThreeEveningsSection';
 import VenueSection from './components/sections/VenueSection';
 import GallerySection from './components/sections/GallerySection';
 import SignoffSection from './components/sections/SignoffSection';
+import TornEdgeDivider from './components/TornEdgeDivider';
 import { TRANSLATIONS } from './data/translations';
 
 export default function App() {
@@ -212,23 +213,45 @@ export default function App() {
         <DearFamilySection t={t.dearFamily} lang={lang} />
 
         {/* Torn paper transition: brown → parchment */}
-        <div className="torn-edge" />
+        <TornEdgeDivider
+          topColor="var(--band-deep)"
+          bottomColor="var(--parchment)"
+          variant="A"
+          height={38}
+        />
 
         {/* 3. Save the Date (parchment) */}
         <SaveTheDateSection t={t.saveDate} lang={lang} />
 
         {/* Torn paper transition: parchment → brown */}
-        <div className="torn-edge-reverse" />
+        <TornEdgeDivider
+          topColor="var(--parchment)"
+          bottomColor="var(--band-deep)"
+          variant="B"
+          reverse={true}
+          height={38}
+        />
 
         {/* 4. Three Evenings (brown band) */}
         <ThreeEveningsSection t={t.threeEvenings} lang={lang} />
 
         {/* 5. Venue (parchment) */}
-        <div className="torn-edge" />
+        <TornEdgeDivider
+          topColor="var(--band-deep)"
+          bottomColor="var(--parchment)"
+          variant="B"
+          height={38}
+        />
         <VenueSection t={t.venue} lang={lang} />
 
         {/* 6. Gallery (brown band) */}
-        <div className="torn-edge-reverse" />
+        <TornEdgeDivider
+          topColor="var(--parchment)"
+          bottomColor="var(--band-deep)"
+          variant="A"
+          reverse={true}
+          height={38}
+        />
         <GallerySection t={t.gallery} lang={lang} />
 
         {/* 7. Sign-off (closing night) */}
