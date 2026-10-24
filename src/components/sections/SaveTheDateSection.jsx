@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
+import ScratchFoilCard from '../ScratchFoilCard';
 
 /**
  * SaveTheDateSection — Displays "Save the date" heading with a live countdown
- * to the wedding day (19 Dec 2026). Set on the parchment background.
- * Supports bilingual English and Urdu text.
+ * to the wedding day (19 Dec 2026), followed by the interactive gold scratch-off card.
+ * Set on the parchment background. Supports bilingual English and Urdu text.
  */
 
 const WEDDING_DATE = new Date('2026-12-19T14:00:00+05:00');
@@ -47,6 +48,7 @@ export default function SaveTheDateSection({ t, lang }) {
         aria-hidden="true"
       />
 
+      {/* Live Countdown Timer */}
       <div className="countdown fade-in-up fade-delay-2">
         <div className="countdown-unit">
           <span className="countdown-value">
@@ -76,6 +78,9 @@ export default function SaveTheDateSection({ t, lang }) {
           <span className="countdown-label">{t.secs}</span>
         </div>
       </div>
+
+      {/* Interactive Gold Foil Scratch Card */}
+      <ScratchFoilCard t={t} lang={lang} />
     </section>
   );
 }
