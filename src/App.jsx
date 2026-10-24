@@ -217,7 +217,7 @@ export default function App() {
           topColor="var(--band-deep)"
           bottomColor="var(--parchment)"
           variant="A"
-          height={12}
+          height={22}
         />
 
         {/* 3. Save the Date (parchment) */}
@@ -229,7 +229,7 @@ export default function App() {
           bottomColor="var(--band-deep)"
           variant="B"
           reverse={true}
-          height={12}
+          height={22}
         />
 
         {/* 4. Three Evenings (brown band) */}
@@ -240,7 +240,7 @@ export default function App() {
           topColor="var(--band-deep)"
           bottomColor="var(--parchment)"
           variant="B"
-          height={12}
+          height={22}
         />
         <VenueSection t={t.venue} lang={lang} />
 
@@ -250,7 +250,7 @@ export default function App() {
           bottomColor="var(--band-deep)"
           variant="A"
           reverse={true}
-          height={12}
+          height={22}
         />
         <GallerySection t={t.gallery} lang={lang} />
 
