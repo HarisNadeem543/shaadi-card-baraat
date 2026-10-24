@@ -123,6 +123,8 @@ body {
     height: min(84vh, 730px);
     aspect-ratio: 612 / 1258;
     filter: drop-shadow(0 40px 75px rgba(0, 0, 0, .58));
+    border-radius: 54px;
+    background: #000;
   }
 
   /* The iPhone mockup image sits over the screen */
@@ -140,11 +142,11 @@ body {
   /* Sized and rounded to align seamlessly inside the iPhone bezel */
   .demo-screen {
     position: absolute;
-    left: 7.03%;
-    top: 2.70%;
-    width: 86.11%;
-    height: 94.59%;
-    border-radius: 40px;
+    left: 6.8%;
+    top: 2.5%;
+    width: 86.4%;
+    height: 95%;
+    border-radius: 42px;
     overflow: hidden;
     background: var(--dark);
     z-index: 1;
@@ -176,77 +178,377 @@ body {
     letter-spacing: .2em;
   }
 
+  /* Floating control buttons reduced to a quarter of original size */
+  .floating-controls {
+    top: 8px;
+    right: 8px;
+    gap: 4px;
+  }
+
+  .floating-controls button {
+    height: 19px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(184, 146, 90, 0.45);
+  }
+
+  .floating-controls .audio-btn {
+    width: 19px;
+    min-width: 19px;
+  }
+
+  .floating-controls .audio-icon {
+    width: 9px;
+    height: 9px;
+    stroke-width: 2.2;
+  }
+
+  .equalizer-bars {
+    height: 8px;
+    gap: 1px;
+  }
+
+  .equalizer-bars .bar {
+    width: 1.2px;
+  }
+
+  .floating-controls .lang-btn {
+    min-width: 26px;
+    height: 19px;
+    padding: 0 5px;
+  }
+
+  .floating-controls .lang-btn.lang-ur {
+    min-width: 30px;
+    padding: 0 5px;
+  }
+
+  .floating-controls .lang-text {
+    font-size: 0.46rem;
+  }
+
+  .floating-controls .lang-btn.lang-ur .lang-text {
+    font-size: 0.54rem;
+    transform: translateY(-2px);
+  }
+
   /* Compact section scaling on larger screens */
   .hero-section {
     min-height: 100%;
     height: 100%;
   }
 
-  .dear-family-section {
-    padding: 38px 22px 42px;
+  .hero-bismillah {
+    font-size: 0.76rem !important;
   }
 
+  .hero-subtitle {
+    font-size: 0.56rem !important;
+  }
+
+  .hero-name {
+    font-size: 1.7rem !important;
+  }
+
+  .hero-ampersand {
+    font-size: 0.9rem !important;
+  }
+
+  .hero-date {
+    font-size: 0.7rem !important;
+    margin-top: 8px;
+  }
+
+  .hero-city {
+    font-size: 0.54rem !important;
+  }
+
+  .section-title,
+  .dear-family-section .section-title,
+  .save-date-section .section-title,
+  .three-evenings-section .section-title,
+  .venue-section .section-title,
+  .gallery-section .section-title {
+    font-size: 1.22rem !important;
+    margin-bottom: 4px;
+  }
+
+  .divider {
+    width: 70px !important;
+    margin: 6px auto 16px !important;
+  }
+
+  .dear-family-section {
+    padding: 28px 16px 32px;
+  }
+
+  .dear-family-section .hanging-ornaments {
+    height: 55px;
+  }
+
+  .dear-family-section .hanging-ornaments img {
+    height: 48px;
+  }
+
+  .dear-family-section .body-text {
+    max-width: 260px;
+  }
+
+  .dear-family-section .body-text p {
+    font-size: 0.76rem;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+
+  /* Save the Date container fitting fix — fits cleanly within device width */
   .save-date-section {
-    padding: 38px 20px 42px;
+    padding: 20px 10px 24px;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  .countdown {
+    gap: 5px;
+    max-width: 100%;
   }
 
   .countdown-unit {
-    min-width: 52px;
-    padding: 7px 5px;
+    min-width: 38px;
+    padding: 4px 2px;
   }
 
   .countdown-value {
-    font-size: 1.6rem;
+    font-size: 1.2rem;
   }
 
-  .three-evenings-section {
-    padding: 38px 18px 42px;
+  .countdown-label {
+    font-size: 0.48rem;
   }
 
-  .event-card {
-    padding: 12px 14px;
-    margin-bottom: 11px;
-    gap: 13px;
-  }
-
-  .event-card .medallion {
-    width: 56px;
-    height: 56px;
-  }
-
-  .venue-section {
-    padding: 36px 18px 42px;
-  }
-
-  .venue-section .arch-frame {
-    max-width: 230px;
-  }
-
-  .gallery-section {
-    padding: 36px 0 42px;
-  }
-
-  .gallery-item {
-    width: 215px;
-    height: 295px;
-  }
-
-  .signoff-section {
-    padding: 46px 20px 32px;
-  }
-
-  .signoff-section .garland {
-    max-width: 190px;
+  .countdown-separator {
+    font-size: 1rem;
+    padding-top: 2px;
   }
 
   .scratch-card-container {
-    width: min(285px, 86%);
-    min-height: 200px;
-    margin: 22px auto 4px auto;
+    width: 86%;
+    max-width: 230px;
+    min-height: 155px;
+    margin: 12px auto 4px auto;
+    box-sizing: border-box;
+    border-radius: 14px;
+  }
+
+  .scratch-revealed-card {
+    min-height: 155px;
+    padding: 8px 6px;
+    box-sizing: border-box;
+  }
+
+  .scratch-inner-border {
+    padding: 8px 6px;
+    border-radius: 10px;
+    box-sizing: border-box;
   }
 
   .scratch-day-number {
-    font-size: 3.1rem;
+    font-size: 2.1rem;
+  }
+
+  .scratch-day-of-week {
+    font-size: 0.56rem;
+    letter-spacing: 0.18em;
+  }
+
+  .scratch-month-year {
+    font-size: 0.6rem;
+    letter-spacing: 0.16em;
+  }
+
+  .scratch-city {
+    font-size: 0.54rem;
+  }
+
+  .scratch-card-divider {
+    width: 36px;
+    margin: 6px auto;
+  }
+
+  .scratch-tagline {
+    font-size: 0.65rem;
+  }
+
+  .scratch-actions {
+    margin-top: 6px;
+    gap: 4px;
+  }
+
+  .revealed-badge {
+    padding: 2px 6px;
+    font-size: 0.54rem;
+  }
+
+  .calendar-btn {
+    padding: 4px 10px;
+    font-size: 0.64rem;
+    gap: 5px;
+  }
+
+  .calendar-btn svg {
+    width: 11px;
+    height: 11px;
+  }
+
+  .scratch-progress-pill {
+    bottom: 6px;
+    right: 8px;
+    font-size: 0.54rem;
+    padding: 1px 6px;
+  }
+
+  .three-evenings-section {
+    padding: 28px 14px 32px;
+  }
+
+  .event-card {
+    padding: 8px 10px;
+    margin-bottom: 8px;
+    gap: 10px;
+    border-radius: 11px;
+  }
+
+  .event-card .medallion {
+    width: 44px;
+    height: 44px;
+  }
+
+  .event-card .event-name {
+    font-size: 0.95rem;
+  }
+
+  .event-card .event-detail {
+    font-size: 0.65rem;
+    margin-top: 2px;
+  }
+
+  .event-card .event-venue {
+    font-size: 0.6rem;
+  }
+
+  .venue-section {
+    padding: 28px 14px 32px;
+  }
+
+  .venue-section .arch-frame {
+    max-width: 190px;
+    margin: 0 auto 16px;
+  }
+
+  .venue-tabs {
+    max-width: 240px;
+    margin-bottom: 14px;
+    border-radius: 6px;
+  }
+
+  .venue-tab {
+    font-size: 0.65rem;
+    padding: 6px 3px;
+  }
+
+  .venue-detail {
+    max-width: 250px;
+  }
+
+  .venue-detail .venue-name {
+    font-size: 1rem;
+    margin-bottom: 3px;
+  }
+
+  .venue-detail .venue-time {
+    font-size: 0.68rem;
+    margin-bottom: 6px;
+  }
+
+  .venue-detail .venue-addr {
+    font-size: 0.7rem;
+    line-height: 1.45;
+  }
+
+  .map-link {
+    padding: 5px 14px;
+    font-size: 0.65rem;
+    margin-top: 10px;
+  }
+
+  .gallery-section {
+    padding: 28px 0 32px;
+  }
+
+  .gallery-carousel {
+    padding: 0 16px;
+    gap: 8px;
+  }
+
+  .gallery-item {
+    width: 180px;
+    height: 245px;
+    border-radius: 10px;
+  }
+
+  .signoff-section {
+    padding: 34px 16px 24px;
+    min-height: 50vh;
+  }
+
+  .signoff-section .garland {
+    max-width: 130px;
+    margin-bottom: 12px;
+  }
+
+  .signoff-section .dua-text {
+    font-size: 0.82rem;
+    margin-bottom: 14px;
+  }
+
+  .signoff-section .closing-text {
+    font-size: 0.92rem;
+  }
+
+  .signoff-section .brand {
+    font-size: 0.5rem;
+    margin-top: 20px;
+  }
+
+  /* Desktop Urdu adjustments */
+  .card.lang-ur .hero-name {
+    font-size: 1.7rem !important;
+  }
+
+  .card.lang-ur .section-title,
+  .card.lang-ur .dear-family-section .section-title {
+    font-size: 1.28rem !important;
+  }
+
+  .card.lang-ur .dear-family-section .body-text p {
+    font-size: 0.8rem;
+    line-height: 1.8;
+  }
+
+  .card.lang-ur .scratch-day-number {
+    font-size: 2.1rem;
+  }
+
+  .card.lang-ur .event-name {
+    font-size: 1rem;
+  }
+
+  .card.lang-ur .venue-name {
+    font-size: 1.05rem;
+  }
+
+  .card.lang-ur .closing-text {
+    font-size: 0.95rem;
   }
 }
 
@@ -317,7 +619,7 @@ body {
 
 .hero-bismillah {
   font-family: var(--font-arabic);
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   color: var(--gold-light);
   opacity: 0.9;
   letter-spacing: 0.02em;
@@ -327,7 +629,7 @@ body {
 
 .hero-subtitle {
   font-family: var(--font-body);
-  font-size: 0.65rem;
+  font-size: 0.72rem;
   font-weight: 400;
   letter-spacing: 0.32em;
   text-transform: uppercase;
@@ -339,7 +641,7 @@ body {
 .hero-name {
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: clamp(2.3rem, 11cqw, 3.2rem);
+  font-size: clamp(3.2rem, 14vw, 4.4rem);
   line-height: 1.1;
   color: #FFF8F0;
   text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
@@ -348,7 +650,7 @@ body {
 .hero-ampersand {
   font-family: var(--font-display);
   font-style: italic;
-  font-size: clamp(1.2rem, 5.5cqw, 1.6rem);
+  font-size: clamp(1.4rem, 6.5vw, 1.85rem);
   color: var(--gold);
   line-height: 1.2;
   margin: -2px 0;
@@ -356,7 +658,7 @@ body {
 
 .hero-date {
   font-family: var(--font-body);
-  font-size: 0.82rem;
+  font-size: 0.92rem;
   font-weight: 300;
   letter-spacing: 0.28em;
   color: var(--gold-light);
@@ -366,7 +668,7 @@ body {
 
 .hero-city {
   font-family: var(--font-body);
-  font-size: 0.62rem;
+  font-size: 0.7rem;
   font-weight: 400;
   letter-spacing: 0.35em;
   text-transform: uppercase;
@@ -444,7 +746,7 @@ body {
 .dear-family-section .section-title {
   font-family: var(--font-display);
   font-style: italic;
-  font-size: clamp(1.6rem, 7vw, 2rem);
+  font-size: clamp(2.35rem, 9.8vw, 2.9rem);
   font-weight: 400;
   color: var(--parchment);
   line-height: 1.25;
@@ -510,7 +812,7 @@ body {
 .save-date-section .section-title {
   font-family: var(--font-display);
   font-style: italic;
-  font-size: clamp(1.5rem, 6.5vw, 1.9rem);
+  font-size: clamp(2.35rem, 9.8vw, 2.9rem);
   font-weight: 500;
   color: var(--band-deep);
   line-height: 1.2;
@@ -540,7 +842,7 @@ body {
 
 .countdown-value {
   font-family: var(--font-display);
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: 500;
   color: var(--band-deep);
   line-height: 1;
@@ -548,7 +850,7 @@ body {
 
 .countdown-label {
   font-family: var(--font-body);
-  font-size: 0.55rem;
+  font-size: 0.58rem;
   font-weight: 400;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -558,7 +860,7 @@ body {
 
 .countdown-separator {
   font-family: var(--font-display);
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   color: var(--gold);
   opacity: 0.5;
   align-self: flex-start;
@@ -578,7 +880,7 @@ body {
 .three-evenings-section .section-title {
   font-family: var(--font-display);
   font-style: italic;
-  font-size: clamp(1.5rem, 6.5vw, 1.9rem);
+  font-size: clamp(2.35rem, 9.8vw, 2.9rem);
   font-weight: 400;
   color: var(--parchment);
   line-height: 1.25;
@@ -677,7 +979,7 @@ body {
 .venue-section .section-title {
   font-family: var(--font-display);
   font-style: italic;
-  font-size: clamp(1.5rem, 6.5vw, 1.9rem);
+  font-size: clamp(2.35rem, 9.8vw, 2.9rem);
   font-weight: 500;
   color: var(--band-deep);
   line-height: 1.25;
@@ -796,7 +1098,7 @@ body {
 .gallery-section .section-title {
   font-family: var(--font-display);
   font-style: italic;
-  font-size: clamp(1.5rem, 6.5vw, 1.9rem);
+  font-size: clamp(2.35rem, 9.8vw, 2.9rem);
   font-weight: 400;
   color: var(--parchment);
   line-height: 1.25;
@@ -1070,6 +1372,15 @@ body {
 .floating-controls .lang-text {
   display: inline-block;
   line-height: 1;
+  font-family: var(--font-manrope);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.floating-controls .lang-btn.lang-ur .lang-text {
+  font-family: var(--font-urdu);
+  font-size: 0.92rem;
+  transform: translateY(-3.5px);
 }
 
 /* ============================================================
@@ -1082,7 +1393,7 @@ body {
 
 .card.lang-ur .hero-subtitle {
   font-family: var(--font-urdu);
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   font-weight: 500;
   letter-spacing: 0.05em;
   line-height: 1.8;
@@ -1090,7 +1401,7 @@ body {
 
 .card.lang-ur .hero-name {
   font-family: var(--font-urdu);
-  font-size: 2.5rem;
+  font-size: clamp(2.8rem, 12vw, 3.8rem);
   font-weight: 600;
   line-height: 1.4;
   letter-spacing: 0;
@@ -1098,32 +1409,29 @@ body {
 
 .card.lang-ur .hero-ampersand {
   font-family: var(--font-urdu);
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   font-style: normal;
   letter-spacing: 0;
 }
 
 .card.lang-ur .hero-city {
   font-family: var(--font-urdu);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   letter-spacing: 0.1em;
 }
 
 .card.lang-ur .scroll-indicator span {
   font-family: var(--font-urdu);
-  font-size: 0.68rem;
+  font-size: 0.72rem;
   letter-spacing: 0.1em;
 }
 
-.card.lang-ur .section-title {
+.card.lang-ur .section-title,
+.card.lang-ur .dear-family-section .section-title {
   font-family: var(--font-urdu);
+  font-size: clamp(2.2rem, 9vw, 2.75rem);
   font-weight: 600;
   line-height: 1.6;
-}
-
-.card.lang-ur .dear-family-section .section-title {
-  font-size: 1.75rem;
-  line-height: 1.7;
 }
 
 .card.lang-ur .dear-family-section .body-text p {

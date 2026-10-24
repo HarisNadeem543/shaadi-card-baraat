@@ -52,16 +52,7 @@ export default function FloatingControls({
         title={`Current: ${lang === 'en' ? 'English' : 'Urdu'} · Click to switch`}
         className={`lang-btn ${lang === 'ur' ? 'lang-ur' : ''}`}
       >
-        <span
-          className="lang-text"
-          style={{
-            fontFamily: lang === 'ur' ? "'Noto Nastaliq Urdu', serif" : "'Manrope', sans-serif",
-            fontSize: lang === 'ur' ? '0.92rem' : '0.78rem',
-            transform: lang === 'ur' ? 'translateY(-3.5px)' : 'none',
-            display: 'inline-block',
-            lineHeight: 1,
-          }}
-        >
+        <span className="lang-text">
           {lang === 'en' ? 'EN' : 'اردو'}
         </span>
       </button>
