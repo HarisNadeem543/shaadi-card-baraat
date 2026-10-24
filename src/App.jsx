@@ -182,7 +182,18 @@ export default function App() {
   }, [lang]);
 
   return (
-    <DemoDevice viewportRef={viewportRef}>
+    <DemoDevice
+      viewportRef={viewportRef}
+      controls={
+        /* Fixed Floating Controls pinned atop the screen */
+        <FloatingControls
+          isPlaying={isPlaying}
+          onToggleAudio={toggleAudio}
+          lang={lang}
+          onLangToggle={toggleLang}
+        />
+      }
+    >
       {/* Background Wedding Audio (track.mp3) */}
       <audio
         ref={audioRef}
@@ -192,15 +203,7 @@ export default function App() {
         onEnded={() => setIsPlaying(false)}
       />
 
-      {/* Floating Controls: Audio Equalizer & Bilingual Switcher */}
-      <FloatingControls
-        isPlaying={isPlaying}
-        onToggleAudio={toggleAudio}
-        lang={lang}
-        onLangToggle={toggleLang}
-      />
-
-      {/* The Haveli Invitation Card */}
+      {/* The Haveli Invitation Card (scrolls inside the device) */}
       <div className={`card ${lang === 'ur' ? 'lang-ur' : ''}`}>
         {/* 1. Hero / Courtyard */}
         <HeroSection t={t.hero} lang={lang} />
