@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 /**
  * SaveTheDateSection — Displays "Save the date" heading with a live countdown
  * to the wedding day (19 Dec 2026). Set on the parchment background.
+ * Supports bilingual English and Urdu text.
  */
 
 const WEDDING_DATE = new Date('2026-12-19T14:00:00+05:00');
@@ -23,7 +24,7 @@ function getTimeLeft() {
   return { days, hours, minutes, seconds };
 }
 
-export default function SaveTheDateSection() {
+export default function SaveTheDateSection({ t, lang }) {
   const [timeLeft, setTimeLeft] = useState(getTimeLeft);
   const intervalRef = useRef(null);
 
@@ -36,8 +37,8 @@ export default function SaveTheDateSection() {
   }, []);
 
   return (
-    <section className="save-date-section">
-      <h2 className="section-title fade-in-up">Save the date</h2>
+    <section className={`save-date-section ${lang === 'ur' ? 'ur-mode' : ''}`}>
+      <h2 className="section-title fade-in-up">{t.title}</h2>
 
       <img
         className="divider fade-in-up fade-delay-1"
@@ -51,28 +52,28 @@ export default function SaveTheDateSection() {
           <span className="countdown-value">
             {String(timeLeft.days).padStart(2, '0')}
           </span>
-          <span className="countdown-label">Days</span>
+          <span className="countdown-label">{t.days}</span>
         </div>
         <span className="countdown-separator">:</span>
         <div className="countdown-unit">
           <span className="countdown-value">
             {String(timeLeft.hours).padStart(2, '0')}
           </span>
-          <span className="countdown-label">Hours</span>
+          <span className="countdown-label">{t.hours}</span>
         </div>
         <span className="countdown-separator">:</span>
         <div className="countdown-unit">
           <span className="countdown-value">
             {String(timeLeft.minutes).padStart(2, '0')}
           </span>
-          <span className="countdown-label">Mins</span>
+          <span className="countdown-label">{t.mins}</span>
         </div>
         <span className="countdown-separator">:</span>
         <div className="countdown-unit">
           <span className="countdown-value">
             {String(timeLeft.seconds).padStart(2, '0')}
           </span>
-          <span className="countdown-label">Secs</span>
+          <span className="countdown-label">{t.secs}</span>
         </div>
       </div>
     </section>

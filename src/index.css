@@ -940,3 +940,223 @@ body {
 .fade-delay-3 { transition-delay: 0.24s; }
 .fade-delay-4 { transition-delay: 0.32s; }
 .fade-delay-5 { transition-delay: 0.40s; }
+
+/* ============================================================
+   FLOATING CONTROLS & AUDIO PLAYER
+   ============================================================ */
+
+.floating-controls {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.floating-controls button {
+  height: 38px;
+  border-radius: 9999px;
+  background: rgba(26, 16, 18, 0.72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(184, 146, 90, 0.38);
+  color: var(--candle);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+
+.floating-controls button:hover {
+  background: rgba(43, 27, 30, 0.88);
+  border-color: rgba(228, 206, 158, 0.7);
+  transform: translateY(-1px);
+}
+
+.floating-controls button:active {
+  transform: translateY(1px);
+}
+
+.floating-controls .audio-btn {
+  width: 38px;
+}
+
+.floating-controls .audio-btn.playing {
+  border-color: rgba(228, 206, 158, 0.85);
+  box-shadow: 0 0 16px rgba(184, 146, 90, 0.45);
+}
+
+.floating-controls .audio-icon {
+  width: 17px;
+  height: 17px;
+  stroke: var(--candle);
+}
+
+/* Equalizer animated bars */
+.equalizer-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 15px;
+}
+
+.equalizer-bars .bar {
+  width: 3px;
+  background: var(--candle);
+  border-radius: 2px;
+  animation: eqBounce 1s ease-in-out infinite alternate;
+}
+
+.equalizer-bars .bar-1 {
+  height: 60%;
+  animation-delay: 0.1s;
+}
+
+.equalizer-bars .bar-2 {
+  height: 100%;
+  animation-delay: 0.35s;
+}
+
+.equalizer-bars .bar-3 {
+  height: 40%;
+  animation-delay: 0.2s;
+}
+
+@keyframes eqBounce {
+  0% {
+    height: 25%;
+  }
+  100% {
+    height: 100%;
+  }
+}
+
+.floating-controls .lang-btn {
+  padding: 0 14px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--gold-light);
+}
+
+/* ============================================================
+   BILINGUAL URDU TYPOGRAPHY & RTL ENHANCEMENTS
+   ============================================================ */
+
+.card.lang-ur {
+  font-feature-settings: "kern" 1;
+}
+
+.card.lang-ur .hero-subtitle {
+  font-family: var(--font-urdu);
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  line-height: 1.8;
+}
+
+.card.lang-ur .hero-name {
+  font-family: var(--font-urdu);
+  font-size: 2.5rem;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0;
+}
+
+.card.lang-ur .hero-ampersand {
+  font-family: var(--font-urdu);
+  font-size: 1.1rem;
+  font-style: normal;
+  letter-spacing: 0;
+}
+
+.card.lang-ur .hero-city {
+  font-family: var(--font-urdu);
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+}
+
+.card.lang-ur .scroll-indicator span {
+  font-family: var(--font-urdu);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+}
+
+.card.lang-ur .section-title {
+  font-family: var(--font-urdu);
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.card.lang-ur .dear-family-section .section-title {
+  font-size: 1.75rem;
+  line-height: 1.7;
+}
+
+.card.lang-ur .dear-family-section .body-text p {
+  font-family: var(--font-urdu);
+  font-size: 0.96rem;
+  line-height: 2.2;
+  letter-spacing: 0;
+}
+
+.card.lang-ur .countdown-label {
+  font-family: var(--font-urdu);
+  font-size: 0.65rem;
+  font-weight: 500;
+}
+
+.card.lang-ur .event-name {
+  font-family: var(--font-urdu);
+  font-size: 1.22rem;
+  font-weight: 600;
+}
+
+.card.lang-ur .event-detail,
+.card.lang-ur .event-venue {
+  font-family: var(--font-urdu);
+  font-size: 0.84rem;
+  line-height: 1.8;
+}
+
+.card.lang-ur .venue-tab {
+  font-family: var(--font-urdu);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding-top: 5px;
+}
+
+.card.lang-ur .venue-name {
+  font-family: var(--font-urdu);
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.card.lang-ur .venue-time,
+.card.lang-ur .venue-addr {
+  font-family: var(--font-urdu);
+  font-size: 0.85rem;
+  line-height: 1.8;
+}
+
+.card.lang-ur .map-link {
+  font-family: var(--font-urdu);
+  font-size: 0.78rem;
+}
+
+.card.lang-ur .closing-text {
+  font-family: var(--font-urdu);
+  font-size: 1.15rem;
+  font-style: normal;
+  line-height: 1.8;
+}
+
+.card.lang-ur .brand {
+  font-family: var(--font-urdu);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+}
+

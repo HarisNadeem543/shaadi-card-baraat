@@ -3,10 +3,11 @@ import React from 'react';
 /**
  * SignoffSection — Closing night courtyard view with garland,
  * Arabic dua, farewell text, and branding.
+ * Supports bilingual English and Urdu text.
  */
-export default function SignoffSection() {
+export default function SignoffSection({ t, lang }) {
   return (
-    <section className="signoff-section">
+    <section className={`signoff-section ${lang === 'ur' ? 'ur-mode' : ''}`}>
       {/* Background courtyard night image (soft) */}
       <img
         className="signoff-bg"
@@ -25,20 +26,23 @@ export default function SignoffSection() {
           aria-hidden="true"
         />
 
-        {/* Dua text */}
-        <p className="dua-text fade-in-up fade-delay-1" dir="rtl">
-          رَبَّنَا هَبْ لَنَا مِنْ أَزْوَاجِنَا وَذُرِّيَّاتِنَا<br />
-          قُرَّةَ أَعْيُنٍ وَاجْعَلْنَا لِلْمُتَّقِينَ إِمَامًا
+        {/* Dua text (Arabic Quranic ayah) */}
+        <p className="dua-text fade-in-up fade-delay-1" dir="rtl" style={{ whiteSpace: 'pre-line' }}>
+          {t.dua}
         </p>
 
         {/* Closing farewell */}
-        <p className="closing-text fade-in-up fade-delay-2">
-          We can't wait to<br />celebrate with you.
+        <p
+          className="closing-text fade-in-up fade-delay-2"
+          style={{ whiteSpace: 'pre-line' }}
+          dir={lang === 'ur' ? 'rtl' : 'ltr'}
+        >
+          {t.closing}
         </p>
 
         {/* Branding */}
         <p className="brand fade-in-up fade-delay-3">
-          NIRU · Haveli
+          {t.brand}
         </p>
       </div>
     </section>

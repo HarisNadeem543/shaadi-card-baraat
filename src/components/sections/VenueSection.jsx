@@ -3,38 +3,15 @@ import React, { useState } from 'react';
 /**
  * VenueSection — Tabbed venue switcher inside the Haveli Arch frame.
  * Shows venue name, event time, address, and a Google Maps link.
+ * Supports bilingual English and Urdu text.
  */
-
-const VENUES = [
-  {
-    tab: 'Mehndi',
-    event: 'Thu 17 Dec · 7:00 PM',
-    name: 'Gulbagh Marquee',
-    addr: 'Block C, Johar Town\nLahore',
-    mapUrl: 'https://maps.google.com/?q=Johar+Town+Lahore',
-  },
-  {
-    tab: 'Baraat',
-    event: 'Sat 19 Dec · 7:30 PM',
-    name: 'Royal Palm',
-    addr: 'Canal Road\nLahore',
-    mapUrl: 'https://maps.google.com/?q=Royal+Palm+Lahore',
-  },
-  {
-    tab: 'Walima',
-    event: 'Sun 20 Dec · 8:00 PM',
-    name: 'Pearl Continental',
-    addr: 'The Mall\nLahore',
-    mapUrl: 'https://maps.google.com/?q=Pearl+Continental+Lahore',
-  },
-];
-
-export default function VenueSection() {
+export default function VenueSection({ t, lang }) {
   const [activeIdx, setActiveIdx] = useState(0);
-  const venue = VENUES[activeIdx];
+  const venues = t.venues;
+  const venue = venues[activeIdx] || venues[0];
 
   return (
-    <section className="venue-section">
+    <section className={`venue-section ${lang === 'ur' ? 'ur-mode' : ''}`}>
       {/* Haveli Arch Frame */}
       <div className="arch-frame fade-in-up">
         <img
@@ -44,7 +21,7 @@ export default function VenueSection() {
         />
       </div>
 
-      <h2 className="section-title fade-in-up">Where to find us</h2>
+      <h2 className="section-title fade-in-up">{t.title}</h2>
 
       <img
         className="divider fade-in-up fade-delay-1"
@@ -55,7 +32,7 @@ export default function VenueSection() {
 
       {/* Venue tabs */}
       <div className="venue-tabs fade-in-up fade-delay-2">
-        {VENUES.map((v, i) => (
+        {venues.map((v, i) => (
           <button
             key={v.tab}
             className={`venue-tab${i === activeIdx ? ' active' : ''}`}
@@ -67,7 +44,7 @@ export default function VenueSection() {
       </div>
 
       {/* Venue detail */}
-      <div className="venue-detail fade-in-up fade-delay-3">
+      <div className="venue-detail fade-in-up fade-delay-3" dir={lang === 'ur' ? 'rtl' : 'ltr'}>
         <div className="venue-name">{venue.name}</div>
         <div className="venue-time">{venue.event}</div>
         <div className="venue-addr">{venue.addr}</div>
@@ -81,7 +58,7 @@ export default function VenueSection() {
             <path d="M8 1.5a4.5 4.5 0 0 1 4.5 4.5c0 3.5-4.5 8.5-4.5 8.5S3.5 9.5 3.5 6A4.5 4.5 0 0 1 8 1.5Z" />
             <circle cx="8" cy="6" r="1.5" />
           </svg>
-          Open in Maps
+          {t.mapBtn}
         </a>
       </div>
     </section>

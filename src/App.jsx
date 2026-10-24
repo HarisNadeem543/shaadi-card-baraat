@@ -8,15 +8,42 @@ import ThreeEveningsSection from './components/sections/ThreeEveningsSection';
 import VenueSection from './components/sections/VenueSection';
 import GallerySection from './components/sections/GallerySection';
 import SignoffSection from './components/sections/SignoffSection';
-import useScrollReveal from './hooks/useScrollReveal';
+import { TRANSLATIONS } from './data/translations';
 
 export default function App() {
   const [lang, setLang] = useState('en');
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef(null);
   const viewportRef = useRef(null);
 
-  // Connect the scroll-reveal observer after mount
+  // Active translation dictionary
+  const t = TRANSLATIONS[lang] || TRANSLATIONS.en;
+
+  // Audio Play / Pause handler
+  const toggleAudio = () => {
+    if (!audioRef.current) return;
+    if (isPlaying) {
+      audioRef.current.pause();
+      setIsPlaying(false);
+    } else {
+      audioRef.current
+        .play()
+        .then(() => {
+          setIsPlaying(true);
+        })
+        .catch((err) => {
+          console.warn('Audio play prevented by browser:', err);
+        });
+    }
+  };
+
+  // Language switcher handler
+  const toggleLang = () => {
+    setLang((current) => (current === 'en' ? 'ur' : 'en'));
+  };
+
+  // Connect scroll-reveal observer after mount & language change
   useEffect(() => {
-    // Small delay to let sections render before observing
     const timer = setTimeout(() => {
       const root = viewportRef.current;
       if (!root) return;
@@ -43,44 +70,57 @@ export default function App() {
     }, 100);
 
     return () => clearTimeout(timer);
-  }, []);
-
-  const toggleLang = () => setLang((l) => (l === 'en' ? 'ur' : 'en'));
+  }, [lang]);
 
   return (
     <DemoDevice viewportRef={viewportRef}>
-      {/* Floating Controls: Mute + Language */}
-      <FloatingControls lang={lang} onLangToggle={toggleLang} />
+      {/* Background Wedding Audio (track.mp3) */}
+      <audio
+        ref={audioRef}
+        src="/assets/track.mp3"
+        loop
+        preload="auto"
+        onEnded={() => setIsPlaying(false)}
+      />
+
+      {/* Floating Controls: Audio Equalizer & Bilingual Switcher */}
+      <FloatingControls
+        isPlaying={isPlaying}
+        onToggleAudio={toggleAudio}
+        lang={lang}
+        onLangToggle={toggleLang}
+      />
 
       {/* The Haveli Invitation Card */}
-      <div className="card">
-        <HeroSection />
+      <div className={`card ${lang === 'ur' ? 'lang-ur' : ''}`}>
+        {/* 1. Hero / Courtyard */}
+        <HeroSection t={t.hero} lang={lang} />
 
-        {/* Dear Family (brown band) */}
-        <DearFamilySection />
+        {/* 2. Dear Family (brown band) */}
+        <DearFamilySection t={t.dearFamily} lang={lang} />
 
         {/* Torn paper transition: brown → parchment */}
         <div className="torn-edge" />
 
-        {/* Save the Date (parchment) */}
-        <SaveTheDateSection />
+        {/* 3. Save the Date (parchment) */}
+        <SaveTheDateSection t={t.saveDate} lang={lang} />
 
         {/* Torn paper transition: parchment → brown */}
         <div className="torn-edge-reverse" />
 
-        {/* Three Evenings (brown band) */}
-        <ThreeEveningsSection />
+        {/* 4. Three Evenings (brown band) */}
+        <ThreeEveningsSection t={t.threeEvenings} lang={lang} />
 
-        {/* Venue (parchment) */}
+        {/* 5. Venue (parchment) */}
         <div className="torn-edge" />
-        <VenueSection />
+        <VenueSection t={t.venue} lang={lang} />
 
-        {/* Gallery (brown band) */}
+        {/* 6. Gallery (brown band) */}
         <div className="torn-edge-reverse" />
-        <GallerySection />
+        <GallerySection t={t.gallery} lang={lang} />
 
-        {/* Sign-off (dark) */}
-        <SignoffSection />
+        {/* 7. Sign-off (closing night) */}
+        <SignoffSection t={t.signoff} lang={lang} />
       </div>
     </DemoDevice>
   );

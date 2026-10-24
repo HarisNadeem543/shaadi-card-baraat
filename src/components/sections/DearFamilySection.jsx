@@ -3,10 +3,11 @@ import React from 'react';
 /**
  * DearFamilySection — A warm introductory letter set on the deep brown band,
  * framed by hanging lantern ornaments and the gold divider.
+ * Supports bilingual English and Urdu text.
  */
-export default function DearFamilySection() {
+export default function DearFamilySection({ t, lang }) {
   return (
-    <section className="dear-family-section">
+    <section className={`dear-family-section ${lang === 'ur' ? 'ur-mode' : ''}`}>
       {/* Hanging ornamental lanterns */}
       <div className="hanging-ornaments" aria-hidden="true">
         <img
@@ -20,8 +21,11 @@ export default function DearFamilySection() {
         />
       </div>
 
-      <h2 className="section-title fade-in-up">
-        Dear family and<br />friends,
+      <h2
+        className="section-title fade-in-up"
+        style={{ whiteSpace: 'pre-line' }}
+      >
+        {t.title}
       </h2>
 
       <img
@@ -31,15 +35,9 @@ export default function DearFamilySection() {
         aria-hidden="true"
       />
 
-      <div className="body-text fade-in-up fade-delay-2">
-        <p>
-          After years of our families knowing one another, ours is finally the
-          wedding they get to plan together.
-        </p>
-        <p>
-          Three evenings, one open door. Come eat with us, sit with us, and stay
-          far longer than you meant to.
-        </p>
+      <div className="body-text fade-in-up fade-delay-2" dir={lang === 'ur' ? 'rtl' : 'ltr'}>
+        <p>{t.p1}</p>
+        <p>{t.p2}</p>
       </div>
     </section>
   );
