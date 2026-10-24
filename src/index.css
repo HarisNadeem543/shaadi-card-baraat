@@ -14,7 +14,7 @@ body {
   overflow: hidden;
 }
 
-/* ---- mobile (default): card fills the screen, no frame, no fake chrome ---- */
+/* ---- mobile (default): card fills the screen, no frame ---- */
 .demo-device {
   position: fixed;
   inset: 0;
@@ -37,9 +37,7 @@ body {
 }
 
 .demo-frame,
-.demo-hint,
-.ios-status,
-.ios-safari {
+.demo-hint {
   display: none;
 }
 
@@ -92,151 +90,17 @@ body {
     overflow: hidden;
     background: #1A1012;
     z-index: 1;
-    display: flex;
-    flex-direction: column;
   }
 
-  /* The card gets what is left between the status bar and Safari bar */
+  /* The card gets the full screen area of the device */
   .demo-viewport {
-    position: relative;
-    flex: 1 1 0%;
-    min-height: 0;
+    position: absolute;
+    inset: 0;
     overflow-y: auto;
     overflow-x: hidden;
     background: #1A1012;
     width: 100%;
-  }
-
-  /* ---------- iOS Top Status Bar ---------- */
-  .ios-status {
-    display: flex;
-    position: relative;
-    height: 52px;
-    min-height: 52px;
-    z-index: 5;
-    align-items: center;
-    justify-content: space-between;
-    padding: 12px 22px 0;
-    background: #1A1012;
-    color: #FFFFFF;
-    font-family: -apple-system, 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 14.5px;
-    font-weight: 600;
-    letter-spacing: .01em;
-    flex-shrink: 0;
-  }
-
-  .ios-status .sbTime {
-    font-weight: 600;
-    font-size: 15px;
-    letter-spacing: .02em;
-    width: 44px;
-    text-align: left;
-  }
-
-  /* Dynamic Island Pill */
-  .ios-status .dynamic-island {
-    width: 108px;
-    height: 29px;
-    background: #000000;
-    border-radius: 999px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding-right: 10px;
-    box-shadow: 0 0 1px rgba(255, 255, 255, 0.08);
-  }
-
-  .ios-status .dynamic-island .camera {
-    width: 9.5px;
-    height: 9.5px;
-    border-radius: 50%;
-    background: #0d0d1a;
-    box-shadow: inset 0 0 2px rgba(255, 255, 255, 0.3);
-  }
-
-  .ios-status .sbIcons {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    width: 58px;
-    justify-content: flex-end;
-  }
-
-  .ios-status svg {
-    display: block;
-  }
-
-  /* ---------- iOS Safari Bottom Bar ---------- */
-  .ios-safari {
-    display: flex;
-    position: relative;
-    height: 76px;
-    min-height: 76px;
-    z-index: 5;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 8px 16px 12px;
-    background: #1A1012;
-    color: #FFFFFF;
-    font-family: -apple-system, 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    flex-shrink: 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
-  }
-
-  .ios-safari .row {
-    display: flex;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-    padding: 0 4px;
-  }
-
-  /* URL pill centered without the buy button */
-  .ios-safari .urlbar {
-    width: 100%;
-    max-width: 100%;
-    height: 38px;
-    border-radius: 12px;
-    background: rgba(255, 255, 255, 0.12);
-    backdrop-filter: blur(10px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 7px;
-    color: #fff;
-    text-decoration: none;
-    font-size: 13.5px;
-    font-weight: 400;
-    letter-spacing: .01em;
-    box-shadow: inset 0 0 0 0.5px rgba(255, 255, 255, 0.1);
-  }
-
-  .ios-safari .urlbar .aA {
-    font-size: 11px;
-    opacity: .7;
-    margin-right: 2px;
-  }
-
-  .ios-safari .urlbar .lock {
-    width: 10px;
-    height: 12px;
-    opacity: .85;
-  }
-
-  .ios-safari .urlbar .host {
-    font-weight: 500;
-    opacity: .95;
-  }
-
-  .ios-safari .homebar {
-    width: 134px;
-    height: 4.5px;
-    border-radius: 999px;
-    background: #fff;
-    opacity: .6;
+    height: 100%;
   }
 
   .demo-hint {
