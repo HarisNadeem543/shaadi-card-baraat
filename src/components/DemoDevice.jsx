@@ -1,12 +1,20 @@
 import React from 'react';
 
-export default function DemoDevice({ children }) {
+/**
+ * DemoDevice — iPhone mockup shell wrapper.
+ * On mobile (<760px): fills the screen with no frame.
+ * On desktop (≥760px): centers in an iPhone mockup with drop shadow.
+ *
+ * @param {React.ReactNode} children - The card content to render inside.
+ * @param {React.RefObject} viewportRef - Ref to the inner scrollable viewport.
+ */
+export default function DemoDevice({ children, viewportRef }) {
   return (
     <div className="demo-stage">
       <div className="demo-device">
         <div className="demo-screen" id="screen">
           {/* Inner Scrollable Viewport */}
-          <div className="demo-viewport" id="viewport">
+          <div className="demo-viewport" id="viewport" ref={viewportRef}>
             {children}
           </div>
         </div>
