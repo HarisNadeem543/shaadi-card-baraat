@@ -285,6 +285,7 @@ body {
 
   .hero-name {
     font-size: 1.7rem !important;
+    font-weight: 600 !important;
   }
 
   .hero-ampersand {
@@ -307,12 +308,21 @@ body {
   .venue-section .section-title,
   .gallery-section .section-title {
     font-size: 1.22rem !important;
+    font-weight: 600 !important;
     margin-bottom: 4px;
   }
 
-  .divider {
-    width: 70px !important;
-    margin: 6px auto 16px !important;
+  .divider,
+  .evenings-divider,
+  .dear-family-section .divider,
+  .save-date-section .divider,
+  .venue-section .divider,
+  .gallery-section .divider {
+    width: 140px !important;
+    max-width: 140px !important;
+    display: block !important;
+    margin-top: 5px !important;
+    opacity: 0.9 !important;
   }
 
   .dear-family-section {
@@ -352,12 +362,18 @@ body {
   }
 
   .save-date-section .divider {
-    width: 95px !important;
-    margin: 4px auto 14px !important;
+    width: 140px !important;
+    max-width: 140px !important;
+    margin: 5px auto 14px !important;
+    opacity: 0.9 !important;
+  }
+
+  .calendar-scratch-wrapper {
+    max-width: 236px;
+    border-radius: 11px;
   }
 
   .calendar-card {
-    max-width: 236px;
     padding: 14px 12px 10px;
     border-radius: 11px;
     box-shadow: 0 6px 18px rgba(107, 64, 38, 0.06);
@@ -442,93 +458,144 @@ body {
     margin-top: 4px;
   }
 
+  /* Three Evenings Section in mockup shell */
   .three-evenings-section {
-    padding: 28px 14px 32px;
+    padding: 28px 12px 34px;
   }
 
-  .event-card {
-    padding: 8px 10px;
-    margin-bottom: 8px;
-    gap: 10px;
-    border-radius: 11px;
+  .evenings-hanging-ornaments {
+    height: 95px;
+    padding: 0 2px;
   }
 
-  .event-card .medallion {
+  .evenings-hanging-left,
+  .evenings-hanging-right {
     width: 44px;
-    height: 44px;
   }
 
-  .event-card .event-name {
-    font-size: 0.95rem;
+  .evenings-header {
+    margin-bottom: 18px;
+    padding: 0 32px;
   }
 
-  .event-card .event-detail {
-    font-size: 0.65rem;
-    margin-top: 2px;
+  .evenings-title {
+    font-size: 1.68rem;
+    font-weight: 600;
   }
 
-  .event-card .event-venue {
-    font-size: 0.6rem;
+  .evenings-divider {
+    width: 140px;
+    margin-top: 5px;
   }
 
+  .evenings-timeline {
+    gap: 22px;
+    padding: 4px 0;
+  }
+
+  .three-evenings-section .timeline-row {
+    grid-template-columns: 1fr 48px 1fr;
+    column-gap: 10px;
+  }
+
+  .timeline-medallion-img {
+    width: 48px;
+    height: 48px;
+  }
+
+  .timeline-time {
+    font-size: 1.45rem;
+  }
+
+  .timeline-date {
+    font-size: 0.52rem;
+    letter-spacing: 0.12em;
+    margin-top: 3px;
+  }
+
+  .timeline-event-name {
+    font-size: 1.05rem;
+  }
+
+  .timeline-venue {
+    font-size: 0.58rem;
+    line-height: 1.32;
+    margin-top: 3px;
+  }
+
+  /* Venue section in mockup shell */
   .venue-section {
-    padding: 28px 14px 32px;
+    padding: 26px 12px 30px;
   }
 
-  .venue-section .arch-frame {
-    max-width: 190px;
-    margin: 0 auto 16px;
+  .venue-section .section-title {
+    font-size: 1.68rem;
+  }
+
+  .venue-section .divider {
+    width: 110px;
+    margin-bottom: 12px;
   }
 
   .venue-tabs {
-    max-width: 240px;
-    margin-bottom: 14px;
-    border-radius: 6px;
+    gap: 5px;
+    margin-bottom: 12px;
   }
 
-  .venue-tab {
-    font-size: 0.65rem;
-    padding: 6px 3px;
+  .venue-tab-pill {
+    padding: 4px 10px;
+    font-size: 0.5rem;
+    letter-spacing: 0.1em;
   }
 
-  .venue-detail {
-    max-width: 250px;
+  .arch-frame-container {
+    max-width: 255px;
   }
 
-  .venue-detail .venue-name {
-    font-size: 1rem;
-    margin-bottom: 3px;
+  .arch-inner-content {
+    top: 55%;
+    width: 68%;
   }
 
-  .venue-detail .venue-time {
-    font-size: 0.68rem;
-    margin-bottom: 6px;
+  .venue-event-time {
+    font-size: 0.46rem;
+    letter-spacing: 0.12em;
+    margin-bottom: 4px;
   }
 
-  .venue-detail .venue-addr {
-    font-size: 0.7rem;
-    line-height: 1.45;
+  .venue-event-name {
+    font-size: 1.05rem;
+    margin-bottom: 4px;
   }
 
-  .map-link {
-    padding: 5px 14px;
-    font-size: 0.65rem;
-    margin-top: 10px;
+  .venue-event-addr {
+    font-size: 0.56rem;
+    line-height: 1.35;
+    margin-bottom: 10px;
+  }
+
+  .venue-map-btn {
+    padding: 4px 12px;
+    font-size: 0.46rem;
+    letter-spacing: 0.1em;
+  }
+
+  .map-pin-icon {
+    width: 10px;
+    height: 10px;
   }
 
   .gallery-section {
-    padding: 28px 0 32px;
+    padding: 26px 0 30px;
   }
 
-  .gallery-carousel {
-    padding: 0 16px;
-    gap: 8px;
+  .gallery-slideshow {
+    max-width: 250px;
+    border-radius: 8px;
   }
 
-  .gallery-item {
-    width: 180px;
-    height: 245px;
-    border-radius: 10px;
+  .gallery-slide {
+    height: 310px;
   }
 
   .signoff-section {
@@ -675,7 +742,7 @@ body {
 
 .hero-name {
   font-family: var(--font-display);
-  font-weight: 400;
+  font-weight: 600;
   font-size: clamp(3.2rem, 14vw, 4.4rem);
   line-height: 1.1;
   color: #FFF8F0;
@@ -782,7 +849,7 @@ body {
   font-family: var(--font-display);
   font-style: italic;
   font-size: clamp(2.35rem, 9.8vw, 2.9rem);
-  font-weight: 400;
+  font-weight: 600;
   color: var(--parchment);
   line-height: 1.25;
   margin-bottom: 6px;
@@ -791,9 +858,11 @@ body {
 }
 
 .dear-family-section .divider {
-  width: 100px;
-  margin: 10px auto 24px;
-  opacity: 0.6;
+  width: clamp(160px, 48vw, 205px);
+  max-width: 205px;
+  margin: 7px auto 24px;
+  display: block;
+  opacity: 0.9;
 }
 
 .dear-family-section .body-text {
@@ -822,10 +891,11 @@ body {
   width: 100%;
   line-height: 0;
   display: block;
-  margin-top: -2px;
-  margin-bottom: -2px;
+  margin-top: -3px;
+  margin-bottom: -3px;
   z-index: 2;
   pointer-events: none;
+  background: transparent;
 }
 
 .torn-divider-wrapper svg {
@@ -848,30 +918,104 @@ body {
   font-family: var(--font-display);
   font-style: italic;
   font-size: clamp(2.35rem, 9.8vw, 2.9rem);
-  font-weight: 400;
+  font-weight: 600;
   color: #5A331E;
   line-height: 1.2;
   margin-bottom: 6px;
 }
 
 .save-date-section .divider {
-  width: 130px;
-  margin: 6px auto 22px;
+  width: clamp(160px, 48vw, 205px);
+  max-width: 205px;
+  margin: 7px auto 22px;
   display: block;
-  opacity: 0.85;
+  opacity: 0.9;
 }
 
-/* Calendar Card */
+/* Calendar Scratch Wrapper */
+.calendar-scratch-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 280px;
+  margin: 0 auto;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 10px 28px rgba(107, 64, 38, 0.08), 0 2px 6px rgba(107, 64, 38, 0.04);
+}
+
+/* Calendar Card (Underneath Foil) */
 .calendar-card {
   background: #F7EFE1;
   border: 1px solid rgba(184, 146, 90, 0.3);
   border-radius: 14px;
-  box-shadow: 0 10px 28px rgba(107, 64, 38, 0.08), 0 2px 6px rgba(107, 64, 38, 0.04);
   padding: 22px 20px 16px;
   width: 100%;
-  max-width: 280px;
-  margin: 0 auto;
   box-sizing: border-box;
+}
+
+/* Canvas Metallic Foil Overlay */
+.scratch-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 14px;
+  z-index: 5;
+  touch-action: none;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: opacity 0.45s ease-out, transform 0.45s ease-out, filter 0.45s ease-out;
+}
+
+.scratch-canvas:active {
+  cursor: grabbing;
+}
+
+.scratch-canvas.revealed {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(1.04);
+  filter: blur(4px);
+}
+
+.calendar-card.just-revealed {
+  animation: cardRevealPop 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes cardRevealPop {
+  0% {
+    transform: scale(0.97);
+    box-shadow: 0 0 0 rgba(228, 206, 158, 0);
+  }
+  50% {
+    transform: scale(1.015);
+    box-shadow: 0 0 24px rgba(228, 206, 158, 0.4);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(228, 206, 158, 0);
+  }
+}
+
+/* Progress indicator pill */
+.scratch-progress-pill {
+  position: absolute;
+  bottom: 8px;
+  right: 10px;
+  background: rgba(43, 25, 14, 0.78);
+  color: #FFFDF9;
+  font-family: var(--font-manrope);
+  font-size: 0.54rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(228, 206, 158, 0.4);
+  backdrop-filter: blur(4px);
+  pointer-events: none;
+  z-index: 6;
 }
 
 .calendar-header {
@@ -1045,215 +1189,354 @@ body {
 }
 
 
-/* ---- Section: Three Evenings ---- */
+/* ---- Section: Three Evenings (Authentic Vertical Timeline) ---- */
 .three-evenings-section {
   position: relative;
   width: 100%;
   background: var(--band-deep);
-  padding: 48px 20px 56px;
-  text-align: center;
-}
-
-.three-evenings-section .section-title {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: clamp(2.35rem, 9.8vw, 2.9rem);
-  font-weight: 400;
-  color: var(--parchment);
-  line-height: 1.25;
-  margin-bottom: 6px;
-}
-
-.three-evenings-section .divider {
-  width: 90px;
-  margin: 8px auto 28px;
-  opacity: 0.5;
-}
-
-/* Event cards */
-.event-card {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(228, 206, 158, 0.15);
-  border-radius: 14px;
-  padding: 14px 16px;
-  margin-bottom: 12px;
-  text-align: left;
-  transition: background 0.2s ease;
-}
-
-.event-card:last-child {
-  margin-bottom: 0;
-}
-
-.event-card .medallion {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid rgba(228, 206, 158, 0.3);
-  flex-shrink: 0;
-}
-
-.event-card .event-info {
-  flex: 1;
-  min-width: 0;
-}
-
-.event-card .event-name {
-  font-family: var(--font-display);
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: var(--parchment);
-  line-height: 1.2;
-}
-
-.event-card .event-detail {
-  font-family: var(--font-body);
-  font-size: 0.72rem;
-  font-weight: 300;
-  color: var(--gold-light);
-  opacity: 0.75;
-  line-height: 1.4;
-  margin-top: 3px;
-}
-
-.event-card .event-venue {
-  font-family: var(--font-body);
-  font-size: 0.66rem;
-  font-weight: 300;
-  color: var(--parchment);
-  opacity: 0.5;
-  line-height: 1.35;
-  margin-top: 2px;
-}
-
-
-/* ---- Section: Venue (Arch) ---- */
-.venue-section {
-  position: relative;
-  width: 100%;
-  background: var(--parchment);
-  padding: 48px 24px 56px;
+  padding: 42px 16px 52px;
   text-align: center;
   overflow: hidden;
 }
 
-.venue-section .arch-frame {
-  position: relative;
-  width: 100%;
-  max-width: 320px;
-  margin: 0 auto 24px;
+/* Hanging Ornamental Lanterns */
+.evenings-hanging-ornaments {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 4px;
+  pointer-events: none;
+  z-index: 1;
 }
 
-.venue-section .arch-frame img {
-  width: 100%;
+.evenings-hanging-left,
+.evenings-hanging-right {
+  width: 56px;
+  height: auto;
+  opacity: 0.92;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.45));
+}
+
+.evenings-hanging-right {
+  transform: scaleX(-1);
+}
+
+/* Header */
+.evenings-header {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 24px;
+  padding: 0 40px;
+}
+
+.evenings-title {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(2.2rem, 8.2vw, 2.75rem);
+  font-weight: 600;
+  color: #FFFDF9;
+  line-height: 1.15;
+  letter-spacing: 0.02em;
+  margin: 0 auto;
+}
+
+.evenings-divider {
+  width: clamp(160px, 48vw, 205px);
+  margin: 7px auto 0;
   display: block;
+  opacity: 0.9;
+}
+
+/* Timeline Container */
+.evenings-timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 34px;
+  padding: 6px 0;
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+/* Continuous vertical golden connecting line */
+.timeline-spine {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 10px;
+  bottom: 12px;
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    rgba(184, 146, 90, 0.2) 0%,
+    rgba(184, 146, 90, 0.6) 8%,
+    rgba(184, 146, 90, 0.6) 92%,
+    rgba(184, 146, 90, 0.2) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Timeline Row */
+.timeline-row {
+  display: grid;
+  grid-template-columns: 1fr 64px 1fr;
+  align-items: center;
+  column-gap: 14px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Left Column: Time & Date */
+.timeline-col-time {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.timeline-time {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.85rem, 6.8vw, 2.25rem);
+  font-weight: 500;
+  color: #FFFDF9;
+  line-height: 1;
+}
+
+.timeline-date {
+  font-family: var(--font-manrope);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #D4AF7A;
+  margin-top: 5px;
+  line-height: 1.2;
+}
+
+/* Center Column: Medallion */
+.timeline-col-medallion {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.timeline-medallion-img {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  position: relative;
+  z-index: 2;
+  background: var(--band-deep);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+  border: 1.5px solid rgba(228, 206, 158, 0.4);
+  display: block;
+  transition: transform 0.25s ease;
+}
+
+.timeline-row:hover .timeline-medallion-img {
+  transform: scale(1.05);
+}
+
+/* Right Column: Event Details */
+.timeline-col-details {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.timeline-event-name {
+  font-family: var(--font-display);
+  font-size: clamp(1.22rem, 4.5vw, 1.48rem);
+  font-weight: 600;
+  color: #FFFDF9;
+  line-height: 1.15;
+  margin: 0;
+  white-space: pre-line;
+}
+
+.timeline-venue {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 300;
+  color: #DFC7AF;
+  line-height: 1.35;
+  margin: 4px 0 0 0;
+  white-space: pre-line;
+  opacity: 0.9;
+}
+
+
+/* ---- Section: Venue (Where to come with Arch Frame) ---- */
+.venue-section {
+  position: relative;
+  width: 100%;
+  background: var(--parchment);
+  padding: 40px 16px 46px;
+  text-align: center;
+  overflow: hidden;
 }
 
 .venue-section .section-title {
   font-family: var(--font-display);
   font-style: italic;
-  font-size: clamp(2.35rem, 9.8vw, 2.9rem);
-  font-weight: 500;
-  color: var(--band-deep);
-  line-height: 1.25;
+  font-size: clamp(2.3rem, 8.5vw, 2.85rem);
+  font-weight: 600;
+  color: #4A2E1B;
+  line-height: 1.2;
   margin-bottom: 6px;
 }
 
 .venue-section .divider {
-  width: 90px;
-  margin: 8px auto 20px;
-  opacity: 0.5;
+  width: clamp(160px, 48vw, 205px);
+  max-width: 205px;
+  margin: 7px auto 16px;
+  display: block;
+  opacity: 0.9;
 }
 
-/* Venue tabs */
+/* Venue Switcher Tabs: Separate Pill Buttons */
 .venue-tabs {
   display: flex;
   justify-content: center;
-  gap: 0;
-  margin-bottom: 20px;
-  border: 1px solid rgba(87, 51, 32, 0.2);
-  border-radius: 8px;
-  overflow: hidden;
-  max-width: 280px;
-  margin-left: auto;
-  margin-right: auto;
+  align-items: center;
+  gap: 8px;
+  margin: 0 auto 20px;
+  flex-wrap: wrap;
 }
 
-.venue-tab {
-  flex: 1;
-  padding: 8px 4px;
-  font-family: var(--font-body);
-  font-size: 0.72rem;
-  font-weight: 400;
-  letter-spacing: 0.05em;
-  color: var(--ink-soft);
-  background: transparent;
-  border: none;
+.venue-tab-pill {
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(140, 98, 57, 0.35);
+  background: rgba(255, 255, 255, 0.45);
+  font-family: var(--font-manrope);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #5A331E;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.22s ease;
+  backdrop-filter: blur(4px);
 }
 
-.venue-tab.active {
-  background: var(--band-deep);
-  color: var(--parchment);
-  font-weight: 500;
+.venue-tab-pill:hover {
+  background: rgba(255, 255, 255, 0.75);
+  border-color: rgba(140, 98, 57, 0.6);
 }
 
-.venue-detail {
-  max-width: 280px;
+.venue-tab-pill.active {
+  background: #4E2A15;
+  color: #FFFDF9;
+  border-color: #4E2A15;
+  box-shadow: 0 4px 12px rgba(78, 42, 21, 0.25);
+}
+
+/* Arch Frame Container */
+.arch-frame-container {
+  position: relative;
+  width: 100%;
+  max-width: 330px;
   margin: 0 auto;
 }
 
-.venue-detail .venue-name {
-  font-family: var(--font-display);
-  font-size: 1.15rem;
-  font-weight: 500;
-  color: var(--band-deep);
-  margin-bottom: 4px;
+.arch-bg-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 8px 24px rgba(107, 64, 38, 0.1));
 }
 
-.venue-detail .venue-time {
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  font-weight: 300;
-  color: var(--ink-soft);
-  margin-bottom: 10px;
-}
-
-.venue-detail .venue-addr {
-  font-family: var(--font-body);
-  font-size: 0.78rem;
-  font-weight: 300;
-  color: var(--ink);
-  line-height: 1.5;
-  white-space: pre-line;
-}
-
-.venue-detail .map-link {
-  display: inline-flex;
+/* Venue Content Centered INSIDE the Arch Window Opening */
+.arch-inner-content {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 66%;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 5px;
-  margin-top: 14px;
-  padding: 8px 18px;
-  border-radius: 999px;
-  border: 1px solid rgba(87, 51, 32, 0.25);
-  background: transparent;
+  text-align: center;
+  z-index: 2;
+  pointer-events: auto;
+}
+
+.venue-event-time {
+  font-family: var(--font-manrope);
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #8C6239;
+  margin-bottom: 6px;
+  line-height: 1.2;
+}
+
+.venue-event-name {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 4.2vw, 1.45rem);
+  font-weight: 500;
+  color: #2E1B10;
+  line-height: 1.18;
+  margin-bottom: 8px;
+}
+
+.venue-event-addr {
   font-family: var(--font-body);
   font-size: 0.72rem;
   font-weight: 400;
-  letter-spacing: 0.04em;
-  color: var(--band-deep);
-  text-decoration: none;
-  transition: all 0.2s ease;
+  color: #5C4537;
+  line-height: 1.45;
+  white-space: pre-line;
+  margin-bottom: 14px;
 }
 
-.map-link:hover {
-  background: var(--band-deep);
-  color: var(--parchment);
+/* OPEN IN MAPS Button */
+.venue-map-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 6px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(140, 98, 57, 0.4);
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(4px);
+  font-family: var(--font-manrope);
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #5A331E;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(107, 64, 38, 0.05);
+}
+
+.venue-map-btn:hover {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(140, 98, 57, 0.7);
+  box-shadow: 0 4px 12px rgba(107, 64, 38, 0.12);
+  transform: translateY(-1px);
+}
+
+.map-pin-icon {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  stroke: #5A331E;
 }
 
 .map-link svg {
@@ -1276,7 +1559,7 @@ body {
   font-family: var(--font-display);
   font-style: italic;
   font-size: clamp(2.35rem, 9.8vw, 2.9rem);
-  font-weight: 400;
+  font-weight: 600;
   color: var(--parchment);
   line-height: 1.25;
   margin-bottom: 6px;
@@ -1284,62 +1567,92 @@ body {
 }
 
 .gallery-section .divider {
-  width: 90px;
-  margin: 8px auto 24px;
-  opacity: 0.5;
+  width: clamp(160px, 48vw, 205px);
+  max-width: 205px;
+  margin: 7px auto 22px;
+  display: block;
+  opacity: 0.9;
 }
 
-.gallery-carousel {
-  display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  gap: 12px;
-  padding: 0 28px;
-  scrollbar-width: none;
-}
-
-.gallery-carousel::-webkit-scrollbar {
-  display: none;
-}
-
-.gallery-carousel .gallery-item {
-  flex: 0 0 80%;
-  scroll-snap-align: center;
-  border-radius: 12px;
+/* Single-image slideshow container matching niru.pk */
+.gallery-slideshow {
+  touch-action: pan-y;
+  cursor: grab;
+  position: relative;
   overflow: hidden;
-  aspect-ratio: 3 / 4;
+  border-radius: 8px;
+  max-width: 340px;
+  width: calc(100% - 48px);
+  margin: 0 auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  user-select: none;
+  -webkit-user-select: none;
 }
 
-.gallery-carousel .gallery-item img {
+.gallery-slideshow:active {
+  cursor: grabbing;
+}
+
+.gallery-slideshow:focus-visible {
+  outline: 2px solid var(--gold-light);
+  outline-offset: 3px;
+}
+
+.gallery-track {
+  display: flex;
+  width: 100%;
+  transition: transform 0.55s cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: transform;
+}
+
+.gallery-track.dragging {
+  transition: none;
+}
+
+.gallery-slide {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 360px;
+  overflow: hidden;
+  position: relative;
+}
+
+.gallery-slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
 }
 
-/* Gallery dots */
+/* Gallery pagination dots matching niru.pk */
 .gallery-dots {
   display: flex;
   justify-content: center;
-  gap: 6px;
-  margin-top: 16px;
+  align-items: center;
+  gap: 7px;
+  margin-top: 14px;
 }
 
 .gallery-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--gold-light);
-  opacity: 0.25;
-  border: none;
-  cursor: pointer;
+  width: 7px;
+  height: 7px;
   padding: 0;
-  transition: opacity 0.2s ease;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  background: var(--gold-light);
+  opacity: 0.3;
+  transition: all 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
-.gallery-dot.active {
-  opacity: 0.8;
+.gallery-dot.active,
+.gallery-dot[aria-selected="true"] {
+  opacity: 0.95;
+  background: var(--gold-light);
+  transform: scale(1.35);
 }
 
 
@@ -1665,42 +1978,97 @@ body {
   letter-spacing: 0;
 }
 
-.card.lang-ur .event-name {
+.card.lang-ur .evenings-title {
   font-family: var(--font-urdu);
-  font-size: 1.22rem;
+  font-size: 1.75rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.card.lang-ur .timeline-row {
+  direction: rtl;
+}
+
+.card.lang-ur .timeline-col-time {
+  text-align: left;
+  align-items: flex-start;
+}
+
+.card.lang-ur .timeline-time {
+  font-family: var(--font-urdu), var(--font-display), serif;
+  font-style: normal;
+  font-size: 1.55rem;
+  font-weight: 700;
+}
+
+.card.lang-ur .timeline-date {
+  font-family: var(--font-urdu);
+  font-size: 0.65rem;
+  letter-spacing: 0;
+  text-transform: none;
   font-weight: 600;
 }
 
-.card.lang-ur .event-detail,
-.card.lang-ur .event-venue {
-  font-family: var(--font-urdu);
-  font-size: 0.84rem;
-  line-height: 1.8;
+.card.lang-ur .timeline-col-details {
+  text-align: right;
+  align-items: flex-end;
 }
 
-.card.lang-ur .venue-tab {
-  font-family: var(--font-urdu);
-  font-size: 0.85rem;
-  font-weight: 600;
-  padding-top: 5px;
-}
-
-.card.lang-ur .venue-name {
+.card.lang-ur .timeline-event-name {
   font-family: var(--font-urdu);
   font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.card.lang-ur .timeline-venue {
+  font-family: var(--font-urdu);
+  font-size: 0.74rem;
+  line-height: 1.6;
+}
+
+.card.lang-ur .venue-section .section-title {
+  font-family: var(--font-urdu);
+  font-size: 1.65rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.card.lang-ur .venue-tab-pill {
+  font-family: var(--font-urdu);
+  font-size: 0.72rem;
   font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+  padding: 4px 12px;
 }
 
-.card.lang-ur .venue-time,
-.card.lang-ur .venue-addr {
+.card.lang-ur .venue-event-time {
   font-family: var(--font-urdu);
-  font-size: 0.85rem;
-  line-height: 1.8;
+  font-size: 0.65rem;
+  letter-spacing: 0;
+  text-transform: none;
 }
 
-.card.lang-ur .map-link {
+.card.lang-ur .venue-event-name {
   font-family: var(--font-urdu);
-  font-size: 0.78rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.card.lang-ur .venue-event-addr {
+  font-family: var(--font-urdu);
+  font-size: 0.74rem;
+  line-height: 1.6;
+}
+
+.card.lang-ur .venue-map-btn {
+  font-family: var(--font-urdu);
+  font-size: 0.68rem;
+  letter-spacing: 0;
+  text-transform: none;
 }
 
 .card.lang-ur .closing-text {
