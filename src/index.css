@@ -142,8 +142,6 @@ body {
     height: min(84vh, 730px);
     aspect-ratio: 612 / 1258;
     filter: drop-shadow(0 40px 75px rgba(0, 0, 0, .58));
-    border-radius: 54px;
-    background: #000;
   }
 
   /* The iPhone mockup image sits over the screen */
@@ -161,11 +159,11 @@ body {
   /* Sized and rounded to align seamlessly inside the iPhone bezel */
   .demo-screen {
     position: absolute;
-    left: 6.8%;
-    top: 2.5%;
-    width: 86.4%;
-    height: 95%;
-    border-radius: 42px;
+    left: 7.03%;
+    top: 2.70%;
+    width: 86.11%;
+    height: 94.59%;
+    border-radius: 40px;
     overflow: hidden;
     background: var(--dark);
     z-index: 1;
