@@ -13,6 +13,9 @@ export const TRANSLATIONS = {
       date: '19 · 12 · 2026',
       city: 'Lahore',
       scroll: 'Scroll',
+      entranceLine: 'A house waits for you,\nlamp by lamp',
+      entranceInstr: 'Swing the lantern',
+      entranceBrand: 'MAIDA & USMAN',
     },
     dearFamily: {
       title: 'Dear family and\nfriends',
@@ -96,6 +99,9 @@ export const TRANSLATIONS = {
       date: '۱۹ · ۱۲ · ۲۰۲۶',
       city: 'لاہور',
       scroll: 'نیچے دیکھیں',
+      entranceLine: 'ایک گھر آپ کا منتظر ہے،\nچراغ بہ چراغ',
+      entranceInstr: 'لالٹین کو جھلائیں',
+      entranceBrand: 'مائدہ اور عثمان',
     },
     dearFamily: {
       title: 'معزز فیملی اور\nدوست احباب',

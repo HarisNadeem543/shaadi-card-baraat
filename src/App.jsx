@@ -14,6 +14,7 @@ import { TRANSLATIONS } from './data/translations';
 export default function App() {
   const [lang, setLang] = useState('en');
   const [isPlaying, setIsPlaying] = useState(true);
+  const [isRevealed, setIsRevealed] = useState(false);
   const audioRef = useRef(null);
   const viewportRef = useRef(null);
   const fadeFrameRef = useRef(null);
@@ -73,79 +74,63 @@ export default function App() {
         audio.pause();
       });
     } else {
-      // Start from 0, play and smoothly swell to 100%
+      // Start from 0, play and smoothly swell to 80%
       setIsPlaying(true);
       if (audio.paused) {
         audio.volume = 0;
         audio
           .play()
           .then(() => {
-            fadeAudio(1, 1200);
+            fadeAudio(0.8, 1200);
           })
           .catch((err) => {
             console.warn('Audio play prevented:', err);
           });
       } else {
-        fadeAudio(1, 1000);
+        fadeAudio(0.8, 1000);
       }
     }
   };
 
   /**
-   * Default Audio ON: Auto-starts on mount with smooth fade-in.
-   * If browser autoplay policy blocks unmuted audio before user gesture,
-   * seamlessly starts on the first interaction (tap, click, scroll).
+   * Master ignition trigger: When guest swings/taps the lantern,
+   * starts wedding instrumental track with authentic 2.4s volume swell.
    */
-  useEffect(() => {
+  const handleIgnite = () => {
     const audio = audioRef.current;
     if (!audio) return;
 
-    audio.volume = 0;
-
-    let hasStarted = false;
-
-    const startAndFade = () => {
-      if (hasStarted) return;
+    if (audio.paused) {
+      audio.volume = 0;
       audio
         .play()
         .then(() => {
-          hasStarted = true;
           setIsPlaying(true);
-          fadeAudio(1, 1800);
-          cleanupGestureListeners();
+          fadeAudio(0.8, 2400);
         })
-        .catch(() => {
-          // Waiting for first user gesture
+        .catch((err) => {
+          console.warn('Audio play prevented on ignite:', err);
         });
-    };
-
-    const cleanupGestureListeners = () => {
-      window.removeEventListener('click', startAndFade);
-      window.removeEventListener('touchstart', startAndFade);
-      window.removeEventListener('keydown', startAndFade);
-      if (viewportRef.current) {
-        viewportRef.current.removeEventListener('scroll', startAndFade);
-      }
-    };
-
-    // Attempt direct autoplay
-    startAndFade();
-
-    // Attach listeners in case browser requires a gesture
-    window.addEventListener('click', startAndFade, { passive: true });
-    window.addEventListener('touchstart', startAndFade, { passive: true });
-    window.addEventListener('keydown', startAndFade, { passive: true });
-    if (viewportRef.current) {
-      viewportRef.current.addEventListener('scroll', startAndFade, { passive: true });
+    } else {
+      fadeAudio(0.8, 1800);
     }
+  };
 
-    return () => {
-      cleanupGestureListeners();
-      if (fadeFrameRef.current) {
-        cancelAnimationFrame(fadeFrameRef.current);
-      }
-    };
-  }, []);
+  const handleRevealed = () => {
+    setIsRevealed(true);
+  };
+
+  // Lock scrolling within viewport until lantern is ignited and revealed
+  useEffect(() => {
+    const vp = viewportRef.current;
+    if (!vp) return;
+    if (!isRevealed) {
+      vp.style.overflowY = 'hidden';
+      vp.scrollTop = 0;
+    } else {
+      vp.style.overflowY = 'auto';
+    }
+  }, [isRevealed]);
 
   // Language switcher handler
   const toggleLang = () => {
@@ -187,12 +172,13 @@ export default function App() {
       lang={lang}
       viewportRef={viewportRef}
       controls={
-        /* Fixed Floating Controls pinned atop the screen */
+        /* Fixed Floating Controls pinned atop the screen (slides down on reveal) */
         <FloatingControls
           isPlaying={isPlaying}
           onToggleAudio={toggleAudio}
           lang={lang}
           onLangToggle={toggleLang}
+          isRevealed={isRevealed}
         />
       }
     >
@@ -208,7 +194,12 @@ export default function App() {
       {/* The Haveli Invitation Card (scrolls inside the device) */}
       <div className={`card ${lang === 'ur' ? 'lang-ur' : ''}`}>
         {/* 1. Hero / Courtyard */}
-        <HeroSection t={t.hero} lang={lang} />
+        <HeroSection
+          t={t.hero}
+          lang={lang}
+          onIgnite={handleIgnite}
+          onRevealed={handleRevealed}
+        />
 
         {/* 2. Dear Family (brown band) */}
         <DearFamilySection t={t.dearFamily} lang={lang} />

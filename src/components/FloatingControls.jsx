@@ -10,9 +10,10 @@ export default function FloatingControls({
   onToggleAudio,
   lang,
   onLangToggle,
+  isRevealed = false,
 }) {
   return (
-    <div className="floating-controls">
+    <div className={`floating-controls ${isRevealed ? 'revealed-active' : ''}`}>
       {/* Audio Play/Pause Button */}
       <button
         onClick={onToggleAudio}
