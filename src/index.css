@@ -42,11 +42,36 @@
   --ease-spring: cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-/* ---- Reset ---- */
-* {
+/* ---- Reset & Click/Tap Highlight Removal ---- */
+*, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+button,
+a,
+[role="button"],
+input,
+select,
+textarea {
+  -webkit-tap-highlight-color: transparent !important;
+  -webkit-touch-callout: none !important;
+  outline: none;
+}
+
+button:focus,
+button:focus-visible,
+button:active,
+a:focus,
+a:focus-visible,
+a:active,
+[role="button"]:focus,
+[role="button"]:focus-visible,
+[role="button"]:active {
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent !important;
 }
 
 html, body {
@@ -227,6 +252,17 @@ body {
     height: 19px;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
     border: 1px solid rgba(184, 146, 90, 0.45);
+    outline: none !important;
+    -webkit-tap-highlight-color: transparent !important;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+  }
+
+  .floating-controls button:focus,
+  .floating-controls button:focus-visible,
+  .floating-controls button:active {
+    outline: none !important;
+    -webkit-tap-highlight-color: transparent !important;
   }
 
   .floating-controls .audio-btn {
@@ -1747,11 +1783,22 @@ body {
   margin: 0 auto;
   box-sizing: border-box;
   transition: all 0.2s ease;
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
 }
 
 .cal-day.day-wedding:hover {
   background: rgba(169, 81, 37, 0.1);
   transform: scale(1.08);
+}
+
+.cal-day.day-wedding:focus,
+.cal-day.day-wedding:focus-visible,
+.cal-day.day-wedding:active {
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent !important;
 }
 
 .calendar-footer {
@@ -2530,6 +2577,11 @@ body {
   cursor: pointer;
   transition: all 0.25s ease;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+  -webkit-tap-highlight-color: transparent !important;
+  -webkit-touch-callout: none !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  outline: none !important;
 }
 
 .floating-controls button:hover {
@@ -2540,14 +2592,32 @@ body {
 
 .floating-controls button:active {
   transform: translateY(1px);
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+.floating-controls button:focus,
+.floating-controls button:focus-visible {
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent !important;
 }
 
 .floating-controls .audio-btn {
   width: 38px;
+  -webkit-tap-highlight-color: transparent !important;
+  outline: none !important;
 }
 
 .floating-controls .audio-btn.playing {
   border-color: rgba(228, 206, 158, 0.85);
+  box-shadow: 0 0 16px rgba(184, 146, 90, 0.45);
+}
+
+.floating-controls .audio-btn.playing:focus,
+.floating-controls .audio-btn.playing:focus-visible,
+.floating-controls .audio-btn.playing:active {
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent !important;
   box-shadow: 0 0 16px rgba(184, 146, 90, 0.45);
 }
 
@@ -2607,12 +2677,32 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+}
+
+.floating-controls .lang-btn:focus,
+.floating-controls .lang-btn:focus-visible,
+.floating-controls .lang-btn:active {
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent !important;
 }
 
 .floating-controls .lang-btn.lang-ur {
   min-width: 72px;
   padding: 0 22px;
   letter-spacing: 0;
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+.floating-controls .lang-btn.lang-ur:focus,
+.floating-controls .lang-btn.lang-ur:focus-visible,
+.floating-controls .lang-btn.lang-ur:active {
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent !important;
 }
 
 .floating-controls .lang-text {
