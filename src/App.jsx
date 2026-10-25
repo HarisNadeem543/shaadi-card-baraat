@@ -9,12 +9,14 @@ import VenueSection from './components/sections/VenueSection';
 import GallerySection from './components/sections/GallerySection';
 import SignoffSection from './components/sections/SignoffSection';
 import TornEdgeDivider from './components/TornEdgeDivider';
+import LoadingScreen from './components/LoadingScreen';
 import { TRANSLATIONS } from './data/translations';
 
 export default function App() {
   const [lang, setLang] = useState('en');
   const [isPlaying, setIsPlaying] = useState(true);
   const [isRevealed, setIsRevealed] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
   const audioRef = useRef(null);
   const viewportRef = useRef(null);
   const fadeFrameRef = useRef(null);
@@ -168,87 +170,95 @@ export default function App() {
   }, [lang]);
 
   return (
-    <DemoDevice
-      lang={lang}
-      viewportRef={viewportRef}
-      controls={
-        /* Fixed Floating Controls pinned atop the screen (slides down on reveal) */
-        <FloatingControls
-          isPlaying={isPlaying}
-          onToggleAudio={toggleAudio}
-          lang={lang}
-          onLangToggle={toggleLang}
-          isRevealed={isRevealed}
-        />
-      }
-    >
-      {/* Background Wedding Audio (track.mp3) */}
-      <audio
-        ref={audioRef}
-        src="/assets/track.mp3"
-        loop
-        preload="auto"
-        onEnded={() => setIsPlaying(false)}
+    <>
+      {/* 0. Royal Haveli Preloader Screen */}
+      <LoadingScreen
+        lang={lang}
+        onReady={() => setIsLoaded(true)}
       />
 
-      {/* The Haveli Invitation Card (scrolls inside the device) */}
-      <div className={`card ${lang === 'ur' ? 'lang-ur' : ''}`}>
-        {/* 1. Hero / Courtyard */}
-        <HeroSection
-          t={t.hero}
-          lang={lang}
-          onIgnite={handleIgnite}
-          onRevealed={handleRevealed}
+      <DemoDevice
+        lang={lang}
+        viewportRef={viewportRef}
+        controls={
+          /* Fixed Floating Controls pinned atop the screen (slides down on reveal) */
+          <FloatingControls
+            isPlaying={isPlaying}
+            onToggleAudio={toggleAudio}
+            lang={lang}
+            onLangToggle={toggleLang}
+            isRevealed={isRevealed}
+          />
+        }
+      >
+        {/* Background Wedding Audio (track.mp3) */}
+        <audio
+          ref={audioRef}
+          src="/assets/track.mp3"
+          loop
+          preload="auto"
+          onEnded={() => setIsPlaying(false)}
         />
 
-        {/* 2. Dear Family (brown band) */}
-        <DearFamilySection t={t.dearFamily} lang={lang} />
+        {/* The Haveli Invitation Card (scrolls inside the device) */}
+        <div className={`card ${lang === 'ur' ? 'lang-ur' : ''}`}>
+          {/* 1. Hero / Courtyard */}
+          <HeroSection
+            t={t.hero}
+            lang={lang}
+            onIgnite={handleIgnite}
+            onRevealed={handleRevealed}
+          />
 
-        {/* Torn paper transition: brown → parchment */}
-        <TornEdgeDivider
-          topColor="var(--band-deep)"
-          bottomColor="var(--parchment-2)"
-          variant="A"
-          height={22}
-        />
+          {/* 2. Dear Family (brown band) */}
+          <DearFamilySection t={t.dearFamily} lang={lang} />
 
-        {/* 3. Save the Date (parchment) */}
-        <SaveTheDateSection t={t.saveDate} lang={lang} />
+          {/* Torn paper transition: brown → parchment */}
+          <TornEdgeDivider
+            topColor="var(--band-deep)"
+            bottomColor="var(--parchment-2)"
+            variant="A"
+            height={22}
+          />
 
-        {/* Torn paper transition: parchment → brown */}
-        <TornEdgeDivider
-          topColor="var(--parchment-2)"
-          bottomColor="var(--band-deep)"
-          variant="B"
-          reverse={true}
-          height={22}
-        />
+          {/* 3. Save the Date (parchment) */}
+          <SaveTheDateSection t={t.saveDate} lang={lang} />
 
-        {/* 4. Three Evenings (brown band) */}
-        <ThreeEveningsSection t={t.threeEvenings} lang={lang} />
+          {/* Torn paper transition: parchment → brown */}
+          <TornEdgeDivider
+            topColor="var(--parchment-2)"
+            bottomColor="var(--band-deep)"
+            variant="B"
+            reverse={true}
+            height={22}
+          />
 
-        {/* 5. Venue (parchment) */}
-        <TornEdgeDivider
-          topColor="var(--band-deep)"
-          bottomColor="var(--parchment)"
-          variant="B"
-          height={22}
-        />
-        <VenueSection t={t.venue} lang={lang} />
+          {/* 4. Three Evenings (brown band) */}
+          <ThreeEveningsSection t={t.threeEvenings} lang={lang} />
 
-        {/* 6. Gallery (brown band) */}
-        <TornEdgeDivider
-          topColor="var(--parchment)"
-          bottomColor="var(--band-deep)"
-          variant="A"
-          reverse={true}
-          height={22}
-        />
-        <GallerySection t={t.gallery} lang={lang} />
+          {/* 5. Venue (parchment) */}
+          <TornEdgeDivider
+            topColor="var(--band-deep)"
+            bottomColor="var(--parchment)"
+            variant="B"
+            height={22}
+          />
+          <VenueSection t={t.venue} lang={lang} />
 
-        {/* 7. Sign-off (closing night) */}
-        <SignoffSection t={t.signoff} lang={lang} />
-      </div>
-    </DemoDevice>
+          {/* 6. Gallery (brown band) */}
+          <TornEdgeDivider
+            topColor="var(--parchment)"
+            bottomColor="var(--band-deep)"
+            variant="A"
+            reverse={true}
+            height={22}
+          />
+          <GallerySection t={t.gallery} lang={lang} />
+
+          {/* 7. Sign-off (closing night) */}
+          <SignoffSection t={t.signoff} lang={lang} />
+        </div>
+      </DemoDevice>
+    </>
   );
 }

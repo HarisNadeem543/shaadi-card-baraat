@@ -2942,4 +2942,111 @@ body {
   letter-spacing: 0;
 }
 
+/* ============================================================
+   LOADING SCREEN (Royal Haveli Boot Shield)
+   ============================================================ */
+.card-boot-shield {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 50% 45%, #FDF9F3 0%, #F4EDE3 65%, #E8DEC7 100%);
+  user-select: none;
+  -webkit-user-select: none;
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.65s cubic-bezier(0.22, 0.61, 0.36, 1), transform 0.65s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.card-boot-shield.fade-out {
+  opacity: 0;
+  transform: scale(1.02);
+  pointer-events: none;
+}
+
+.boot-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 24px;
+  width: 100%;
+  max-width: 360px;
+}
+
+.boot-bismillah {
+  font-family: var(--font-arabic);
+  font-size: 0.95rem;
+  color: var(--gold-deep);
+  opacity: 0.85;
+  letter-spacing: 0.04em;
+  margin-bottom: 12px;
+  direction: rtl;
+}
+
+.boot-title {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(2.2rem, 7.5vw, 3.4rem);
+  line-height: 1.15;
+  color: var(--maroon);
+  letter-spacing: 0.02em;
+  margin-bottom: 24px;
+}
+
+.card-boot-shield.lang-ur .boot-title {
+  font-family: var(--font-urdu);
+  font-style: normal;
+  font-weight: 700;
+  font-size: clamp(2rem, 7vw, 3rem);
+  line-height: 1.45;
+}
+
+.boot-progress-track {
+  width: min(220px, 56vw);
+  height: 2.5px;
+  background: rgba(103, 38, 49, 0.14);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 14px;
+  position: relative;
+}
+
+.boot-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #D9B876 0%, #B88A42 50%, #E4CE9E 100%);
+  border-radius: 999px;
+  transition: width 0.12s ease-out;
+  box-shadow: 0 0 8px rgba(184, 138, 66, 0.5);
+}
+
+.boot-status-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: min(220px, 56vw);
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: var(--maroon);
+  opacity: 0.8;
+}
+
+.card-boot-shield.lang-ur .boot-status-row {
+  font-family: var(--font-urdu);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+}
+
+.boot-percent {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  font-size: 0.70rem;
+  color: var(--gold-deep);
+}
+
 
