@@ -655,27 +655,49 @@ body {
   }
 
   .signoff-section {
-    padding: 34px 16px 24px;
-    min-height: 50vh;
+    padding: 30px 16px 24px;
+    min-height: 48vh;
   }
 
   .signoff-section .garland {
     max-width: 130px;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
 
-  .signoff-section .dua-text {
-    font-size: 0.82rem;
-    margin-bottom: 14px;
+  .signoff-section .signoff-verse-arabic {
+    font-size: 1.05rem !important;
+    margin-bottom: 3px;
+  }
+
+  .signoff-section .signoff-dua-arabic {
+    font-size: 0.86rem !important;
+    margin-bottom: 3px;
+    line-height: 1.6;
+  }
+
+  .signoff-section .signoff-trans {
+    font-size: 0.74rem !important;
+    max-width: 270px;
+    margin-bottom: 2px;
+  }
+
+  .signoff-section .signoff-ref {
+    font-size: 0.56rem !important;
+  }
+
+  .signoff-section .signoff-sep {
+    margin: 8px auto !important;
+    font-size: 0.48rem !important;
   }
 
   .signoff-section .closing-text {
-    font-size: 0.92rem;
+    font-size: 0.88rem;
+    margin-top: 14px;
   }
 
   .signoff-section .brand {
     font-size: 0.5rem;
-    margin-top: 20px;
+    margin-top: 16px;
   }
   /* Desktop Urdu adjustments */
 
@@ -2463,6 +2485,11 @@ body {
   position: relative;
   z-index: 2;
   width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .signoff-section .garland,
@@ -2481,14 +2508,85 @@ body {
   display: block;
 }
 
+.signoff-section .signoff-blessing-block {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .signoff-section .dua-text {
   font-family: var(--font-arabic);
-  font-size: 1rem;
   color: var(--gold-light);
-  opacity: 0.8;
-  line-height: 1.6;
-  margin-bottom: 20px;
+  opacity: 0.95;
   direction: rtl;
+  text-align: center;
+}
+
+.signoff-section .signoff-verse-arabic {
+  font-size: clamp(1.35rem, 4.5vw, 1.65rem);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.6;
+  margin-bottom: 6px;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.55);
+}
+
+.signoff-section .signoff-dua-arabic {
+  font-size: clamp(1.05rem, 3.4vw, 1.25rem);
+  font-weight: 500;
+  line-height: 1.7;
+  margin-bottom: 6px;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.55);
+}
+
+.signoff-section .signoff-trans {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(0.88rem, 2.6vw, 1rem);
+  font-weight: 400;
+  color: var(--parchment);
+  opacity: 0.88;
+  line-height: 1.5;
+  max-width: 380px;
+  margin: 0 auto 4px;
+  text-align: center;
+}
+
+.signoff-section.ur-mode .signoff-trans,
+.card.lang-ur .signoff-section .signoff-trans {
+  font-family: var(--font-urdu, 'Amiri', serif);
+  font-style: normal;
+  font-size: clamp(0.82rem, 2.4vw, 0.94rem);
+  line-height: 1.7;
+}
+
+.signoff-section .signoff-ref {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: var(--gold-light);
+  opacity: 0.7;
+  margin-bottom: 2px;
+  text-align: center;
+}
+
+.signoff-section.ur-mode .signoff-ref,
+.card.lang-ur .signoff-section .signoff-ref {
+  font-family: var(--font-urdu, 'Amiri', serif);
+  font-size: 0.74rem;
+  letter-spacing: 0;
+}
+
+.signoff-section .signoff-sep {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 14px auto;
+  color: var(--gold);
+  opacity: 0.45;
+  font-size: 0.65rem;
+  width: 100%;
 }
 
 .signoff-section .closing-text {
@@ -2497,12 +2595,22 @@ body {
   font-size: 1.1rem;
   font-weight: 400;
   color: var(--parchment);
-  opacity: 0.7;
+  opacity: 0.75;
   line-height: 1.5;
+  margin-top: 24px;
+  text-align: center;
+}
+
+.signoff-section.ur-mode .closing-text,
+.card.lang-ur .signoff-section .closing-text {
+  font-family: var(--font-urdu, 'Amiri', serif);
+  font-style: normal;
+  font-size: 1.02rem;
+  line-height: 1.7;
 }
 
 .signoff-section .brand {
-  margin-top: 40px;
+  margin-top: 36px;
   font-family: var(--font-body);
   font-size: 0.58rem;
   font-weight: 400;
@@ -2510,6 +2618,7 @@ body {
   text-transform: uppercase;
   color: var(--gold-light);
   opacity: 0.35;
+  text-align: center;
 }
 
 

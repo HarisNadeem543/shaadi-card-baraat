@@ -2,12 +2,15 @@ import React from 'react';
 
 /**
  * SignoffSection — Closing night courtyard view with garland,
- * Arabic dua, farewell text, and branding.
+ * Quranic verse with translation & reference, Prophetic wedding dua,
+ * farewell text, and branding.
  * Supports bilingual English and Urdu text.
  */
 export default function SignoffSection({ t, lang }) {
+  const isUr = lang === 'ur';
+
   return (
-    <section className={`signoff-section ${lang === 'ur' ? 'ur-mode' : ''}`}>
+    <section className={`signoff-section ${isUr ? 'ur-mode' : ''}`}>
       {/* Background courtyard night image (soft) */}
       <img
         className="signoff-bg"
@@ -26,26 +29,59 @@ export default function SignoffSection({ t, lang }) {
       />
 
       <div className="signoff-content">
+        {/* 1. Quranic Verse Block */}
+        <div className="signoff-blessing-block fade-in-up fade-delay-1">
+          <p className="dua-text signoff-verse-arabic" dir="rtl">
+            {t.verseArabic || 'وَخَلَقْنَاكُمْ أَزْوَاجًا'}
+          </p>
+          {t.verseTranslation && (
+            <p className="signoff-trans" dir={isUr ? 'rtl' : 'ltr'}>
+              &ldquo;{t.verseTranslation}&rdquo;
+            </p>
+          )}
+          {t.verseRef && (
+            <p className="signoff-ref" dir={isUr ? 'rtl' : 'ltr'}>
+              {t.verseRef}
+            </p>
+          )}
+        </div>
 
-        {/* Dua text (Arabic Quranic ayah) */}
-        <p className="dua-text fade-in-up fade-delay-1" dir="rtl" style={{ whiteSpace: 'pre-line' }}>
-          {t.dua}
-        </p>
+        {/* Delicate ornament divider */}
+        <div className="signoff-sep fade-in-up fade-delay-1" aria-hidden="true">
+          <span>✦</span>
+        </div>
+
+        {/* 2. Prophetic Wedding Dua Block */}
+        <div className="signoff-blessing-block fade-in-up fade-delay-2">
+          <p className="dua-text signoff-dua-arabic" dir="rtl">
+            {t.duaArabic || 'بَارَكَ اللهُ لَكُمَا وَبَارَكَ عَلَيْكُمَا وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ'}
+          </p>
+          {t.duaTranslation && (
+            <p className="signoff-trans" dir={isUr ? 'rtl' : 'ltr'}>
+              &ldquo;{t.duaTranslation}&rdquo;
+            </p>
+          )}
+        </div>
 
         {/* Closing farewell */}
-        <p
-          className="closing-text fade-in-up fade-delay-2"
-          style={{ whiteSpace: 'pre-line' }}
-          dir={lang === 'ur' ? 'rtl' : 'ltr'}
-        >
-          {t.closing}
-        </p>
+        {t.closing && (
+          <p
+            className="closing-text fade-in-up fade-delay-3"
+            style={{ whiteSpace: 'pre-line' }}
+            dir={isUr ? 'rtl' : 'ltr'}
+          >
+            {t.closing}
+          </p>
+        )}
 
         {/* Branding */}
-        <p className="brand fade-in-up fade-delay-3">
-          {t.brand}
-        </p>
+        {t.brand ? (
+          <p className="brand fade-in-up fade-delay-3">
+            {t.brand}
+          </p>
+        ) : null}
       </div>
     </section>
   );
 }
+
