@@ -278,16 +278,16 @@ export default function SaveTheDateSection({ t, lang }) {
     const icsContent = [
       'BEGIN:VCALENDAR',
       'VERSION:2.0',
-      'PRODID:-//Haveli Invitation//Umair & Meher Wedding//EN',
+      'PRODID:-//Haveli Invitation//Maida & Usman Wedding//EN',
       'CALSCALE:GREGORIAN',
       'METHOD:PUBLISH',
       'BEGIN:VEVENT',
-      'UID:umair-meher-wedding-20261219@haveli.niru.pk',
+      'UID:maida-usman-wedding-20261219@haveli.niru.pk',
       'DTSTAMP:20261024T000000Z',
       'DTSTART:20261219T143000Z',
       'DTEND:20261219T183000Z',
-      'SUMMARY:Umair & Meher - Baraat & Nikah',
-      'DESCRIPTION:We invite you to celebrate the wedding of Umair & Meher at Royal Palm, Lahore.',
+      'SUMMARY:Maida & Usman - Baraat & Nikah',
+      'DESCRIPTION:We invite you to celebrate the wedding of Maida & Usman at Royal Palm, Lahore.',
       'LOCATION:Royal Palm Golf & Country Club, Canal Road, Lahore',
       'STATUS:CONFIRMED',
       'END:VEVENT',
@@ -298,7 +298,7 @@ export default function SaveTheDateSection({ t, lang }) {
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.setAttribute('download', 'umair-meher-wedding.ics');
+    link.setAttribute('download', 'maida-usman-wedding.ics');
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

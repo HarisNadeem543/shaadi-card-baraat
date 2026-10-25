@@ -7,9 +7,9 @@ export const TRANSLATIONS = {
     hero: {
       bismillah: 'بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ',
       subtitle: "We're Getting Married",
-      name1: 'Umair',
+      name1: 'Maida',
       amp: '&',
-      name2: 'Meher',
+      name2: 'Usman',
       date: '19 · 12 · 2026',
       city: 'Lahore',
       scroll: 'Scroll',
@@ -94,9 +94,9 @@ export const TRANSLATIONS = {
     hero: {
       bismillah: 'بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ',
       subtitle: 'شادی خانہ آبادی',
-      name1: 'عمیر',
+      name1: 'مائدہ',
       amp: 'اور',
-      name2: 'مہر',
+      name2: 'عثمان',
       date: '۱۹ · ۱۲ · ۲۰۲۶',
       city: 'لاہور',
       scroll: 'نیچے دیکھیں',

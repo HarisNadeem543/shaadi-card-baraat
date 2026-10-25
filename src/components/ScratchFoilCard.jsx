@@ -215,15 +215,15 @@ export default function ScratchFoilCard({ t, lang }) {
       'CALSCALE:GREGORIAN',
       'METHOD:PUBLISH',
       'BEGIN:VEVENT',
-      'SUMMARY:Umair & Meher — Baraat & Nikah',
-      'DESCRIPTION:We celebrate the union of Umair & Meher at Sheesh Mahal Banquet, Lahore.',
+      'SUMMARY:Maida & Usman — Baraat & Nikah',
+      'DESCRIPTION:We celebrate the union of Maida & Usman at Sheesh Mahal Banquet, Lahore.',
       'LOCATION:Sheesh Mahal Banquet, Canal Road, Lahore, Pakistan',
       'DTSTART:20261219T133000Z',
       'DTEND:20261219T183000Z',
       'STATUS:CONFIRMED',
       'BEGIN:VALARM',
       'TRIGGER:-P1D',
-      'DESCRIPTION:Reminder: Umair & Meher Wedding Tomorrow',
+      'DESCRIPTION:Reminder: Maida & Usman Wedding Tomorrow',
       'ACTION:DISPLAY',
       'END:VALARM',
       'END:VEVENT',
@@ -234,7 +234,7 @@ export default function ScratchFoilCard({ t, lang }) {
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.setAttribute('download', 'umair-meher-wedding.ics');
+    link.setAttribute('download', 'maida-usman-wedding.ics');
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
