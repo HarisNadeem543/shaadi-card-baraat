@@ -9,7 +9,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 const WEDDING_DATE = new Date('2026-12-19T14:00:00+05:00');
 
 function getTimeLeft(targetDateStr) {
-  const target = new Date(targetDateStr || '2026-12-19T18:30:00+05:00');
+  const target = new Date(targetDateStr || '2026-12-19T19:00:00+05:00');
   const now = new Date();
   const diff = target - now;
 
@@ -81,12 +81,12 @@ export default function SaveTheDateSection({ t, lang }) {
   const handleAddToCalendar = () => {
     const ev = t.calendarEvent || {
       summary: 'Maida & Usman - Baraat & Nikah',
-      description: 'We invite you to celebrate the wedding of Maida & Usman at Qasr-e-Noor Banquet, Lahore.',
-      location: 'Qasr-e-Noor Banquet, 12-A Cavalry Ground, Lahore Cantt, Lahore',
-      filename: 'maida-usman-wedding.ics',
-      uid: 'maida-usman-wedding-20261219',
-      dtstart: '20261219T133000Z',
-      dtend: '20261219T183000Z',
+      description: 'We invite you to celebrate the Baraat & Nikah of Maida & Usman at Grand Sapphire Event Complex, Lahore.\n\nTiming: 7:00 PM – 10:00 PM\n• Nikah: 8:00 PM\n• Dinner: 9:00 PM\n• Rukhsati: 9:45 PM\n\nGoogle Maps: https://maps.app.goo.gl/MRTu7TaRG9VEWhva8',
+      location: 'Grand Sapphire Event Complex, Ravi Block, Allama Iqbal Town, Lahore',
+      filename: 'maida-usman-baraat.ics',
+      uid: 'maida-usman-baraat-20261219',
+      dtstart: '20261219T140000Z',
+      dtend: '20261219T170000Z',
     };
 
     const icsContent = [

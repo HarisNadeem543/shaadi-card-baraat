@@ -55,6 +55,19 @@ export default function VenueSection({ t, lang }) {
           <div className="venue-event-time">{venue.event}</div>
           <h3 className="venue-event-name">{venue.name}</h3>
           <p className="venue-event-addr">{venue.addr}</p>
+
+          {venue.schedule && venue.schedule.length > 0 && (
+            <div className="venue-schedule">
+              {venue.schedule.map((item, i) => (
+                <div key={i} className="venue-schedule-item">
+                  <span className="schedule-time">{item.time}</span>
+                  <span className="schedule-sep">·</span>
+                  <span className="schedule-label">{item.label}</span>
+                </div>
+              ))}
+            </div>
+          )}
+
           <a
             className="venue-map-btn"
             href={venue.mapUrl}

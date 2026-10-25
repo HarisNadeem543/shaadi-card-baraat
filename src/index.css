@@ -1981,6 +1981,24 @@ body {
   opacity: 0.9;
 }
 
+.timeline-program {
+  font-family: var(--font-manrope);
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: #DFC7AF;
+  margin: 5px 0 0 0;
+  line-height: 1.35;
+  opacity: 0.85;
+}
+
+.ur-mode .timeline-program {
+  font-family: var(--font-urdu);
+  font-size: 0.68rem;
+  line-height: 1.5;
+}
+
+
 
 /* ---- Section: Venue (Where to come with Arch Frame) ---- */
 .venue-section {
@@ -2034,6 +2052,11 @@ body {
   cursor: pointer;
   transition: all 0.22s ease;
   backdrop-filter: blur(4px);
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  user-select: none;
+  -webkit-user-select: none;
+  outline: none;
 }
 
 .venue-tab-pill:hover {
@@ -2041,10 +2064,25 @@ body {
   border-color: rgba(140, 98, 57, 0.6);
 }
 
+.venue-tab-pill:focus,
+.venue-tab-pill:focus-visible,
+.venue-tab-pill:active {
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
 .venue-tab-pill.active {
   background: #4E2A15;
   color: #FFFDF9;
   border-color: #4E2A15;
+  box-shadow: 0 4px 12px rgba(78, 42, 21, 0.25);
+}
+
+.venue-tab-pill.active:focus,
+.venue-tab-pill.active:focus-visible,
+.venue-tab-pill.active:active {
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
   box-shadow: 0 4px 12px rgba(78, 42, 21, 0.25);
 }
 
@@ -2105,7 +2143,55 @@ body {
   color: #5C4537;
   line-height: 1.45;
   white-space: pre-line;
-  margin-bottom: 14px;
+  margin-bottom: 8px;
+}
+
+/* Venue Schedule within Arch */
+.venue-schedule {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  margin: 0 auto 10px;
+  padding: 4px 10px;
+  background: rgba(140, 98, 57, 0.08);
+  border-top: 1px solid rgba(140, 98, 57, 0.22);
+  border-bottom: 1px solid rgba(140, 98, 57, 0.22);
+  border-radius: 4px;
+  width: 100%;
+}
+
+.venue-schedule-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-family: var(--font-manrope);
+  font-size: 0.6rem;
+  line-height: 1.25;
+  color: #4A2E1B;
+}
+
+.schedule-time {
+  font-weight: 500;
+  color: #6E472B;
+}
+
+.schedule-sep {
+  opacity: 0.45;
+  color: #8C6239;
+}
+
+.schedule-label {
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #2E1B10;
+}
+
+.ur-mode .venue-schedule-item {
+  font-family: var(--font-urdu);
+  font-size: 0.68rem;
+  line-height: 1.4;
 }
 
 /* OPEN IN MAPS Button */
@@ -2128,6 +2214,10 @@ body {
   text-decoration: none;
   transition: all 0.2s ease;
   box-shadow: 0 2px 6px rgba(107, 64, 38, 0.05);
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .venue-map-btn:hover {
@@ -2135,6 +2225,13 @@ body {
   border-color: rgba(140, 98, 57, 0.7);
   box-shadow: 0 4px 12px rgba(107, 64, 38, 0.12);
   transform: translateY(-1px);
+}
+
+.venue-map-btn:focus,
+.venue-map-btn:focus-visible,
+.venue-map-btn:active {
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .map-pin-icon {

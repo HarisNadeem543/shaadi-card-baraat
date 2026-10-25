@@ -64,6 +64,9 @@ export default function ThreeEveningsSection({ t, lang }) {
             <div className="timeline-col-details" dir={lang === 'ur' ? 'rtl' : 'ltr'}>
               <h3 className="timeline-event-name">{event.name}</h3>
               <p className="timeline-venue">{event.venue}</p>
+              {event.program && (
+                <p className="timeline-program">{event.program}</p>
+              )}
             </div>
           </div>
         ))}
