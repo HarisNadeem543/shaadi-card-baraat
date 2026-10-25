@@ -324,10 +324,10 @@ body {
   .entrance .hero-name,
   .entrance .hero .names .hero-name,
   .hero-name {
-    font-size: clamp(2.6rem, 8.5vw, 3.4rem) !important;
+    font-size: clamp(3.0rem, 13vw, 4.2rem) !important;
     font-weight: 600 !important;
     color: #FFFFFF !important;
-    text-shadow: 0 2px 24px rgba(0, 0, 0, 0.7), 0 0 16px rgba(255, 255, 255, 0.3) !important;
+    text-shadow: 0 2px 24px rgba(0, 0, 0, 0.65), 0 0 20px rgba(255, 255, 255, 0.25) !important;
   }
 
   .entrance .hero-ampersand,
@@ -352,9 +352,9 @@ body {
 
   .card.lang-ur .entrance .hero-name,
   .card.lang-ur .hero-name {
-    font-size: clamp(2.5rem, 8vw, 3.2rem) !important;
+    font-size: clamp(2.8rem, 12vw, 3.8rem) !important;
     color: #FFFFFF !important;
-    text-shadow: 0 2px 24px rgba(0, 0, 0, 0.7) !important;
+    text-shadow: 0 2px 24px rgba(0, 0, 0, 0.65), 0 0 20px rgba(255, 255, 255, 0.25) !important;
   }
 
   .section-title,
@@ -677,11 +677,7 @@ body {
     font-size: 0.5rem;
     margin-top: 20px;
   }
-
   /* Desktop Urdu adjustments */
-  .card.lang-ur .hero-name {
-    font-size: 1.7rem !important;
-  }
 
   .card.lang-ur .section-title,
   .card.lang-ur .dear-family-section .section-title {
