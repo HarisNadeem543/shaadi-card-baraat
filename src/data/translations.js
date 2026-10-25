@@ -15,7 +15,7 @@ export const TRANSLATIONS = {
       scroll: 'Scroll',
     },
     dearFamily: {
-      title: 'Dear family and\nfriends,',
+      title: 'Dear family and\nfriends',
       p1: 'After years of our families knowing one another, ours is finally the wedding they get to plan together.',
       p2: 'Two evenings, one open door. Come eat with us, sit with us, and stay far longer than you meant to.',
     },
@@ -29,6 +29,9 @@ export const TRANSLATIONS = {
       hours: 'HOURS',
       minutes: 'MINUTES',
       seconds: 'SECONDS',
+      clickPadPrompt: 'CLICK THREE TIMES TO VIEW THE DATE',
+      clickPadHint: 'Click pad · Tap 3 times to reveal',
+      clicksRemaining: (n) => `${n} click${n > 1 ? 's' : ''} to reveal`,
     },
     threeEvenings: {
       title: 'The two evenings',
@@ -95,7 +98,7 @@ export const TRANSLATIONS = {
       scroll: 'نیچے دیکھیں',
     },
     dearFamily: {
-      title: 'معزز فیملی اور\nدوست احباب،',
+      title: 'معزز فیملی اور\nدوست احباب',
       p1: 'برسوں کی باہمی شناسائی اور محبت کے بعد، بالآخر ہمارے خاندانوں کو ایک ساتھ خوشیاں منانے کا موقع ملا ہے۔',
       p2: 'دو یادگار شامیں، کھلا در۔ ہمارے ساتھ خوشیوں میں شریک ہوں، اور اس پُرمسرت تقریب کو اپنی دعاؤں سے منور کریں۔',
     },
@@ -109,6 +112,9 @@ export const TRANSLATIONS = {
       hours: 'گھنٹے',
       minutes: 'منٹ',
       seconds: 'سیکنڈ',
+      clickPadPrompt: 'تاریخ دیکھنے کے لیے تین بار کلک کریں',
+      clickPadHint: 'کلک پیڈ · ۳ بار دبائیں',
+      clicksRemaining: (n) => `مزید ${n === 1 ? '۱' : '۲'} بار کلک کریں`,
     },
     threeEvenings: {
       title: 'دو یادگار شامیں',

@@ -17,14 +17,15 @@ export default function SignoffSection({ t, lang }) {
         loading="lazy"
       />
 
+      {/* Garland ornament stretched to either sides across the top of its div */}
+      <img
+        className="garland signoff-garland fade-in-up"
+        src="/assets/haveli-garland.webp"
+        alt=""
+        aria-hidden="true"
+      />
+
       <div className="signoff-content">
-        {/* Garland ornament */}
-        <img
-          className="garland fade-in-up"
-          src="/assets/haveli-garland.webp"
-          alt=""
-          aria-hidden="true"
-        />
 
         {/* Dua text (Arabic Quranic ayah) */}
         <p className="dua-text fade-in-up fade-delay-1" dir="rtl" style={{ whiteSpace: 'pre-line' }}>

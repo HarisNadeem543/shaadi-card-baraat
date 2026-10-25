@@ -42,16 +42,6 @@ export default function SaveTheDateSection({ t, lang }) {
   const [timeLeft, setTimeLeft] = useState(getTimeLeft);
   const intervalRef = useRef(null);
 
-  // Scratch Foil Card states & refs
-  const containerRef = useRef(null);
-  const canvasRef = useRef(null);
-  const [isRevealed, setIsRevealed] = useState(false);
-  const [isRemoved, setIsRemoved] = useState(false);
-  const [isScratching, setIsScratching] = useState(false);
-  const [scratchPercent, setScratchPercent] = useState(0);
-  const lastPointRef = useRef(null);
-  const strokeCountRef = useRef(0);
-
   useEffect(() => {
     intervalRef.current = setInterval(() => {
       setTimeLeft(getTimeLeft());
@@ -60,218 +50,30 @@ export default function SaveTheDateSection({ t, lang }) {
     return () => clearInterval(intervalRef.current);
   }, []);
 
-  /**
-   * Initializes the gold metallic foil canvas layer on top of the calendar card
-   */
-  const initFoilCanvas = useCallback(() => {
-    const canvas = canvasRef.current;
-    const container = containerRef.current;
-    if (!canvas || !container) return;
+  // Click Pad states (Triple-click to view the date)
+  const [clicks, setClicks] = useState(0);
+  const [isRevealed, setIsRevealed] = useState(false);
+  const [isRemoved, setIsRemoved] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
 
-    const rect = container.getBoundingClientRect();
-    if (rect.width === 0 || rect.height === 0) return;
-
-    const dpr = window.devicePixelRatio || 1;
-    const width = rect.width;
-    const height = rect.height;
-
-    canvas.width = Math.round(width * dpr);
-    canvas.height = Math.round(height * dpr);
-    canvas.style.width = `${width}px`;
-    canvas.style.height = `${height}px`;
-
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    ctx.scale(dpr, dpr);
-    ctx.globalCompositeOperation = 'source-over';
-
-    // 1. Multi-stop Metallic Gold Gradient
-    const grad = ctx.createLinearGradient(0, 0, width, height);
-    grad.addColorStop(0, '#9A6B2F');
-    grad.addColorStop(0.18, '#D8B15D');
-    grad.addColorStop(0.36, '#FAF0BE');
-    grad.addColorStop(0.55, '#B98A3C');
-    grad.addColorStop(0.75, '#ECD38C');
-    grad.addColorStop(0.92, '#C29648');
-    grad.addColorStop(1, '#8D5E24');
-
-    ctx.fillStyle = grad;
-    ctx.fillRect(0, 0, width, height);
-
-    // 2. Shimmer / Texture overlay
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.12)';
-    for (let i = 0; i < 350; i++) {
-      const rx = Math.random() * width;
-      const ry = Math.random() * height;
-      const r = Math.random() * 1.5;
-      ctx.beginPath();
-      ctx.arc(rx, ry, r, 0, Math.PI * 2);
-      ctx.fill();
-    }
-
-    // 3. Ornate Double Gold Border
-    ctx.strokeStyle = 'rgba(107, 64, 38, 0.35)';
-    ctx.lineWidth = 1;
-    ctx.strokeRect(10, 10, width - 20, height - 20);
-
-    ctx.strokeStyle = 'rgba(255, 255, 255, 0.45)';
-    ctx.lineWidth = 1;
-    ctx.strokeRect(14, 14, width - 28, height - 28);
-
-    // 4. Stamped Gold Foil Typography & Sparkle Icon
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-
-    // Sparkle icon
-    ctx.font = '22px serif';
-    ctx.fillStyle = '#5A3617';
-    ctx.fillText('✦ ✦ ✦', width / 2, height / 2 - 26);
-
-    // Foil Prompt text
-    ctx.font = lang === 'ur'
-      ? "600 15px 'Noto Nastaliq Urdu', serif"
-      : "700 12.5px 'Manrope', sans-serif";
-    ctx.fillStyle = '#4A2A0C';
-    ctx.fillText(t.scratchPrompt || 'SCRATCH TO REVEAL', width / 2, height / 2 + 2);
-
-    // Foil Hint text
-    ctx.font = lang === 'ur'
-      ? "400 12px 'Noto Nastaliq Urdu', serif"
-      : "500 10.5px 'Jost', sans-serif";
-    ctx.fillStyle = '#6E451B';
-    ctx.fillText(t.scratchHint || 'Rub gold foil with finger or mouse', width / 2, height / 2 + (lang === 'ur' ? 30 : 22));
-  }, [lang, t]);
-
-  // Complete reveal trigger: smoothly fades out and completely unmounts the scratchpad
-  const triggerCompleteReveal = useCallback(() => {
-    setIsRevealed(true);
-    setScratchPercent(100);
-    setTimeout(() => {
-      setIsRemoved(true);
-    }, 450);
-  }, []);
-
-  // Initialize canvas on mount, language change, and window resize
-  useEffect(() => {
+  const handleClickPad = () => {
     if (isRevealed || isRemoved) return;
-    const timer = setTimeout(initFoilCanvas, 60);
 
-    const handleResize = () => {
-      if (!isRevealed && !isRemoved) {
-        initFoilCanvas();
+    // Trigger visual tap pulse
+    setIsClicked(true);
+    setTimeout(() => setIsClicked(false), 180);
+
+    setClicks((prev) => {
+      const next = prev + 1;
+      if (next >= 3) {
+        setIsRevealed(true);
+        setTimeout(() => {
+          setIsRemoved(true);
+        }, 450);
+        return 3;
       }
-    };
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      clearTimeout(timer);
-      window.removeEventListener('resize', handleResize);
-    };
-  }, [initFoilCanvas, isRevealed, isRemoved]);
-
-  /**
-   * Calculates the percentage of the foil that has been scratched away
-   */
-  const checkScratchPercentage = () => {
-    if (isRevealed) return;
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    const width = canvas.width;
-    const height = canvas.height;
-    const step = 8;
-    const imgData = ctx.getImageData(0, 0, width, height);
-    const data = imgData.data;
-
-    let transparentPixels = 0;
-    let totalSampled = 0;
-
-    for (let y = 0; y < height; y += step) {
-      for (let x = 0; x < width; x += step) {
-        const idx = (y * width + x) * 4;
-        totalSampled++;
-        if (data[idx + 3] === 0) {
-          transparentPixels++;
-        }
-      }
-    }
-
-    const percent = Math.round((transparentPixels / totalSampled) * 100);
-    setScratchPercent(percent);
-
-    // Auto-reveal: as requested, once a small amount is scratched (>=15%),
-    // completely remove the rest of the scratch pad to reveal the card below!
-    if (percent >= 15 && !isRevealed) {
-      triggerCompleteReveal();
-    }
-  };
-
-  /**
-   * Erases foil along the pointer drag path
-   */
-  const scratchAt = (x, y) => {
-    if (isRevealed) return;
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    const dpr = window.devicePixelRatio || 1;
-    ctx.globalCompositeOperation = 'destination-out';
-    ctx.lineWidth = 52 * dpr;
-    ctx.lineCap = 'round';
-    ctx.lineJoin = 'round';
-
-    ctx.beginPath();
-    if (lastPointRef.current) {
-      ctx.moveTo(lastPointRef.current.x * dpr, lastPointRef.current.y * dpr);
-      ctx.lineTo(x * dpr, y * dpr);
-      ctx.stroke();
-    } else {
-      ctx.arc(x * dpr, y * dpr, 26 * dpr, 0, Math.PI * 2);
-      ctx.fill();
-    }
-
-    lastPointRef.current = { x, y };
-
-    strokeCountRef.current++;
-    if (strokeCountRef.current % 3 === 0) {
-      checkScratchPercentage();
-    }
-  };
-
-  const handlePointerDown = (e) => {
-    if (isRevealed) return;
-    const rect = canvasRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    setIsScratching(true);
-    lastPointRef.current = { x, y };
-    scratchAt(x, y);
-  };
-
-  const handlePointerMove = (e) => {
-    if (!isScratching || isRevealed) return;
-    const rect = canvasRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    scratchAt(x, y);
-  };
-
-  const handlePointerUp = () => {
-    setIsScratching(false);
-    lastPointRef.current = null;
-    if (!isRevealed) {
-      checkScratchPercentage();
-      if (scratchPercent >= 10) {
-        triggerCompleteReveal();
-      }
-    }
+      return next;
+    });
   };
 
   const handleAddToCalendar = () => {
@@ -364,27 +166,65 @@ export default function SaveTheDateSection({ t, lang }) {
           </div>
         </div>
 
-        {/* Interactive Metallic Gold Foil Canvas Layer on Top - completely unmounted once revealed */}
+        {/* Interactive Click Pad on Top - triple click removes it to reveal the date */}
         {!isRemoved && (
-          <>
-            <canvas
-              ref={canvasRef}
-              className={`scratch-canvas ${isRevealed ? 'revealed' : ''}`}
-              onPointerDown={handlePointerDown}
-              onPointerMove={handlePointerMove}
-              onPointerUp={handlePointerUp}
-              onPointerCancel={handlePointerUp}
-              onPointerLeave={handlePointerUp}
-              style={{ touchAction: 'none' }}
-            />
-
-            {/* Scratch Progress Pill Indicator */}
-            {!isRevealed && scratchPercent > 3 && (
-              <div className="scratch-progress-pill">
-                {scratchPercent}% scratched
+          <div
+            className={`click-pad ${isRevealed ? 'revealed' : ''} ${isClicked ? 'clicked' : ''}`}
+            onClick={handleClickPad}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                handleClickPad();
+              }
+            }}
+            role="button"
+            tabIndex={0}
+            aria-label="Click three times to view the date"
+            title="Click three times to view the date"
+          >
+            <div className="click-pad-border">
+              {/* Progress stars */}
+              <div className="click-pad-stars" aria-hidden="true">
+                <span className={`star-item ${clicks >= 1 ? 'active' : ''}`}>✦</span>
+                <span className={`star-item ${clicks >= 2 ? 'active' : ''}`}>✦</span>
+                <span className={`star-item ${clicks >= 3 ? 'active' : ''}`}>✦</span>
               </div>
-            )}
-          </>
+
+              {/* Main Prompt */}
+              <h4 className="click-pad-prompt">
+                {t.clickPadPrompt || 'CLICK THREE TIMES TO VIEW THE DATE'}
+              </h4>
+
+              {/* Status / Remaining Clicks */}
+              <div className="click-pad-status">
+                {clicks === 0 && (
+                  <span className="status-hint">
+                    {t.clickPadHint || 'Click pad · Tap 3 times to reveal'}
+                  </span>
+                )}
+                {clicks === 1 && (
+                  <span className="status-counter">
+                    {typeof t.clicksRemaining === 'function' ? t.clicksRemaining(2) : '2 clicks left'}
+                  </span>
+                )}
+                {clicks === 2 && (
+                  <span className="status-counter highlight">
+                    {typeof t.clicksRemaining === 'function' ? t.clicksRemaining(1) : '1 click left!'}
+                  </span>
+                )}
+                {clicks >= 3 && (
+                  <span className="status-counter highlight">✨</span>
+                )}
+              </div>
+
+              {/* 3 Interactive Dots */}
+              <div className="click-pad-dots" aria-hidden="true">
+                <span className={`pad-dot ${clicks >= 1 ? 'filled' : ''}`} />
+                <span className={`pad-dot ${clicks >= 2 ? 'filled' : ''}`} />
+                <span className={`pad-dot ${clicks >= 3 ? 'filled' : ''}`} />
+              </div>
+            </div>
+          </div>
         )}
       </div>
 
