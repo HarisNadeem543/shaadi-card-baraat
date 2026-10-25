@@ -1,12 +1,12 @@
 # Maida & Usman — Wedding Invitation
 
-Digital wedding card for **Maida & Usman** (Baraat & Nikah / Walima) in Lahore.
+Digital wedding card for **Maida & Usman** (Baraat & Nikkah / Walima) in Lahore.
 
 ## Features
 - **Bilingual Experience**: Instant toggle between English and Urdu (Nastaliq script)
 - **Interactive Foil Scratch-off**: Scratchpad revealing wedding event details and calendar invite
 - **Single-Image Gallery**: Singular swipe touch slideshow with dot pagination
-- **Two Evenings Timeline**: Baraat & Nikah and Walima schedule
+- **Two Evenings Timeline**: Baraat & Nikkah and Walima schedule
 - **Venue & Maps Integration**: Google Maps navigation links
 - **Background Music**: Ambient wedding instrumental with volume fades and mute controls
 

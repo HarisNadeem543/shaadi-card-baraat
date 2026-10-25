@@ -81,8 +81,8 @@ export default function SaveTheDateSection({ t, lang }) {
   const handleAddToCalendar = (clickedDay) => {
     const isWalimaDay = clickedDay === 20;
     const ev = (isWalimaDay && t.walimaCalendarEvent) ? t.walimaCalendarEvent : (t.calendarEvent || {
-      summary: 'Maida & Usman - Baraat & Nikah',
-      description: 'We invite you to celebrate the Baraat & Nikah of Maida & Usman at Grand Sapphire Event Complex, Lahore.\n\nTiming: 7:00 PM – 10:00 PM\n• Nikah: 8:00 PM\n• Dinner: 9:00 PM\n• Rukhsati: 9:45 PM\n\nGoogle Maps: https://maps.app.goo.gl/MRTu7TaRG9VEWhva8',
+      summary: 'Maida & Usman - Baraat & Nikkah',
+      description: 'We invite you to celebrate the Baraat & Nikkah of Maida & Usman at Grand Sapphire Event Complex, Lahore.\n\nTiming: 7:00 PM – 10:00 PM\n• Nikkah: 8:00 PM\n• Dinner: 9:00 PM\n• Rukhsati: 9:45 PM\n\nGoogle Maps: https://maps.app.goo.gl/MRTu7TaRG9VEWhva8',
       location: 'Grand Sapphire Event Complex, Ravi Block, Allama Iqbal Town, Lahore',
       filename: 'maida-usman-baraat.ics',
       uid: 'maida-usman-baraat-20261219',

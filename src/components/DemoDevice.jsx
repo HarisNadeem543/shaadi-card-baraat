@@ -43,7 +43,7 @@ export default function DemoDevice({ children, controls, viewportRef, lang = 'en
           </>
         ) : (
           <>
-            <b>Maida &amp; Usman</b> &nbsp;·&nbsp; {mode === 'baraat' ? 'Baraat & Nikah' : mode === 'walima' ? 'Walima Reception' : 'Wedding Invitation'}
+            <b>Maida &amp; Usman</b> &nbsp;·&nbsp; {mode === 'baraat' ? 'Baraat & Nikkah' : mode === 'walima' ? 'Walima Reception' : 'Wedding Invitation'}
           </>
         )}
       </p>

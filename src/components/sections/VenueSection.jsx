@@ -4,13 +4,13 @@ import React, { useState } from 'react';
  * VenueSection — Replicates authentic Haveli design matching the reference image:
  * 1. Title at top ("Where to come")
  * 2. Rose garland divider
- * 3. Venue switcher tabs (separate pill buttons: MEHNDI, BARAAT & NIKAH, WALIMA)
+ * 3. Venue switcher tabs (separate pill buttons: MEHNDI, BARAAT & NIKKAH, WALIMA)
  * 4. Ornate Haveli Arch frame with venue details (event time, venue name, address,
  *    and "OPEN IN MAPS" button) centered INSIDE the arch opening window.
  * Supports bilingual English and Urdu text.
  */
 export default function VenueSection({ t, lang }) {
-  // Default to index 0 (BARAAT & NIKAH) as the primary event
+  // Default to index 0 (BARAAT & NIKKAH) as the primary event
   const [activeIdx, setActiveIdx] = useState(0);
   const venues = t.venues;
   const venue = venues[activeIdx] || venues[0];

@@ -45,8 +45,8 @@ export const TRANSLATIONS = {
       dotDay: null,
       targetDate: '2026-12-19T19:00:00+05:00',
       calendarEvent: {
-        summary: 'Maida & Usman - Baraat & Nikah',
-        description: 'We invite you to celebrate the Baraat & Nikah of Maida & Usman at Grand Sapphire Event Complex, Lahore.\n\nTiming: 7:00 PM – 10:00 PM\n• Nikah: 8:00 PM\n• Dinner: 9:00 PM\n• Rukhsati: 9:45 PM\n\nGoogle Maps: https://maps.app.goo.gl/MRTu7TaRG9VEWhva8',
+        summary: 'Maida & Usman - Baraat & Nikkah',
+        description: 'We invite you to celebrate the Baraat & Nikkah of Maida & Usman at Grand Sapphire Event Complex, Lahore.\n\nTiming: 7:00 PM – 10:00 PM\n• Nikkah: 8:00 PM\n• Dinner: 9:00 PM\n• Rukhsati: 9:45 PM\n\nGoogle Maps: https://maps.app.goo.gl/MRTu7TaRG9VEWhva8',
         location: 'Grand Sapphire Event Complex, Ravi Block, Allama Iqbal Town, Lahore',
         filename: 'maida-usman-baraat.ics',
         uid: 'maida-usman-baraat-20261219',
@@ -67,7 +67,7 @@ export const TRANSLATIONS = {
       title: 'The two evenings',
       events: [
         {
-          name: 'Baraat &\nNikah',
+          name: 'Baraat &\nNikkah',
           time: '7:00',
           date: 'SAT 19 DEC',
           venue: 'Grand Sapphire Event Complex,\nAllama Iqbal Town',
@@ -89,7 +89,7 @@ export const TRANSLATIONS = {
       mapBtn: 'OPEN IN MAPS',
       venues: [
         {
-          tab: 'BARAAT & NIKAH',
+          tab: 'BARAAT & NIKKAH',
           event: 'SAT 19 DEC · 7:00 PM – 10:00 PM',
           name: 'Grand Sapphire Event Complex',
           addr: 'Ravi Block, Allama Iqbal Town\nLahore',
@@ -122,7 +122,7 @@ export const TRANSLATIONS = {
       duaArabic: 'بَارَكَ اللهُ لَكُمَا وَبَارَكَ عَلَيْكُمَا وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ',
       duaTranslation: 'May Allah bless you both, and shower His blessings upon you, and bring you together in goodness.',
       dua: 'وَخَلَقْنَاكُمْ أَزْوَاجًا\n\nبَارَكَ اللهُ لَكُمَا وَبَارَكَ عَلَيْكُمَا وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ',
-      closing: "We can't wait to\ncelebrate with you.",
+      closing: '',
       brand: '',
     },
     controls: {
@@ -245,7 +245,7 @@ export const TRANSLATIONS = {
       duaArabic: 'بَارَكَ اللهُ لَكُمَا وَبَارَكَ عَلَيْكُمَا وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ',
       duaTranslation: 'اللہ تعالیٰ آپ دونوں کو برکت دے، آپ پر اپنی برکتیں نازل فرمائے اور آپ دونوں کو خیر و بھلائی پر اکٹھا فرمائے۔',
       dua: 'وَخَلَقْنَاكُمْ أَزْوَاجًا\n\nبَارَكَ اللهُ لَكُمَا وَبَارَكَ عَلَيْكُمَا وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ',
-      closing: 'ہم آپ کی شرکت کے\nمنتظر ہیں',
+      closing: '',
       brand: '',
     },
     controls: {
@@ -266,13 +266,13 @@ export function getTranslations(lang = 'en', mode = 'full') {
   const base = TRANSLATIONS[lang] || TRANSLATIONS.en;
   const isUr = lang === 'ur';
 
-  // Dedicated Baraat & Nikah card
+  // Dedicated Baraat & Nikkah card
   if (mode === 'baraat') {
     return {
       ...base,
       hero: {
         ...base.hero,
-        subtitle: isUr ? 'بارات و نکاح' : 'Baraat & Nikah',
+        subtitle: isUr ? 'بارات و نکاح' : 'Baraat & Nikkah',
         date: isUr ? 'ہفتہ · ۱۹ · دسمبر · ۲۰۲۶' : 'SATURDAY · 19 · DEC · 2026',
       },
       saveDate: {
