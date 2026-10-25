@@ -477,7 +477,17 @@ export default function HeroSection({
           <h1 className="hero-name">{t.name2}</h1>
         </div>
 
-        <p className="hero-date date h-item">{t.date}</p>
+        <p className="hero-date date h-item">
+          {typeof t.date === 'string' && t.date.includes('\n') ? (
+            t.date.split('\n').map((line, idx) => (
+              <span key={idx} className="hero-date-line">
+                {line}
+              </span>
+            ))
+          ) : (
+            t.date
+          )}
+        </p>
         <p className="hero-city place h-item">{t.city}</p>
       </div>
 

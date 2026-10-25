@@ -354,9 +354,12 @@ body {
 
   .entrance .hero-date,
   .entrance .hero .date {
-    font-size: 0.76rem !important;
-    margin-top: 10px;
+    font-size: 0.68rem !important;
+    letter-spacing: 0.12em !important;
+    line-height: 1.55 !important;
+    margin-top: 8px;
     color: #FFFFFF !important;
+    white-space: pre-line;
   }
 
   .entrance .hero-city,
@@ -1250,13 +1253,26 @@ body {
   line-height: 1.2;
   margin: -2px 0;
 }
+.entrance .hero-date,
 .entrance .hero .date {
-  margin-top: 1rem;
+  margin-top: 0.85rem;
   font-family: var(--font-body);
-  font-size: 0.78rem;
-  letter-spacing: 0.3em;
-  color: rgba(244, 226, 184, 0.95);
+  font-size: clamp(0.68rem, 2.3vw, 0.78rem);
+  letter-spacing: 0.14em;
+  color: #FFFFFF;
   text-shadow: 0 1px 3px rgba(20, 10, 4, 0.95), 0 3px 16px rgba(20, 10, 4, 0.85);
+  line-height: 1.55;
+  white-space: pre-line;
+}
+.hero-date-line {
+  display: block;
+}
+.card.lang-ur .entrance .hero-date,
+.card.lang-ur .entrance .hero .date {
+  font-family: var(--font-urdu, 'Noto Nastaliq Urdu', serif) !important;
+  letter-spacing: 0.04em !important;
+  font-size: clamp(0.74rem, 2.4vw, 0.82rem) !important;
+  line-height: 1.8 !important;
 }
 .entrance .hero .place {
   margin-top: 0.4rem;

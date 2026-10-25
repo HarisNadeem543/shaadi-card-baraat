@@ -78,8 +78,9 @@ export default function SaveTheDateSection({ t, lang }) {
     });
   };
 
-  const handleAddToCalendar = () => {
-    const ev = t.calendarEvent || {
+  const handleAddToCalendar = (clickedDay) => {
+    const isWalimaDay = clickedDay === 20;
+    const ev = (isWalimaDay && t.walimaCalendarEvent) ? t.walimaCalendarEvent : (t.calendarEvent || {
       summary: 'Maida & Usman - Baraat & Nikah',
       description: 'We invite you to celebrate the Baraat & Nikah of Maida & Usman at Grand Sapphire Event Complex, Lahore.\n\nTiming: 7:00 PM – 10:00 PM\n• Nikah: 8:00 PM\n• Dinner: 9:00 PM\n• Rukhsati: 9:45 PM\n\nGoogle Maps: https://maps.app.goo.gl/MRTu7TaRG9VEWhva8',
       location: 'Grand Sapphire Event Complex, Ravi Block, Allama Iqbal Town, Lahore',
@@ -87,7 +88,7 @@ export default function SaveTheDateSection({ t, lang }) {
       uid: 'maida-usman-baraat-20261219',
       dtstart: '20261219T140000Z',
       dtend: '20261219T170000Z',
-    };
+    });
 
     const icsContent = [
       'BEGIN:VCALENDAR',
@@ -119,8 +120,10 @@ export default function SaveTheDateSection({ t, lang }) {
     URL.revokeObjectURL(url);
   };
 
-  const ringedDay = t.ringedDay || 19;
-  const dotDay = t.dotDay !== undefined ? t.dotDay : (ringedDay === 19 ? 20 : null);
+  const ringedDays = Array.isArray(t.ringedDays)
+    ? t.ringedDays
+    : (t.ringedDay ? (Array.isArray(t.ringedDay) ? t.ringedDay : [t.ringedDay]) : [19, 20]);
+  const dotDay = t.dotDay !== undefined ? t.dotDay : null;
 
   return (
     <section className={`save-date-section ${lang === 'ur' ? 'ur-mode' : ''}`}>
@@ -155,22 +158,24 @@ export default function SaveTheDateSection({ t, lang }) {
                 return <span key={idx} className="cal-day empty" />;
               }
 
-              const isWedding = day === ringedDay;
-              const isWalima = day === dotDay;
-
+              const isRinged = ringedDays.includes(day);
+              const isDotted = dotDay !== null && day === dotDay;
               const dayNum = lang === 'ur' ? toUrduNum(day) : day;
+              const dayTooltip = isRinged
+                ? ((day === 20 && t.walimaCalendarEvent) ? t.walimaCalendarEvent.summary : (t.calendarEvent?.summary || 'Click to add to calendar'))
+                : undefined;
 
               return (
                 <span
                   key={idx}
-                  className={`cal-day ${isWedding ? 'day-wedding' : ''} ${isWalima ? 'day-walima' : ''}`}
-                  onClick={isWedding ? handleAddToCalendar : undefined}
-                  title={isWedding ? (t.calendarEvent?.summary || 'Click to add to calendar') : undefined}
-                  role={isWedding ? 'button' : undefined}
-                  tabIndex={isWedding ? 0 : undefined}
+                  className={`cal-day ${isRinged ? 'day-wedding' : ''} ${isDotted ? 'day-walima' : ''}`}
+                  onClick={isRinged ? () => handleAddToCalendar(day) : undefined}
+                  title={dayTooltip}
+                  role={isRinged ? 'button' : undefined}
+                  tabIndex={isRinged ? 0 : undefined}
                 >
                   <span className="cal-day-num">{dayNum}</span>
-                  {isWalima && <span className="cal-day-dot">•</span>}
+                  {isDotted && <span className="cal-day-dot">•</span>}
                 </span>
               );
             })}
