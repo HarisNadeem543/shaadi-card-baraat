@@ -39,11 +39,11 @@ export default function DemoDevice({ children, controls, viewportRef, lang = 'en
       <p className="demo-hint">
         {lang === 'ur' ? (
           <>
-            <b>مائدہ اور عثمان</b> &nbsp;·&nbsp; {isWalima ? 'دعوتِ ولیمہ' : 'شادی کارڈ'}
+            <b>مائدہ اور عثمان</b> &nbsp;·&nbsp; {mode === 'baraat' ? 'بارات و نکاح' : mode === 'walima' ? 'دعوتِ ولیمہ' : 'شادی کارڈ'}
           </>
         ) : (
           <>
-            <b>Maida &amp; Usman</b> &nbsp;·&nbsp; {isWalima ? 'Walima Reception' : 'Wedding Invitation'}
+            <b>Maida &amp; Usman</b> &nbsp;·&nbsp; {mode === 'baraat' ? 'Baraat & Nikah' : mode === 'walima' ? 'Walima Reception' : 'Wedding Invitation'}
           </>
         )}
       </p>

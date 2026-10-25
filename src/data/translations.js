@@ -1,9 +1,10 @@
 /**
  * Haveli Bilingual Translations (English & Urdu)
  * Complete text dictionary for all sections of the invitation.
- * Supports both:
- * - 'full': Baraat, Nikah & Walima (default)
- * - 'walima': Dedicated Walima Reception card
+ * Supports:
+ * - 'full': Nikkah & Baraat + Walima (default root invitation)
+ * - 'baraat': Dedicated Nikkah & Baraat card (/baraat)
+ * - 'walima': Dedicated Walima Reception card (/walima)
  */
 
 export const TRANSLATIONS = {
@@ -14,7 +15,7 @@ export const TRANSLATIONS = {
       name1: 'Maida',
       amp: '&',
       name2: 'Usman',
-      date: '19 · 12 · 2026',
+      date: '19 · 20 · 12 · 2026',
       city: 'Lahore',
       scroll: 'Scroll',
       entranceLine: 'A house waits for you,\nlamp by lamp',
@@ -122,7 +123,7 @@ export const TRANSLATIONS = {
       name1: 'مائدہ',
       amp: 'اور',
       name2: 'عثمان',
-      date: '۱۹ · ۱۲ · ۲۰۲۶',
+      date: '۱۹ · ۲۰ · ۱۲ · ۲۰۲۶',
       city: 'لاہور',
       scroll: 'نیچے دیکھیں',
       entranceLine: 'ایک گھر آپ کا منتظر ہے،\nچراغ بہ چراغ',
@@ -226,59 +227,103 @@ export const TRANSLATIONS = {
 };
 
 /**
- * Returns tailored translations based on active language and invitation mode ('full' vs 'walima')
+ * Returns tailored translations based on active language and invitation mode:
+ * - 'full': Nikkah & Baraat + Walima (default root invitation)
+ * - 'baraat': Dedicated Nikkah & Baraat card (/baraat)
+ * - 'walima': Dedicated Walima card (/walima)
  */
 export function getTranslations(lang = 'en', mode = 'full') {
   const base = TRANSLATIONS[lang] || TRANSLATIONS.en;
-  if (mode !== 'walima') {
-    return base;
-  }
-
   const isUr = lang === 'ur';
 
-  return {
-    ...base,
-    hero: {
-      ...base.hero,
-      subtitle: isUr ? 'دعوتِ ولیمہ' : 'Walima Reception',
-      date: isUr ? '۲۰ · ۱۲ · ۲۰۲۶' : '20 · 12 · 2026',
-    },
-    dearFamily: {
-      ...base.dearFamily,
-      p2: isUr
-        ? 'ایک یادگار شام، کھلا در۔ ہمارے ساتھ خوشیوں میں شریک ہوں، اور اس پُرمسرت تقریب کو اپنی دعاؤں سے منور کریں۔'
-        : 'The evening, one open door. Come eat with us, sit with us, and celebrate this blessed occasion.',
-    },
-    saveDate: {
-      ...base.saveDate,
-      dateFooter: isUr ? 'اتوار، ۲۰ دسمبر ۲۰۲۶' : 'SUNDAY, THE TWENTIETH',
-      ringedDay: 20,
-      dotDay: null,
-      targetDate: '2026-12-20T19:00:00+05:00',
-      calendarEvent: {
-        summary: isUr ? 'مائدہ اور عثمان - دعوتِ ولیمہ' : 'Maida & Usman - Walima Reception',
-        description: isUr
-          ? 'ہم آپ کو مائدہ اور عثمان کی دعوتِ ولیمہ کی پُرمسرت تقریب میں شرکت کی دعوت دیتے ہیں۔\n\nمقام: مونارک بائے ایلیٹ پام، بلاک بی ۱، پی جی ای سی ایچ ایس سوسائٹی، لاہور\nاوقات: شام ۷:۰۰ تا ۱۰:۰۰ بجے\n• طعام: رات ۹:۰۰ بجے\n\nگوگل میپس: https://maps.app.goo.gl/N34PAkbL8Q2cXHGy5?g_st=aw'
-          : 'We invite you to celebrate the Walima Reception of Maida & Usman at Monarch by Elite Palm, Lahore.\n\nTiming: 7:00 PM – 10:00 PM\n• Dinner: 9:00 PM\n\nGoogle Maps: https://maps.app.goo.gl/N34PAkbL8Q2cXHGy5?g_st=aw',
-        location: isUr ? 'مونارک بائے ایلیٹ پام، بلاک بی ۱، پی جی ای سی ایچ ایس سوسائٹی، لاہور' : 'Monarch by Elite Palm, Block B1 PGECHS Society, Lahore',
-        filename: 'maida-usman-walima.ics',
-        uid: 'maida-usman-walima-20261220',
-        dtstart: '20261220T140000Z',
-        dtend: '20261220T170000Z',
+  // Dedicated Baraat & Nikah card
+  if (mode === 'baraat') {
+    return {
+      ...base,
+      hero: {
+        ...base.hero,
+        subtitle: isUr ? 'بارات و نکاح' : 'Baraat & Nikah',
+        date: isUr ? '۱۹ · ۱۲ · ۲۰۲۶' : '19 · 12 · 2026',
       },
-    },
-    threeEvenings: {
-      ...base.threeEvenings,
-      title: isUr ? 'ایک یادگار شام' : 'The evening',
-      events: [
-        base.threeEvenings.events.find((e) => e.name.includes('Walima') || e.name.includes('ولیمہ')) || base.threeEvenings.events[1],
-      ],
-    },
-    venue: {
-      ...base.venue,
-      venues: [
-        base.venue.venues.find((v) => v.tab.includes('WALIMA') || v.tab.includes('ولیمہ')) || base.venue.venues[1],
-      ],
-    },
-  };
+      dearFamily: {
+        ...base.dearFamily,
+        p2: isUr
+          ? 'ایک یادگار شام، کھلا در۔ ہمارے ساتھ خوشیوں میں شریک ہوں، اور اس پُرمسرت تقریب کو اپنی دعاؤں سے منور کریں۔'
+          : 'The evening, one open door. Come eat with us, sit with us, and celebrate this blessed occasion.',
+      },
+      saveDate: {
+        ...base.saveDate,
+        dateFooter: isUr ? 'ہفتہ، ۱۹ دسمبر ۲۰۲۶' : 'SATURDAY, THE NINETEENTH',
+        ringedDay: 19,
+        dotDay: null,
+        targetDate: '2026-12-19T19:00:00+05:00',
+        calendarEvent: base.saveDate.calendarEvent,
+      },
+      threeEvenings: {
+        ...base.threeEvenings,
+        title: isUr ? 'ایک یادگار شام' : 'The evening',
+        events: [
+          base.threeEvenings.events.find((e) => e.name.includes('Baraat') || e.name.includes('بارات')) || base.threeEvenings.events[0],
+        ],
+      },
+      venue: {
+        ...base.venue,
+        venues: [
+          base.venue.venues.find((v) => v.tab.includes('BARAAT') || v.tab.includes('بارات')) || base.venue.venues[0],
+        ],
+      },
+    };
+  }
+
+  // Dedicated Walima card
+  if (mode === 'walima') {
+    return {
+      ...base,
+      hero: {
+        ...base.hero,
+        subtitle: isUr ? 'دعوتِ ولیمہ' : 'Walima Reception',
+        date: isUr ? '۲۰ · ۱۲ · ۲۰۲۶' : '20 · 12 · 2026',
+      },
+      dearFamily: {
+        ...base.dearFamily,
+        p2: isUr
+          ? 'ایک یادگار شام، کھلا در۔ ہمارے ساتھ خوشیوں میں شریک ہوں، اور اس پُرمسرت تقریب کو اپنی دعاؤں سے منور کریں۔'
+          : 'The evening, one open door. Come eat with us, sit with us, and celebrate this blessed occasion.',
+      },
+      saveDate: {
+        ...base.saveDate,
+        dateFooter: isUr ? 'اتوار، ۲۰ دسمبر ۲۰۲۶' : 'SUNDAY, THE TWENTIETH',
+        ringedDay: 20,
+        dotDay: null,
+        targetDate: '2026-12-20T19:00:00+05:00',
+        calendarEvent: {
+          summary: isUr ? 'مائدہ اور عثمان - دعوتِ ولیمہ' : 'Maida & Usman - Walima Reception',
+          description: isUr
+            ? 'ہم آپ کو مائدہ اور عثمان کی دعوتِ ولیمہ کی پُرمسرت تقریب میں شرکت کی دعوت دیتے ہیں۔\n\nمقام: مونارک بائے ایلیٹ پام، بلاک بی ۱، پی جی ای سی ایچ ایس سوسائٹی، لاہور\nاوقات: شام ۷:۰۰ تا ۱۰:۰۰ بجے\n• طعام: رات ۹:۰۰ بجے\n\nگوگل میپس: https://maps.app.goo.gl/N34PAkbL8Q2cXHGy5?g_st=aw'
+            : 'We invite you to celebrate the Walima Reception of Maida & Usman at Monarch by Elite Palm, Lahore.\n\nTiming: 7:00 PM – 10:00 PM\n• Dinner: 9:00 PM\n\nGoogle Maps: https://maps.app.goo.gl/N34PAkbL8Q2cXHGy5?g_st=aw',
+          location: isUr ? 'مونارک بائے ایلیٹ پام، بلاک بی ۱، پی جی ای سی ایچ ایس سوسائٹی، لاہور' : 'Monarch by Elite Palm, Block B1 PGECHS Society, Lahore',
+          filename: 'maida-usman-walima.ics',
+          uid: 'maida-usman-walima-20261220',
+          dtstart: '20261220T140000Z',
+          dtend: '20261220T170000Z',
+        },
+      },
+      threeEvenings: {
+        ...base.threeEvenings,
+        title: isUr ? 'ایک یادگار شام' : 'The evening',
+        events: [
+          base.threeEvenings.events.find((e) => e.name.includes('Walima') || e.name.includes('ولیمہ')) || base.threeEvenings.events[1],
+        ],
+      },
+      venue: {
+        ...base.venue,
+        venues: [
+          base.venue.venues.find((v) => v.tab.includes('WALIMA') || v.tab.includes('ولیمہ')) || base.venue.venues[1],
+        ],
+      },
+    };
+  }
+
+  // Full invitation (both Baraat & Walima)
+  return base;
 }
