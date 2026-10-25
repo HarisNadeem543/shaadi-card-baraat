@@ -211,7 +211,7 @@ export default function App() {
         />
 
         {/* The Haveli Invitation Card (scrolls inside the device) */}
-        <div className={`card ${lang === 'ur' ? 'lang-ur' : ''}`}>
+        <div className={`card ${lang === 'ur' ? 'lang-ur' : ''} ${isRevealed ? 'revealed' : ''}`}>
           {/* 1. Hero / Courtyard */}
           <HeroSection
             t={t.hero}
