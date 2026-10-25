@@ -38,7 +38,7 @@ export default function ThreeEveningsSection({ t, lang }) {
       </div>
 
       {/* Vertical Timeline */}
-      <div className="evenings-timeline fade-in-up fade-delay-1">
+      <div className={`evenings-timeline fade-in-up fade-delay-1 ${t.events.length === 1 ? 'single-event' : ''}`}>
         {/* Continuous vertical connecting line passing through all medallions */}
         <div className="timeline-spine" aria-hidden="true" />
 

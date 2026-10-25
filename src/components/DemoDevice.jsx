@@ -9,7 +9,9 @@ import React from 'react';
  * @param {React.ReactNode} [controls] - Fixed controls pinned at top of screen (e.g. FloatingControls).
  * @param {React.RefObject} viewportRef - Ref to the inner scrollable viewport.
  */
-export default function DemoDevice({ children, controls, viewportRef, lang = 'en' }) {
+export default function DemoDevice({ children, controls, viewportRef, lang = 'en', mode = 'full' }) {
+  const isWalima = mode === 'walima';
+
   return (
     <div className="demo-stage">
       <div className="demo-device">
@@ -37,11 +39,11 @@ export default function DemoDevice({ children, controls, viewportRef, lang = 'en
       <p className="demo-hint">
         {lang === 'ur' ? (
           <>
-            <b>مائدہ اور عثمان</b> &nbsp;·&nbsp; شادی کارڈ
+            <b>مائدہ اور عثمان</b> &nbsp;·&nbsp; {isWalima ? 'دعوتِ ولیمہ' : 'شادی کارڈ'}
           </>
         ) : (
           <>
-            <b>Maida &amp; Usman</b> &nbsp;·&nbsp; Wedding Invitation
+            <b>Maida &amp; Usman</b> &nbsp;·&nbsp; {isWalima ? 'Walima Reception' : 'Wedding Invitation'}
           </>
         )}
       </p>

@@ -10,9 +10,11 @@ import GallerySection from './components/sections/GallerySection';
 import SignoffSection from './components/sections/SignoffSection';
 import TornEdgeDivider from './components/TornEdgeDivider';
 import LoadingScreen from './components/LoadingScreen';
-import { TRANSLATIONS } from './data/translations';
+import { TRANSLATIONS, getTranslations } from './data/translations';
+import { getInvitationMode } from './utils/invitationMode';
 
 export default function App() {
+  const [mode, setMode] = useState(getInvitationMode);
   const [lang, setLang] = useState('en');
   const [isPlaying, setIsPlaying] = useState(true);
   const [isRevealed, setIsRevealed] = useState(false);
@@ -21,8 +23,15 @@ export default function App() {
   const viewportRef = useRef(null);
   const fadeFrameRef = useRef(null);
 
-  // Active translation dictionary
-  const t = TRANSLATIONS[lang] || TRANSLATIONS.en;
+  // Re-check mode if browser history changes
+  useEffect(() => {
+    const handlePopState = () => setMode(getInvitationMode());
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  // Active translation dictionary tailored for language and card mode ('full' vs 'walima')
+  const t = getTranslations(lang, mode);
 
   /**
    * Smooth volume fade helper using requestAnimationFrame with cosine easing
@@ -179,6 +188,7 @@ export default function App() {
 
       <DemoDevice
         lang={lang}
+        mode={mode}
         viewportRef={viewportRef}
         controls={
           /* Fixed Floating Controls pinned atop the screen (slides down on reveal) */

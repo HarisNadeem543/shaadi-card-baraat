@@ -1881,6 +1881,11 @@ body {
   pointer-events: none;
 }
 
+.evenings-timeline.single-event .timeline-spine {
+  display: none;
+}
+
+
 /* Timeline Row */
 .timeline-row {
   display: grid;

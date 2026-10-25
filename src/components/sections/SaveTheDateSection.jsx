@@ -8,9 +8,10 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 
 const WEDDING_DATE = new Date('2026-12-19T14:00:00+05:00');
 
-function getTimeLeft() {
+function getTimeLeft(targetDateStr) {
+  const target = new Date(targetDateStr || '2026-12-19T18:30:00+05:00');
   const now = new Date();
-  const diff = WEDDING_DATE - now;
+  const diff = target - now;
 
   if (diff <= 0) {
     return { days: 0, hours: 0, minutes: 0, seconds: 0 };
@@ -39,16 +40,17 @@ function toUrduNum(num) {
 }
 
 export default function SaveTheDateSection({ t, lang }) {
-  const [timeLeft, setTimeLeft] = useState(getTimeLeft);
+  const [timeLeft, setTimeLeft] = useState(() => getTimeLeft(t.targetDate));
   const intervalRef = useRef(null);
 
   useEffect(() => {
+    setTimeLeft(getTimeLeft(t.targetDate));
     intervalRef.current = setInterval(() => {
-      setTimeLeft(getTimeLeft());
+      setTimeLeft(getTimeLeft(t.targetDate));
     }, 1000);
 
     return () => clearInterval(intervalRef.current);
-  }, []);
+  }, [t.targetDate]);
 
   // Click Pad states (Triple-click to view the date)
   const [clicks, setClicks] = useState(0);
@@ -77,6 +79,16 @@ export default function SaveTheDateSection({ t, lang }) {
   };
 
   const handleAddToCalendar = () => {
+    const ev = t.calendarEvent || {
+      summary: 'Maida & Usman - Baraat & Nikah',
+      description: 'We invite you to celebrate the wedding of Maida & Usman at Qasr-e-Noor Banquet, Lahore.',
+      location: 'Qasr-e-Noor Banquet, 12-A Cavalry Ground, Lahore Cantt, Lahore',
+      filename: 'maida-usman-wedding.ics',
+      uid: 'maida-usman-wedding-20261219',
+      dtstart: '20261219T133000Z',
+      dtend: '20261219T183000Z',
+    };
+
     const icsContent = [
       'BEGIN:VCALENDAR',
       'VERSION:2.0',
@@ -84,13 +96,13 @@ export default function SaveTheDateSection({ t, lang }) {
       'CALSCALE:GREGORIAN',
       'METHOD:PUBLISH',
       'BEGIN:VEVENT',
-      'UID:maida-usman-wedding-20261219@weddinginvitation',
-      'DTSTAMP:20261024T000000Z',
-      'DTSTART:20261219T143000Z',
-      'DTEND:20261219T183000Z',
-      'SUMMARY:Maida & Usman - Baraat & Nikah',
-      'DESCRIPTION:We invite you to celebrate the wedding of Maida & Usman at Qasr-e-Noor Banquet, Lahore.',
-      'LOCATION:Qasr-e-Noor Banquet, 12-A Cavalry Ground, Lahore Cantt, Lahore',
+      `UID:${ev.uid}@weddinginvitation`,
+      'DTSTAMP:20261025T000000Z',
+      `DTSTART:${ev.dtstart}`,
+      `DTEND:${ev.dtend}`,
+      `SUMMARY:${ev.summary}`,
+      `DESCRIPTION:${ev.description}`,
+      `LOCATION:${ev.location}`,
       'STATUS:CONFIRMED',
       'END:VEVENT',
       'END:VCALENDAR',
@@ -100,12 +112,15 @@ export default function SaveTheDateSection({ t, lang }) {
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.setAttribute('download', 'maida-usman-wedding.ics');
+    link.setAttribute('download', ev.filename || 'wedding-invitation.ics');
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
     URL.revokeObjectURL(url);
   };
+
+  const ringedDay = t.ringedDay || 19;
+  const dotDay = t.dotDay !== undefined ? t.dotDay : (ringedDay === 19 ? 20 : null);
 
   return (
     <section className={`save-date-section ${lang === 'ur' ? 'ur-mode' : ''}`}>
@@ -140,8 +155,8 @@ export default function SaveTheDateSection({ t, lang }) {
                 return <span key={idx} className="cal-day empty" />;
               }
 
-              const isWedding = day === 19;
-              const isWalima = day === 20;
+              const isWedding = day === ringedDay;
+              const isWalima = day === dotDay;
 
               const dayNum = lang === 'ur' ? toUrduNum(day) : day;
 
@@ -150,7 +165,7 @@ export default function SaveTheDateSection({ t, lang }) {
                   key={idx}
                   className={`cal-day ${isWedding ? 'day-wedding' : ''} ${isWalima ? 'day-walima' : ''}`}
                   onClick={isWedding ? handleAddToCalendar : undefined}
-                  title={isWedding ? 'Click to add Baraat & Nikah to calendar' : undefined}
+                  title={isWedding ? (t.calendarEvent?.summary || 'Click to add to calendar') : undefined}
                   role={isWedding ? 'button' : undefined}
                   tabIndex={isWedding ? 0 : undefined}
                 >

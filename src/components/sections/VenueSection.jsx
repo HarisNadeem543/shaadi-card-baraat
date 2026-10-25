@@ -27,18 +27,20 @@ export default function VenueSection({ t, lang }) {
         aria-hidden="true"
       />
 
-      {/* 2. Venue Switcher Tabs (Separate Pill Buttons) */}
-      <div className="venue-tabs fade-in-up fade-delay-2">
-        {venues.map((v, i) => (
-          <button
-            key={v.tab}
-            className={`venue-tab-pill${i === activeIdx ? ' active' : ''}`}
-            onClick={() => setActiveIdx(i)}
-          >
-            {v.tab}
-          </button>
-        ))}
-      </div>
+      {/* 2. Venue Switcher Tabs (Only if multiple venues exist) */}
+      {venues.length > 1 && (
+        <div className="venue-tabs fade-in-up fade-delay-2">
+          {venues.map((v, i) => (
+            <button
+              key={v.tab}
+              className={`venue-tab-pill${i === activeIdx ? ' active' : ''}`}
+              onClick={() => setActiveIdx(i)}
+            >
+              {v.tab}
+            </button>
+          ))}
+        </div>
+      )}
 
       {/* 3. Arch Frame with Venue Details Positioned INSIDE the Arch Window Opening */}
       <div className="arch-frame-container fade-in-up fade-delay-3">
