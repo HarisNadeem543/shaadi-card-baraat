@@ -275,30 +275,45 @@ body {
     height: 100%;
   }
 
+  .entrance .hero-bismillah,
   .entrance .hero .bismillah {
-    font-size: 0.85rem !important;
+    font-size: 0.76rem !important;
   }
 
+  .entrance .hero-subtitle,
   .entrance .hero .eyebrow {
     font-size: 0.56rem !important;
   }
 
-  .entrance .hero .names {
-    font-size: 2.2rem !important;
+  .entrance .hero-name,
+  .entrance .hero .names .hero-name,
+  .hero-name {
+    font-size: 1.7rem !important;
     font-weight: 600 !important;
+    color: #FFF8F0 !important;
   }
 
-  .entrance .hero .names .amp {
-    font-size: 0.55em !important;
+  .entrance .hero-ampersand,
+  .entrance .hero .names .amp,
+  .hero-ampersand {
+    font-size: 0.9rem !important;
   }
 
+  .entrance .hero-date,
   .entrance .hero .date {
-    font-size: 0.72rem !important;
+    font-size: 0.7rem !important;
     margin-top: 8px;
   }
 
+  .entrance .hero-city,
   .entrance .hero .place {
-    font-size: 0.56rem !important;
+    font-size: 0.54rem !important;
+  }
+
+  .card.lang-ur .entrance .hero-name,
+  .card.lang-ur .hero-name {
+    font-size: 1.7rem !important;
+    color: #FFF8F0 !important;
   }
 
   .section-title,
@@ -1108,23 +1123,33 @@ body {
   color: rgba(240, 222, 180, 0.92);
   text-shadow: 0 1px 3px rgba(20, 10, 4, 0.95), 0 3px 16px rgba(20, 10, 4, 0.85);
 }
+.entrance .hero-names-wrap,
 .entrance .hero .names {
   margin-top: 0.5rem;
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: clamp(2.5rem, 12vw, 3.4rem);
-  line-height: 1.02;
-  color: #F3E5C8;
-  text-shadow: 0 2px 10px rgba(20, 10, 4, 0.85), 0 6px 34px rgba(20, 10, 4, 0.60);
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
-.entrance .hero .names .amp {
+.entrance .hero-name,
+.entrance .hero .names .hero-name,
+.hero-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(3.2rem, 14vw, 4.4rem);
+  line-height: 1.1;
+  color: #FFF8F0;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+}
+.entrance .hero-ampersand,
+.entrance .hero .names .amp,
+.hero-ampersand {
+  font-family: var(--font-display);
   font-style: italic;
-  font-size: 0.44em;
-  color: var(--gold-deep);
-  margin: 0.16em 0;
+  font-size: clamp(1.4rem, 6.5vw, 1.85rem);
+  color: var(--gold);
+  line-height: 1.2;
+  margin: -2px 0;
 }
 .entrance .hero .date {
   margin-top: 1rem;
@@ -1204,16 +1229,28 @@ body {
   font-size: 0.8rem;
   letter-spacing: 0.08em;
 }
+.entrance.ur-mode .hero-names-wrap,
+.card.lang-ur .entrance .hero-names-wrap,
 .entrance.ur-mode .hero .names,
 .card.lang-ur .entrance .hero .names {
-  font-family: var(--font-urdu);
-  font-size: clamp(2.2rem, 10vw, 3rem);
-  font-weight: 700;
-  line-height: 1.35;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
   gap: 12px;
 }
+.entrance.ur-mode .hero-name,
+.card.lang-ur .entrance .hero-name,
+.card.lang-ur .hero-name {
+  font-family: var(--font-urdu);
+  font-size: clamp(2.8rem, 12vw, 3.8rem);
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0;
+  color: #FFF8F0;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+}
+.entrance.ur-mode .hero-ampersand,
+.card.lang-ur .entrance .hero-ampersand,
 .entrance.ur-mode .hero .names .amp,
 .card.lang-ur .entrance .hero .names .amp {
   font-family: var(--font-urdu);

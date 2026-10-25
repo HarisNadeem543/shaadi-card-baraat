@@ -463,22 +463,22 @@ export default function HeroSection({
 
       {/* 6. Grand Revealed Hero Typography (cascades into view on reveal) */}
       <div className="hero">
-        <p className="bismillah h-item" dir="rtl">
+        <p className="hero-bismillah bismillah h-item" dir="rtl">
           {t.bismillah}
         </p>
 
-        <p className="eyebrow h-item">
+        <p className="hero-subtitle eyebrow h-item">
           {t.subtitle}
         </p>
 
-        <h1 className="names h-item">
-          <span>{t.name1}</span>
-          <span className="amp">{t.amp}</span>
-          <span>{t.name2}</span>
-        </h1>
+        <div className="hero-names-wrap names h-item">
+          <h1 className="hero-name">{t.name1}</h1>
+          <span className="hero-ampersand amp">{t.amp}</span>
+          <h1 className="hero-name">{t.name2}</h1>
+        </div>
 
-        <p className="date h-item">{t.date}</p>
-        <p className="place h-item">{t.city}</p>
+        <p className="hero-date date h-item">{t.date}</p>
+        <p className="hero-city place h-item">{t.city}</p>
       </div>
 
       {/* 7. Animated Scroll Cue */}
