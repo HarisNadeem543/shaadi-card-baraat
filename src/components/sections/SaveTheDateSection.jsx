@@ -118,8 +118,8 @@ export default function SaveTheDateSection({ t, lang }) {
         aria-hidden="true"
       />
 
-      {/* Calendar Card Container with Gold Foil Scratch-off Layer */}
-      <div className="calendar-scratch-wrapper fade-in-up fade-delay-2" ref={containerRef}>
+      {/* Calendar Card Container */}
+      <div className="calendar-scratch-wrapper fade-in-up fade-delay-2">
         {/* Revealed Calendar Card (Underneath) */}
         <div className={`calendar-card ${isRevealed ? 'just-revealed' : ''}`}>
           <div className="calendar-header">
