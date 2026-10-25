@@ -10,8 +10,8 @@ import React, { useState } from 'react';
  * Supports bilingual English and Urdu text.
  */
 export default function VenueSection({ t, lang }) {
-  // Default to index 1 (BARAAT & NIKAH) to match the reference image
-  const [activeIdx, setActiveIdx] = useState(1);
+  // Default to index 0 (BARAAT & NIKAH) as the primary event
+  const [activeIdx, setActiveIdx] = useState(0);
   const venues = t.venues;
   const venue = venues[activeIdx] || venues[0];
 

@@ -54,13 +54,6 @@ export const TRANSLATIONS = {
       mapBtn: 'OPEN IN MAPS',
       venues: [
         {
-          tab: 'MEHNDI',
-          event: 'THU 17 DEC · 7:00 PM',
-          name: 'Gulbagh Marquee',
-          addr: 'Block C, Johar Town\nLahore',
-          mapUrl: 'https://maps.google.com/?q=Gulbagh+Marquee+Johar+Town+Lahore',
-        },
-        {
           tab: 'BARAAT & NIKAH',
           event: 'SAT 19 DEC · 6:30 PM',
           name: 'Qasr-e-Noor Banquet',
@@ -140,13 +133,6 @@ export const TRANSLATIONS = {
       title: 'کہاں تشریف لائیں',
       mapBtn: 'گوگل میپس پر دیکھیں',
       venues: [
-        {
-          tab: 'مہندی',
-          event: 'جمعرات، ۱۷ دسمبر · شام ۷:۰۰ بجے',
-          name: 'گلباغ مارکی',
-          addr: 'بلاک سی، جوہر ٹاؤن\nلاہور',
-          mapUrl: 'https://maps.google.com/?q=Gulbagh+Marquee+Johar+Town+Lahore',
-        },
         {
           tab: 'بارات و نکاح',
           event: 'ہفتہ، ۱۹ دسمبر · شام ۶:۳۰ بجے',
