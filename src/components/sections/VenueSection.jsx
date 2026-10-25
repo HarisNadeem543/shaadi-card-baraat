@@ -44,7 +44,7 @@ export default function VenueSection({ t, lang }) {
       <div className="arch-frame-container fade-in-up fade-delay-3">
         <img
           src="/assets/haveli-arch.webp"
-          alt="Haveli Arch"
+          alt="Ornate Wedding Arch"
           className="arch-bg-img"
           loading="lazy"
         />

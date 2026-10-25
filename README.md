@@ -1,16 +1,25 @@
-# React + Vite
+# Maida & Usman — Wedding Invitation
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Digital wedding card for **Maida & Usman** (Baraat & Nikah / Walima) in Lahore.
 
-Currently, two official plugins are available:
+## Features
+- **Bilingual Experience**: Instant toggle between English and Urdu (Nastaliq script)
+- **Interactive Foil Scratch-off**: Scratchpad revealing wedding event details and calendar invite
+- **Single-Image Gallery**: Singular swipe touch slideshow with dot pagination
+- **Two Evenings Timeline**: Baraat & Nikah and Walima schedule
+- **Venue & Maps Integration**: Google Maps navigation links
+- **Background Music**: Ambient wedding instrumental with volume fades and mute controls
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Getting Started
 
-## React Compiler
+### Local Development
+```bash
+npm install
+npm run dev
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+### Production Build
+```bash
+npm run build
+```
+The output will be generated in the `dist/` directory, configured for seamless deployment on Vercel.

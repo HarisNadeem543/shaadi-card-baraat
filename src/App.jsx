@@ -184,6 +184,7 @@ export default function App() {
 
   return (
     <DemoDevice
+      lang={lang}
       viewportRef={viewportRef}
       controls={
         /* Fixed Floating Controls pinned atop the screen */

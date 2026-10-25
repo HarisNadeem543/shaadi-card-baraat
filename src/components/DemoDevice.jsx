@@ -9,7 +9,7 @@ import React from 'react';
  * @param {React.ReactNode} [controls] - Fixed controls pinned at top of screen (e.g. FloatingControls).
  * @param {React.RefObject} viewportRef - Ref to the inner scrollable viewport.
  */
-export default function DemoDevice({ children, controls, viewportRef }) {
+export default function DemoDevice({ children, controls, viewportRef, lang = 'en' }) {
   return (
     <div className="demo-stage">
       <div className="demo-device">
@@ -23,19 +23,27 @@ export default function DemoDevice({ children, controls, viewportRef }) {
           </div>
         </div>
 
-        {/* iPhone Mockup Image Overlay */}
+        {/* Device Frame Overlay */}
         <img
           className="demo-frame"
           loading="eager"
           decoding="async"
           src="/assets/iphone-mockup-20260921.webp"
-          alt="iPhone Mockup Frame"
+          alt="Wedding Invitation Preview"
           aria-hidden="true"
         />
       </div>
 
       <p className="demo-hint">
-        <b>Haveli</b> &nbsp;·&nbsp; exactly what your guests receive
+        {lang === 'ur' ? (
+          <>
+            <b>مائدہ اور عثمان</b> &nbsp;·&nbsp; شادی کارڈ
+          </>
+        ) : (
+          <>
+            <b>Maida &amp; Usman</b> &nbsp;·&nbsp; Wedding Invitation
+          </>
+        )}
       </p>
     </div>
   );

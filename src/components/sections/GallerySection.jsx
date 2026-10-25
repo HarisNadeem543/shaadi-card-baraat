@@ -11,10 +11,10 @@ import React, { useState, useRef, useCallback } from 'react';
  */
 
 const PHOTOS = [
-  { src: '/assets/couple1.jpg', alt: 'The couple on a candlelit stage' },
-  { src: '/assets/couple2.jpg', alt: 'Henna at the mehndi' },
-  { src: '/assets/couple3.jpg', alt: 'Gold embroidery on a wedding dupatta' },
-  { src: '/assets/couple4.jpg', alt: 'The couple in a lamplit corridor' },
+  { src: '/assets/couple1.jpg', alt: 'Maida and Usman on a candlelit stage' },
+  { src: '/assets/couple2.jpg', alt: 'Henna at the wedding celebrations' },
+  { src: '/assets/couple3.jpg', alt: 'Gold embroidery on bridal dupatta' },
+  { src: '/assets/couple4.jpg', alt: 'Maida and Usman in a lamplit corridor' },
 ];
 
 export default function GallerySection({ t, lang }) {

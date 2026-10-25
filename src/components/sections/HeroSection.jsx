@@ -12,7 +12,7 @@ export default function HeroSection({ t, lang }) {
       <img
         className="hero-bg"
         src="/assets/haveli-night.jpg"
-        alt="Haveli courtyard at night with warm lanterns"
+        alt="Courtyard at night with warm lanterns"
         loading="eager"
         decoding="async"
       />
