@@ -171,6 +171,7 @@ export default function SaveTheDateSection({ t, lang }) {
           <div
             className={`click-pad ${isRevealed ? 'revealed' : ''} ${isClicked ? 'clicked' : ''}`}
             onClick={handleClickPad}
+            onMouseDown={(e) => e.preventDefault()}
             onKeyDown={(e) => {
               if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
