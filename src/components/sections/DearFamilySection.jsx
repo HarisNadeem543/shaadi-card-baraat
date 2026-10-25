@@ -37,7 +37,7 @@ export default function DearFamilySection({ t, lang }) {
 
       <div className="body-text fade-in-up fade-delay-2" dir={lang === 'ur' ? 'rtl' : 'ltr'}>
         <p>{t.p1}</p>
-        <p>{t.p2}</p>
+        {t.p2 ? <p>{t.p2}</p> : null}
       </div>
     </section>
   );

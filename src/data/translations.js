@@ -24,8 +24,8 @@ export const TRANSLATIONS = {
     },
     dearFamily: {
       title: 'Dear family and\nfriends',
-      p1: 'After years of our families knowing one another, ours is finally the wedding they get to plan together.',
-      p2: 'Two evenings, one open door. Come eat with us, sit with us, and stay far longer than you meant to.',
+      p1: 'Mr. And Mrs. Nadeem Aslam cordially invite you to witness and celebrate the nikkah ceremony of their beloved daughter',
+      p2: '',
     },
     saveDate: {
       title: 'Save the date',
@@ -132,8 +132,8 @@ export const TRANSLATIONS = {
     },
     dearFamily: {
       title: 'معزز فیملی اور\nدوست احباب',
-      p1: 'برسوں کی باہمی شناسائی اور محبت کے بعد، بالآخر ہمارے خاندانوں کو ایک ساتھ خوشیاں منانے کا موقع ملا ہے۔',
-      p2: 'دو یادگار شامیں، کھلا در۔ ہمارے ساتھ خوشیوں میں شریک ہوں، اور اس پُرمسرت تقریب کو اپنی دعاؤں سے منور کریں۔',
+      p1: 'جناب و محترمہ ندیم اسلم آپ کو اپنی پیاری صاحبزادی کے نکاح کی پُرمسرت تقریب میں شرکت اور دعاؤں کی پُرخلوص دعوت دیتے ہیں۔',
+      p2: '',
     },
     saveDate: {
       title: 'تاریخ یاد رکھیں',
@@ -245,12 +245,6 @@ export function getTranslations(lang = 'en', mode = 'full') {
         subtitle: isUr ? 'بارات و نکاح' : 'Baraat & Nikah',
         date: isUr ? '۱۹ · ۱۲ · ۲۰۲۶' : '19 · 12 · 2026',
       },
-      dearFamily: {
-        ...base.dearFamily,
-        p2: isUr
-          ? 'ایک یادگار شام، کھلا در۔ ہمارے ساتھ خوشیوں میں شریک ہوں، اور اس پُرمسرت تقریب کو اپنی دعاؤں سے منور کریں۔'
-          : 'The evening, one open door. Come eat with us, sit with us, and celebrate this blessed occasion.',
-      },
       saveDate: {
         ...base.saveDate,
         dateFooter: isUr ? 'ہفتہ، ۱۹ دسمبر ۲۰۲۶' : 'SATURDAY, THE NINETEENTH',
@@ -283,12 +277,6 @@ export function getTranslations(lang = 'en', mode = 'full') {
         ...base.hero,
         subtitle: isUr ? 'دعوتِ ولیمہ' : 'Walima Reception',
         date: isUr ? '۲۰ · ۱۲ · ۲۰۲۶' : '20 · 12 · 2026',
-      },
-      dearFamily: {
-        ...base.dearFamily,
-        p2: isUr
-          ? 'ایک یادگار شام، کھلا در۔ ہمارے ساتھ خوشیوں میں شریک ہوں، اور اس پُرمسرت تقریب کو اپنی دعاؤں سے منور کریں۔'
-          : 'The evening, one open door. Come eat with us, sit with us, and celebrate this blessed occasion.',
       },
       saveDate: {
         ...base.saveDate,
