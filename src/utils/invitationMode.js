@@ -1,15 +1,11 @@
 /**
  * Helper to determine the invitation mode from URL path or query params.
  * 
- * Supports:
- * - 'baraat': Dedicated Baraat & Nikah card (Saturday 19 Dec)
- *   Path: /baraat, /barat, /nikah
- *   Params: ?event=baraat, ?card=baraat, ?include=baraat, ?baraat
- * - 'walima': Dedicated Walima card (Sunday 20 Dec)
- *   Path: /walima
- *   Params: ?event=walima, ?card=walima, ?include=walima, ?walima
- * - 'full': Default root invitation (Nikkah & Baraat + Walima)
- *   Path: /
+ * The two active cards are:
+ * 1. 'baraat': Dedicated Nikkah & Baraat card (Saturday 19 Dec)
+ *    URL: /baraat, ?event=baraat (also catches /walima so attendees only receive Baraat)
+ * 2. 'full': Full invitation (Nikkah & Baraat + Walima)
+ *    URL: / (root)
  */
 export function getInvitationMode() {
   if (typeof window === 'undefined') return 'full';
@@ -26,29 +22,23 @@ export function getInvitationMode() {
       ''
     ).toLowerCase();
 
-    // Check for Baraat & Nikah dedicated card
+    // Dedicated Nikkah & Baraat card (/baraat, ?event=baraat, and any converted /walima links)
     if (
       path.includes('baraat') ||
       path.includes('barat') ||
       path.includes('nikah') ||
       path.includes('nikkah') ||
+      path.includes('walima') ||
       eventParam === 'baraat' ||
       eventParam === 'barat' ||
       eventParam === 'nikah' ||
       eventParam === 'nikkah' ||
-      search.includes('baraat') ||
-      search.includes('barat')
-    ) {
-      return 'baraat';
-    }
-
-    // Check for Walima dedicated card
-    if (
-      path.includes('walima') ||
       eventParam === 'walima' ||
+      search.includes('baraat') ||
+      search.includes('barat') ||
       search.includes('walima')
     ) {
-      return 'walima';
+      return 'baraat';
     }
   } catch (e) {
     console.warn('Error reading URL parameters:', e);
