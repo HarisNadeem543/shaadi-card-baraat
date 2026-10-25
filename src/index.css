@@ -42,6 +42,21 @@
   --ease-spring: cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
+/* ---- Google Translate & Browser Translation Prevention ---- */
+.notranslate {
+  -webkit-transform: none;
+}
+.skiptranslate,
+#goog-gt-tt,
+.goog-te-balloon-frame,
+.goog-te-banner-frame {
+  display: none !important;
+  visibility: hidden !important;
+}
+body {
+  top: 0px !important;
+}
+
 /* ---- Reset & Click/Tap Highlight Removal ---- */
 *, *::before, *::after {
   box-sizing: border-box;

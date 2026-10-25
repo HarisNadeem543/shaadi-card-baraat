@@ -145,7 +145,11 @@ export default function App() {
 
   // Language switcher handler
   const toggleLang = () => {
-    setLang((current) => (current === 'en' ? 'ur' : 'en'));
+    setLang((current) => {
+      const next = current === 'en' ? 'ur' : 'en';
+      document.documentElement.lang = next;
+      return next;
+    });
   };
 
   // Connect scroll-reveal observer after mount & language change
@@ -211,7 +215,10 @@ export default function App() {
         />
 
         {/* The Haveli Invitation Card (scrolls inside the device) */}
-        <div className={`card ${lang === 'ur' ? 'lang-ur' : ''} ${isRevealed ? 'revealed' : ''}`}>
+        <div
+          className={`card ${lang === 'ur' ? 'lang-ur' : ''} ${isRevealed ? 'revealed' : ''} notranslate`}
+          translate="no"
+        >
           {/* 1. Hero / Courtyard */}
           <HeroSection
             t={t.hero}
